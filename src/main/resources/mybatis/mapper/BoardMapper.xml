@@ -3,11 +3,25 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.dao.BoardDao">
-
 <select id="postList" parameterType="map" resultType="com.spring.dto.BoardDto">
 	<![CDATA[select * from (select postid, userid, title, postcon, pictureid, postdate, readcount, rec, head, rownum r from (select * from board order by postdate desc) order by postdate desc) where r >= #{start} and r <= #{end}]]>
 </select> 
 <select id="count" resultType="int">
 	select count(*) from board
 </select>
+<select id="lastNum" resultType="int">
+	select last_number from user_sequences where sequence_name = 'PICTURE_SEQ'
+</select>
+<select id="paintLoad" parameterType="int" resultType="com.spring.dto.PicDto">
+	select * from picture where pictureid = #{pictureid}
+</select>
+<select id="checkPic" parameterType="int" resultType="int">
+	select count(*) from picture where pictureid = #{int}
+</select>
+<insert id="savePicNew" parameterType="com.spring.dto.PicDto">
+	insert into picture values (picture_seq.nextval, #{picname}, #{picpath})	
+</insert>
+<update id="savePicOld" parameterType="com.spring.dto.PicDto">
+	update picture set picname = #{picname}, picpath = #{picpath} where pictureid = #{pictureid}
+</update>
 </mapper>

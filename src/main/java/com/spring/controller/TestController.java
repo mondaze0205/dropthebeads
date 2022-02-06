@@ -1,7 +1,9 @@
 package com.spring.controller;
 
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -17,11 +19,6 @@ public class TestController {
 		return "test";
 	}
 	
-	@GetMapping("/painter/test")
-	public String painterTest() {
-		return "painter/test1";
-	}
-	
 	@GetMapping("/board/test")
 	public String boardTest() {
 		return "board/test2";
@@ -31,12 +28,6 @@ public class TestController {
 	public String shopTest() {
 		return "shop/test3";
 	}
-	
-	@GetMapping("/painter/paint")
-	public String paintBoard() {
-		return "painter/painter";
-	}
-	
 	
 	
 	

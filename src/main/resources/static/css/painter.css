@@ -1,133 +1,210 @@
-body {
-  text-align: center;
-  font-family: Arial;
-  background-color: #ececec;
+.container {
+	display: grid;
+	grid-template-areas:
+		"a b c"
+		"d d d"
+		"p p p";
+	grid-template-columns: 150px 180px auto;
 }
 
-* {
-  font-family: Arial;
-  color: grey;
+.hidden, .code {
+	display: none;
 }
 
-/* Styles title */
-h1 {
-  font-size: 2em;
-  text-transform: uppercase;
+.size_side {
+	height: 170px;
+	grid-area: a;
+	
+	font-size: 15px;
+	text-align: left;
+	box-sizing: border-box;
+	background-color: snow;
+	
 }
 
-/* First margin value is top, second is right and left sides, third is bottom */
-h4 {
-  margin: 1em 0 0.75em;
-  text-align: left;
-  text-transform: uppercase;
+.size_side button {
+	background-color: lightblue;
+	border-radius: 8px;
+  	font-size: 14px;
+	padding: 8px 18px;
+	margin: 10px;
+
 }
 
-/* Applies to italicized text */
-em {
-  font-size: 13px;
-  color: #bfbfbf;
+.size_side ul, .size_side li {
+	list-style: none;
+	padding: 0;
 }
 
-table,
-tr,
-td {
+.size_pick {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.size_ul {
+	margin: 12px, auto;
+}
+
+.size_ul2 {
+	display: grid;
+	grid-template-columns: 60px 60px;
+	justify-items: center;
+	margin: 17px, auto;
+	/*margin-bottom: 10px;*/
+}
+
+.size_li_center {
+	align-items: center;
+}
+
+
+.pal_l {
+	height: 170px;
+	grid-area: b;
+	display : flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+}
+
+.pal_l p {
+	margin-right: 7px;
+}
+
+.pal_l_1 {
+	height: 25%;
+	display: flex;
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.color_picker {
+	border: 1px solid #dcdcdc;
+  	-webkit-appearance: none;
+ 	padding: 0;
+  	border: none;
+  	width: 25px;
+  	height: 25px;
+  	cursor: pointer;
+}
+
+.color_picker::-webkit-color-swatch {
+  	border: none;
+  	padding: 0;
+}
+
+.color_picker::-webkit-color-swatch-wrapper {
+ 	border: none;
+  	padding: 0;
+}
+
+.pal_l_2 {
+	height: 25%;
+	display: flex;
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+}
+
+.pal_l_3 {
+	height: 40%;
+}
+
+.pal_r {
+	grid-area: c;
+	align-self : center;
+}
+
+.pal_r table, .pal_r tr, .pal_r td, .pal_l table, .pal_l tr, .pal_l td{
   border: silver 1px dotted;
+}
+
+.pal_r table, .pal_l table {
+  border-collapse: collapse;
+}
+
+.pal_r tr, .pal_l tr {
+  height: 25px;
+}
+
+.pal_r td, .pal_l td {
+  min-width: 25px;
+  box-sizing: border-box;
+}
+
+.pal_btn {
+	grid-area: d;
+	height : 60px;
+	display: flex;
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	overflow: hidden;
+	align-items: center;
+	background-color: snow;
+}
+
+.pal_btn button {
+	border-radius: 8px;
+	padding: 8px 18px;
+	margin: 10px;
+  	font-size: 14px;
+}
+
+.pal_btn .btn0 {
+	background-color: lightblue;	
+}
+
+.pal_btn .btn1 {
+	background-color: #ffdab9;	
+}
+
+.pal_btn .btn2 {
+	background-color: mintcream;	
+}
+
+.pal_btn p {
+  font-size: 15px;
+  color: #696969;
+}
+
+.canvas {
+	grid-area: p;	
 }
 
 .pixel-canvas {
   background-color : white;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* 'border-collapse' CSS property specifies whether a table's cells have shared or separate borders; 'collapse' value causes cells to have shared borders */
-table {
+.canvas table, .canvas tr, .canvas td {
+  border: silver 1px dotted;
+}
+
+.canvas table {
   border-collapse: collapse;
 }
 
-tr {
+.canvas tr {
   height: 20px;
 }
 
-td {
+.canvas td {
   min-width: 20px;
   box-sizing: border-box;
 }
 
-/* Styles height and width input boxes */
-input[type=number] {
-  width: 3em;
-  border: 1px solid #dcdcdc;
-}
-
-/* Styles buttons, including a change of displayed mouse cursor to inform user he/she is hovering over something clickable */
-.submit-button, .quick-fill, .erase-mode, .draw-mode {
-  box-shadow: inset 0px 1px 0 0 #fff;
-	background: linear-gradient(#f9f9f9 5%, #e9e9e9 100%);
-  /* creates rounded edges (more pixels -> more rounded) */
-	border-radius: 7px;
-	border: 1px solid #dcdcdc;
-	font-weight: bold;
-  /* Padding is space between element's content and border. First value sets top and bottom padding; second value sets right and left */
-	padding: 6px 24px;
-	text-decoration: none;
-	/* text-shadow: 0 1px #fff; */
-  cursor: pointer;
-  /* Places button on its own line */
-  display: block;
-  margin-top: 1em;
-}
-
-.color-picker {
-	border: 1px solid #dcdcdc;
-  -webkit-appearance: none;
-  padding: 0;
-  border: none;
-  border-radius: 10px;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-}
-
-.color-picker::-webkit-color-swatch {
-  border: none;
-  border-radius: 10px;
-  padding: 0;
-}
-.color-picker::-webkit-color-swatch-wrapper {
-  border: none;
-  border-radius: 10px;
-  padding: 0;
-}
-
-/* Styles content to left of grid */
-.inputs {
-  text-align: left;
-  margin-left: 8em;
-  margin-top: 5.35em;
-  border-radius: 7px;
-  border: 1px solid #dcdcdc;
-  padding-left: 2em;
-  padding-top: 0.5em;
-  padding-bottom: 1.5em;
-  width: 200px;
-  background-color : white;
-}
-
-/* Part of two-column layout implementation */
-.column {
-  float: left;
-  width: 35%;
-}
-
-/* Ensures title ('Pixel Art Maker') is centered above grid */
-.column:last-of-type {
-  width: auto;
-}
-
-/* Part of two-column layout implementation. :after' is a pseudo element, affecting display of generated content */
-.row:after {
-  /* You can't style generated content without defining what that content should be. If content not needed, just add extra 'invisible element' to style, and style that. Without this, default value of content: none is assumed, meaning there is nothing for style to be applied to */
-  content: "";
-  display: table;
-  /* Cleared elements are pushed below the corresponding floated elements; 'clear: both' pushes element below all floated elements */
-  clear: both;
+.slzone {
+	display: none;
 }

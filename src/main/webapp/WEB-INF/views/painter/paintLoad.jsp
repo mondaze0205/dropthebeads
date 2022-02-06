@@ -4,11 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../resources/css/myinfo.css"> 
+<title>그림 불러오기</title>
 </head>
 <body>
+
+그림 코드 : <input type="text" id="picid">
+<br>
+<button type="button" id="loadpic">불러오기</button>
+
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="../resources/js/myinfo.js"></script>
+<script src="/js/paintload.js"></script>
 </body>
 </html>

@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>list.jsp</title>
-<link rel="stylesheet" type="text/css" href="../resources/css/boardlist.css">
+<link rel="stylesheet" type="text/css" href="/css/header.css">
+<link rel="stylesheet" type="text/css" href="/css/boardlist.css">
 </head>
 <body>
 <header>
@@ -17,9 +18,9 @@
 		<div class="g1"><a href="#">관리자 메뉴</a></div>
 	</div>
 	<div class="h2">
-		<div class="g2"><a href="#">그림판</a></div>
-		<div class="g2"><a href="#">게시판</a></div>
-		<div class="g2"><a href="#">구슬판</a></div>
+		<div class="g2"><a href="#">픽셀아트</a></div>
+		<div class="g2"><a href="#">커뮤니티</a></div>
+		<div class="g2"><a href="#">구매페이지</a></div>
 	</div>
 </header>
 <div id="center">
@@ -71,7 +72,6 @@
 <br>
 <a href="/">처음으로</a>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="../resources/js/boardlist
-.js"></script>
+<script src="/js/boardlist.js"></script>
 </body>
 </html>

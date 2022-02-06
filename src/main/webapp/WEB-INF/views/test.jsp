@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link type ="text/css" rel ="stylesheet" href ="resources/css/test.css"></link>
+<link type ="text/css" rel ="stylesheet" href ="/css/test.css"></link>
 <meta charset="UTF-8">
 <title>Test page</title>
 </head>
@@ -12,6 +12,6 @@
 <br><br>
 <a href="/">처음으로</a>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="resources/js/test.js"></script>
+<script src="/js/test.js"></script>
 </body>
 </html>

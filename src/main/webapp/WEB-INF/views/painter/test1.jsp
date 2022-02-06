@@ -8,8 +8,8 @@
 <body>
 <h1>그림판 테스트 페이지입니다.</h1>
 <br>
-<a href="paint">그림판 공사중</a>
-<br></a>
+<h1>하위</h1>
+<br>
 <a href="http://localhost:8087/">처음으로</a>
 </body>
 </html>
