@@ -36,7 +36,7 @@ public class BoardService {
 		String path = "";
 		
 		try {
-			String dir = "C:/Users/kwonh/Downloads/project5031/";
+			String dir = "C:/project5031/";
 			Random r = new Random();
 			String filename = pic_name + "_" + System.currentTimeMillis() + r.nextInt(99)+".txt";
 			path = dir + filename;
@@ -61,7 +61,7 @@ public class BoardService {
 		String path = "";
 		
 		try {
-			String dir = "C:/Users/kwonh/Downloads/project5031/";
+			String dir = "C:/project5031/";
 			Random r = new Random();
 			String filename = pic_name + "_" + System.currentTimeMillis() + r.nextInt(99)+".txt";
 			path = dir + filename;
