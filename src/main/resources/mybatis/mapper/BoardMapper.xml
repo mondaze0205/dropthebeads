@@ -4,7 +4,79 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.dao.BoardDao">
 <select id="postList" parameterType="map" resultType="com.spring.dto.BoardDto">
-	<![CDATA[select * from (select postid, userid, title, postcon, pictureid, postdate, readcount, rec, head, rownum r from (select * from board order by postdate desc) order by postdate desc) where r >= #{start} and r <= #{end}]]>
+	select * from (select postid, userid, title, postcon, pictureid, postdate, readcount, rec, head, rownum r from (select * from board order by postdate desc) 
+	<if test="searchtype == 0">
+		<if test="rec == 0">
+		<if test="head == 0"> where postid &gt;= 1</if>
+		<if test="head == 1"> where head = '공지'</if>
+		<if test="head == 2"> where head = '자랑'</if>
+		<if test="head == 3"> where head = '리뷰'</if>
+		<if test="head == 4"> where head = '질문'</if>
+		</if>
+		<if test="rec == 1">
+		where rec &gt; 10
+		<if test="head == 0"> and postid &gt;= 1</if>
+		<if test="head == 1"> and head = '공지'</if>
+		<if test="head == 2"> and head = '자랑'</if>
+		<if test="head == 3"> and head = '리뷰'</if>
+		<if test="head == 4"> and head = '질문'</if>
+		</if>
+	</if>
+	<if test="searchtype == 1">
+		where title like '%'||#{searchword}||'%'
+		<if test="rec == 0">
+		<if test="head == 0"> and postid &gt;= 1</if>
+		<if test="head == 1"> and head = '공지'</if>
+		<if test="head == 2"> and head = '자랑'</if>
+		<if test="head == 3"> and head = '리뷰'</if>
+		<if test="head == 4"> and head = '질문'</if>
+		</if>
+		<if test="rec == 1">
+		and rec &gt; 10
+		<if test="head == 0"> and postid &gt;= 1</if>
+		<if test="head == 1"> and head = '공지'</if>
+		<if test="head == 2"> and head = '자랑'</if>
+		<if test="head == 3"> and head = '리뷰'</if>
+		<if test="head == 4"> and head = '질문'</if>
+		</if>
+	</if>
+	<if test="searchtype == 2">
+		where userid like '%'||#{searchword}||'%'
+		<if test="rec == 0">
+		<if test="head == 0"> and postid &gt;= 1</if>
+		<if test="head == 1"> and head = '공지'</if>
+		<if test="head == 2"> and head = '자랑'</if>
+		<if test="head == 3"> and head = '리뷰'</if>
+		<if test="head == 4"> and head = '질문'</if>
+		</if>
+		<if test="rec == 1">
+		and rec &gt; 10
+		<if test="head == 0"> and postid &gt;= 1</if>
+		<if test="head == 1"> and head = '공지'</if>
+		<if test="head == 2"> and head = '자랑'</if>
+		<if test="head == 3"> and head = '리뷰'</if>
+		<if test="head == 4"> and head = '질문'</if>
+		</if>
+	</if>
+	<if test="searchtype == 3">
+		where postcon like '%'||#{searchword}||'%'
+		<if test="rec == 0">
+		<if test="head == 0"> and postid &gt;= 1</if>
+		<if test="head == 1"> and head = '공지'</if>
+		<if test="head == 2"> and head = '자랑'</if>
+		<if test="head == 3"> and head = '리뷰'</if>
+		<if test="head == 4"> and head = '질문'</if>
+		</if>
+		<if test="rec == 1">
+		and rec &gt; 10
+		<if test="head == 0"> and postid &gt;= 1</if>
+		<if test="head == 1"> and head = '공지'</if>
+		<if test="head == 2"> and head = '자랑'</if>
+		<if test="head == 3"> and head = '리뷰'</if>
+		<if test="head == 4"> and head = '질문'</if>
+		</if>
+	</if>
+	order by postdate desc) where r &gt;= #{start} and r &lt;= #{end}
 </select> 
 <select id="count" resultType="int">
 	select count(*) from board

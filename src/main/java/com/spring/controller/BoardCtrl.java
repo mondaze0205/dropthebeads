@@ -75,15 +75,19 @@ public class BoardCtrl {
 	}
 	
 	@RequestMapping("/board/list")
-	public String postList(@RequestParam(name="p", defaultValue="1") int page, Model m) {
+	public String postList(@RequestParam(name="h", defaultValue="0") int head, 
+			@RequestParam(name="p", defaultValue="1") int page, 
+			@RequestParam(name="r", defaultValue="0") int rec, 
+			@RequestParam(name="t", defaultValue="0") int searchType,
+			@RequestParam(name="w", defaultValue="") String searchWord, Model m) {
 		
 		int count = service.count();
 		if(count > 0) {
-			int perPage = 5;
+			int perPage = 10;
 			int startRow = (page - 1) * perPage + 1;
 			int endRow = page * perPage;
 			
-			List<BoardDto> postList = service.postList(startRow, endRow);
+			List<BoardDto> postList = service.postList(startRow, endRow, head, rec, searchType, searchWord);
 			m.addAttribute("postList", postList);
 			
 			int pageNum = 5;
@@ -104,5 +108,7 @@ public class BoardCtrl {
 		
 		return "board/list";
 	}
+	
+	
 	
 }

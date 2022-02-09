@@ -21,10 +21,14 @@ public class BoardService {
 	@Autowired
 	BoardDao dao;
 	
-	public List<BoardDto> postList(int start, int end) {
+	public List<BoardDto> postList(int start, int end, int head, int rec, int searchType, String searchWord) {
 		Map<String, Object> m = new HashMap<String, Object>();
 		m.put("start", start);
 		m.put("end", end);
+		m.put("head", head);
+		m.put("rec", rec);
+		m.put("searchtype", searchType);
+		m.put("searchword", searchWord);
 		return dao.postList(m);
 	}
 	

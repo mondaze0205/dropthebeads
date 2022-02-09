@@ -1,22 +1,140 @@
-#center {
-	width: 700px;
-	margin-left: auto;
-	margin-right: auto;
+.container {
+	display: grid;
+	grid-template-areas:
+	"b a d"
+	"b c d";
+	grid-template-columns: 120px 1000px auto;
 }
 
-table {
-	width: 700px;
+.side_top {
+	grid-area: a;
+	height: 50px;
+	flex-wrap: nowrap;
+	align-items: flex-end;
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.side_top button {
+	background-color: aliceblue;
+	border-radius: 2px;
+	padding: 8px 18px;
+	margin-left: 10px;
+	margin-right: 5px;
+	margin-bottom: 0px;
+  	font-size: 14px;
+  	box-shadow: 2px 2px gainsboro;
+}
+
+.side_top p {
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 0px;
+	padding: 0px;
+	color: mediumblue;
+}
+
+.side_top p:hover {
+	cursor: default;
+}
+
+
+.side_left {
+	grid-area: b;
+	background-color: red;
+}
+
+.side_right {
+	grid-area: d;
+	background-color: blue;
+}
+
+.center {
+	grid-area: c;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.center table {
+	width: 100%;
 	border-collapse: collapse;
+	font-size: 12pt;
+	border-bottom: 2px solid aquamarine;
 }
 
-th {
-	background-color: orange;
-	width: 150px;
+.center td {
+	border-top: 1px dashed skyblue;
 }
 
-a {
-	margin: 10px auto;
+.center .tbmin {
+	min-height: 50px;
+	text-align: center;
+	line-height: 50px;
 }
+
+.center .tdmin {
+	min-height: 30px;
+	
+	line-height: 30px;
+	text-align: center;
+}
+
+.center .tbno {
+	width: 60px;
+	border-top: 3px solid aquamarine;
+	border-bottom: 2px solid aquamarine;
+}
+
+.center .tbhead {
+	border-top: 3px solid aquamarine;
+	border-bottom: 2px solid aquamarine;
+	width: 60px;
+}
+
+.center .tbtitle {
+	border-top: 3px solid aquamarine;
+	border-bottom: 2px solid aquamarine;
+	width: auto;
+}
+
+.center .tbuser {
+	border-top: 3px solid aquamarine;
+	border-bottom: 2px solid aquamarine;
+	width: 100px;
+}
+
+.center .tbdate {
+	border-top: 3px solid aquamarine;
+	border-bottom: 2px solid aquamarine;
+	width: 100px;
+}
+
+.center .tbcount {
+	border-top: 3px solid aquamarine;
+	border-bottom: 2px solid aquamarine;
+	width: 60px;
+}
+
+.center .tbrec {
+	border-top: 3px solid aquamarine;
+	border-bottom: 2px solid aquamarine;
+	width: 60px;
+}
+
+.center .tdcen {
+	text-align: center;
+}
+
+.center a {
+	margin: 0px;
+	text-decoration:none;
+	color: black;
+}
+
+.center a:visited {
+	color : black;
+}
+
 
 #page {
 	text-align: center;
