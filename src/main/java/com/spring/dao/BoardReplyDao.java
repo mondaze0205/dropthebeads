@@ -9,9 +9,12 @@ import com.spring.dto.BoardReplyDto;
 
 @Mapper
 public interface BoardReplyDao {
+	BoardDto postnodto(int postid);
 	List<BoardReplyDto> selectReply(int postid);
+	
 	int insertReply(BoardReplyDto dto);
 	int deleteReply(int replyid);
 	
 	int boardwrite(BoardDto dto);
+	
 }

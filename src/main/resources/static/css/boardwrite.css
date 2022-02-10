@@ -106,11 +106,14 @@
 }
 
 .center .c_preview {
+	height: 174px;
 	grid-area: p;
 	border: 1px solid black;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	overflow-x: auto;
+	overflow-y: auto;
 }
 
 .center .c_preview button {
@@ -148,4 +151,25 @@
 	margin: 10px;
 	padding: 8px 18px;
   	font-size: 16px;
+}
+
+.hidearea {
+	display: none;
+}
+
+.canvas table, .canvas tr, .canvas td {
+  border: silver 1px dotted;
+}
+
+.canvas table {
+  border-collapse: collapse;
+}
+
+.canvas tr {
+  height: 10px;
+}
+
+.canvas td {
+  min-width: 10px;
+  box-sizing: border-box;
 }

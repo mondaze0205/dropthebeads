@@ -13,6 +13,6 @@
 <button type="button" id="loadpic">불러오기</button>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="/js/paintloadatwrite.js"></script>
+<script src="/js/boardpaintload.js"></script>
 </body>
 </html>

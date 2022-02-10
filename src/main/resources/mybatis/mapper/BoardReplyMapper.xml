@@ -11,10 +11,16 @@ insert into reply values(reply_seq.nextval, #{postid}, #{repcon}, sysdate, #{use
 	insert into board (postid, userid, title, postcon, pictureid, postdate, head) values(board_seq.nextval, #{userid}, #{title}, #{postcon}, #{pictureid}, sysdate, #{head})
 </insert>
 
-<delete id="deleteReply" parameterType="int">delete from reply where replyid = #{replyid} </delete>
+<delete id="deleteReply" parameterType="int">
+delete from reply where replyid = #{replyid} 
+</delete>
 
 <select id="selectReply" parameterType="int" resultType="com.spring.dto.BoardReplyDto">
-select * from reply where postid = #{postid} order by regdate desc 
+select * from reply where postid = #{postid} order by replydate desc 
+</select>
+
+<select id="postnodto" parameterType="int" resultType="com.spring.dto.BoardDto">
+select * from board where postid = #{postid}
 </select>
 
 </mapper>

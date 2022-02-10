@@ -48,6 +48,9 @@
 		</div>
 		<div class="c_preview">
 			<button id="loadbtn" type="button">불러오기</button>
+			<div class="canvas">
+				<table class="pixel-canvas"></table>
+			</div>
 		</div>
 		
 		<div class="c_content">
@@ -63,6 +66,11 @@
 				</div>
 			</form>
 		</div>
+	</div>
+	<div class="hidearea">
+		<textarea id="h_code" readonly></textarea>
+		<input type="text" id="h_name" readonly>
+		<button type="button" id="h_copy">복사</button>
 	</div>
 </div>
 

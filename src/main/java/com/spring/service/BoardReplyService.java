@@ -29,5 +29,9 @@ public class BoardReplyService {
 	public int boardwrite(BoardDto dto) {
 		return dao.boardwrite(dto);
 	}
+	
+	public BoardDto postnodto(int postno) {
+		return dao.postnodto(postno);
+	}
 }
 
