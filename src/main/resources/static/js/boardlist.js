@@ -8,6 +8,7 @@ $("#allbtn").click(function(){
 $("#bestbtn").click(function(){
 	var url = window.location;
 	var params = new URLSearchParams(url.search.slice(1));
+	params.delete('p');
 	params.set('r','1');
 	window.location = window.location.pathname + "?" + params.toString();
 })
@@ -15,6 +16,7 @@ $("#bestbtn").click(function(){
 $("#p0").click(function(){
 	var url = window.location;
 	var params = new URLSearchParams(url.search.slice(1));
+	params.delete('p');
 	params.delete('h');
 	window.location = window.location.pathname + "?" + params.toString();
 })
@@ -22,6 +24,7 @@ $("#p0").click(function(){
 $("#p1").click(function(){
 	var url = window.location;
 	var params = new URLSearchParams(url.search.slice(1));
+	params.delete('p');
 	params.set('h', '1');
 	window.location = window.location.pathname + "?" + params.toString();
 })
@@ -29,6 +32,7 @@ $("#p1").click(function(){
 $("#p2").click(function(){
 	var url = window.location;
 	var params = new URLSearchParams(url.search.slice(1));
+	params.delete('p');
 	params.set('h', '2');
 	window.location = window.location.pathname + "?" + params.toString();
 })
@@ -44,8 +48,30 @@ $("#p3").click(function(){
 $("#p4").click(function(){
 	var url = window.location;
 	var params = new URLSearchParams(url.search.slice(1));
+	params.delete('p');
 	params.set('h', '4');
 	window.location = window.location.pathname + "?" + params.toString();
+})
+
+$(".before").click(function(){
+	var url = window.location;
+	var params = new URLSearchParams(url.search.slice(1));
+	params.delete('p');
+	window.location = window.location.pathname + "?" + params.toString() + "&" + this.id;
+})
+
+$(".pages").click(function(){
+	var url = window.location;
+	var params = new URLSearchParams(url.search.slice(1));
+	params.delete('p');
+	window.location = window.location.pathname + "?" + params.toString() + "&" + this.id;
+})
+
+$(".next").click(function(){
+	var url = window.location;
+	var params = new URLSearchParams(url.search.slice(1));
+	params.delete('p');
+	window.location = window.location.pathname + "?" + params.toString() + "&" + this.id;
 })
 
 $("#searchbtn").click(function(){
@@ -56,7 +82,7 @@ $("#searchbtn").click(function(){
 		alert('검색어를 입력해주세요.')
 		return false();
 	}
-	
+	params.delete('p');
 	params.set('t', document.getElementById("searchtype").value);
 	params.set('w', document.getElementById("searchword").value);
 	window.location = window.location.pathname + "?" + params.toString();
@@ -65,7 +91,7 @@ $("#searchbtn").click(function(){
 $("#searchbtnx").click(function(){
 	var url = window.location;
 	var params = new URLSearchParams(url.search.slice(1));
-	
+	params.delete('p');
 	params.delete('t');
 	params.delete('w');
 	window.location = window.location.pathname + "?" + params.toString();

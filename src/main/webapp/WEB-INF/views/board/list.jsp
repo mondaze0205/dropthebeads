@@ -33,6 +33,7 @@
 	<p id="p2">자랑</p>
 	<p id="p3">리뷰</p>
 	<p id="p4">질문</p>
+	<button type="button" class="writebtn" onclick="location.href='write'">글쓰기</button>
 </div>
 	<div class="side_left">
 	</div>
@@ -61,21 +62,21 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<div id="page">
+		<div class="page">
 			<c:if test="${begin > pageNum}">
-				<a href="list?p=${begin-1}">[이전]</a>
+				<!--  <a href="list?p=${begin-1}">[이전]</a> -->
+				<div class="before" id="p=${begin-1}">[이전]</div>
 			</c:if>
 			<c:forEach begin="${begin}" end="${end}" var="i">
-				<a href="list?p=${i}">${i}</a>
+				<!-- <a href="list?p=${i}">${i}</a> -->
+				<div class="pages" id="p=${i}">${i}</div>
 			</c:forEach>
 			<c:if test="${end < pageNum}">
-				<a href="list?p=${end+1}">[다음]</a>
+				<!-- <a href="list?p=${end+1}">[다음]</a> -->
+				<div class="next" id="p=${end+1}">[다음]</div>
 			</c:if>
 		</div>
-		<div>
-			<button type="button" onclick="#">글쓰기</button>
-		</div>
-		<div align='center'>
+		<div class="searcharea" align='center'>
 			<select id='searchtype'>
 				<option value='1'>제목</option>
 				<option value='2'>글쓴이</option>

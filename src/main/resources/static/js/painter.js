@@ -204,7 +204,7 @@ $("#readme").click(function(){
 
 
 $("#load").click(function(){
-	window.open("paintLoad", "그림 저장", "width=400, height=300, directories=no, fullscreen=no, status=no, menubar=no, resizable=no, scrollorbars=no, toolbar=no, location=no");
+	window.open("paintLoad", "그림 불러오기", "width=400, height=300, directories=no, fullscreen=no, status=no, menubar=no, resizable=no, scrollorbars=no, toolbar=no, location=no");
 });
 
 $("#dummy").click(function(){

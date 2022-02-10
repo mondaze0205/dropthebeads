@@ -1,0 +1,151 @@
+.container {
+	display: grid;
+	grid-template-areas:
+	"l t r"
+	"l c r";
+	grid-template-columns: 120px 1000px auto;
+}
+
+.side_left {
+	grid-area: l;
+	background-color: red;
+}
+
+.side_right {
+	grid-area: r;
+	background-color: blue;
+}
+
+.side_top {
+	grid-area: t;
+	height: 50px;
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.side_top p {
+	font-weight: bold;
+	font-size: 30px;
+	margin: 0px 20px;
+}
+
+.center {
+	grid-area: c;
+	width: 950px;
+	margin-left: 8px;
+	margin-right: 8px;
+	padding: 15px;
+	display: grid;
+	grid-template-areas:
+	"i p"
+	"h p"
+	"t p"
+	"c c";
+	grid-template-columns: 2.5fr 1fr;
+	grid-gap: 15px;
+	gap: 15px;
+	border: 2px solid black;
+}
+
+.center .c_info {
+	grid-area: i;
+	height: 70px;
+}
+
+.center .c_info p {
+	margin: 5px 0px;
+}
+
+.center .c_head {
+	grid-area: h;
+	display: flex;
+	height: 35px;
+	flex-flow: row nowrap;
+	align-items: center;
+	border: 1px solid black;
+	/*
+	justify-content: center;
+	white-space: nowrap;
+	overflow: hidden;
+	*/
+}
+
+.center .c_head_h {
+	padding: 0px;
+	margin: 0px;
+	width: 80px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	background-color: floralwhite;
+}
+
+.center .c_head_s {
+	padding: 0px;
+	width: 50px;
+	margin: 0px 8px 0px 8px;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+}
+
+.center .c_title {
+	grid-area: t;
+	display: flex;
+	height: 35px;
+	flex-flow: row nowrap;
+	border: 1px solid black;
+}
+
+.center .c_title input[type=text] {
+	width: 100%;
+	border: 0px;
+	padding: 0px 10px;
+}
+
+.center .c_preview {
+	grid-area: p;
+	border: 1px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.center .c_preview button {
+	background-color: aliceblue;
+	border-radius: 2px;
+	padding: 10px 20px;
+	margin: 0px;
+  	font-size: 16px;
+}
+
+.center .c_content {
+	grid-area: c;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.center .c_content textarea {
+	width: 928px;
+	height: 500px;
+	padding: 10px;
+	resize: none;
+	
+}
+
+.center .c_content .c_btn {
+	display: flex;
+	justify-content:flex-end;
+	align-items: flex-end;
+}
+
+.center .c_content .c_btn button {
+	background-color: aliceblue;
+	border-radius: 2px;
+	margin: 10px;
+	padding: 8px 18px;
+  	font-size: 16px;
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.dao.BoardReplyDao">
+
+<insert id="insertReply" parameterType="com.spring.dto.BoardReplyDto">
+insert into reply values(reply_seq.nextval, #{postid}, #{repcon}, sysdate, #{userid}) </insert>
+
+<insert id="boardwrite" parameterType="com.spring.dto.BoardReplyDto">
+	insert into board (postid, userid, title, postcon, pictureid, postdate, head) values(board_seq.nextval, #{userid}, #{title}, #{postcon}, #{pictureid}, sysdate, #{head})
+</insert>
+
+<delete id="deleteReply" parameterType="int">delete from reply where replyid = #{replyid} </delete>
+
+<select id="selectReply" parameterType="int" resultType="com.spring.dto.BoardReplyDto">
+select * from reply where postid = #{postid} order by regdate desc 
+</select>
+
+</mapper>

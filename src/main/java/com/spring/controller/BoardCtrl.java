@@ -109,6 +109,9 @@ public class BoardCtrl {
 		return "board/list";
 	}
 	
-	
+	@GetMapping("/board/paintLoadAtWrite")
+	public String paintLoadAtWrite() {
+		return "board/loader";
+	}
 	
 }
