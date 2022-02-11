@@ -3,24 +3,37 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.dao.BoardReplyDao">
-
 <insert id="insertReply" parameterType="com.spring.dto.BoardReplyDto">
-insert into reply values(reply_seq.nextval, #{postid}, #{repcon}, sysdate, #{userid}) </insert>
+	insert into reply values(reply_seq.nextval, #{postid}, #{repcon}, sysdate, #{userid})
+</insert>
 
 <insert id="boardwrite" parameterType="com.spring.dto.BoardReplyDto">
 	insert into board (postid, userid, title, postcon, pictureid, postdate, head) values(board_seq.nextval, #{userid}, #{title}, #{postcon}, #{pictureid}, sysdate, #{head})
 </insert>
 
 <delete id="deleteReply" parameterType="int">
-delete from reply where replyid = #{replyid} 
+	delete from reply where replyid = #{replyid} 
 </delete>
 
 <select id="selectReply" parameterType="int" resultType="com.spring.dto.BoardReplyDto">
-select * from reply where postid = #{postid} order by replydate desc 
+	select * from reply where postid = #{postid} order by replydate desc 
 </select>
 
 <select id="postnodto" parameterType="int" resultType="com.spring.dto.BoardDto">
-select * from board where postid = #{postid}
+	select * from board where postid = #{postid}
 </select>
+
+<update id="boardupdate" parameterType="com.spring.dto.BoardReplyDto">
+	update board set title=#{title}, postcon=#{postcon}, pictureid=#{pictureid}
+	where postno=#{postno}
+</update>
+
+<delete id="boarddelete" parameterType="int">
+	delete from board where postid = #{postid}
+</delete>
+
+<delete id="deleteReply" parameterType="int">
+	delete from reply where replyid = #{replyid}
+</delete>
 
 </mapper>

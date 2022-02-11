@@ -19,12 +19,21 @@ public class BoardReplyController {
 	@Autowired
 	BoardReplyService service;
 	
+	@GetMapping("/board/write")
+	public String boardwrite() {
+		return "board/write";
+	}
+	
 	@PostMapping("/board/boardwrite")
 	public String boardwrite(BoardDto dto) {
 		service.boardwrite(dto);
 		return "redirect:/board/list";
 	}
 	
+	@GetMapping("/board/content")
+	public String content() {
+		return "board/content";
+	}
 	
 	@GetMapping("board/content/{postno}")
 	public String boardcontent(@PathVariable int postno, BoardDto dto, Model m) {
@@ -34,6 +43,18 @@ public class BoardReplyController {
 		m.addAttribute("rlist",rlist);
 		m.addAttribute("dto", dto);
 		return "board/content";
+	}
+	
+	@PostMapping("/board/update")
+	public String boardupdate(BoardDto dto) {
+		service.boardupdate(dto);
+		return "redirect:/board/list";
+	}
+	
+	@GetMapping("/board/delete")
+	public String boarddelete(int postid) {
+		service.boarddelete(postid);
+		return "redirect:/board/list";
 	}
 	
 	@GetMapping("/reply/insert")
@@ -49,20 +70,5 @@ public class BoardReplyController {
 		int i = service.deleteReply(replyid);
 		return i+"";
 	}
-	
-	
-	@GetMapping("/board/write")
-	public String boardwrite() {
-		return "board/write";
-	}
-	
-	
-	@GetMapping("/board/content")
-	public String content() {
-		return "board/content";
-	}
-	
-	
-	
 	
 }
