@@ -201,8 +201,6 @@ $("#readme").click(function(){
 	alert('팔레트에서 기본 제공하는 색상의 이름은 x11색 체계에 따른 것입니다.\n시중에서 실제로 판매중인 제품의 색상과 일치하지 않을 수 있습니다.\n\n드래그를 이용하여 칠하실 때에는 적당한 속도를 유지해 주세요.\n이용하시면서 브라우저의 확대/축소 기능을 적절히 사용해 주세요.')
 });
 
-
-
 $("#load").click(function(){
 	window.open("paintLoad", "그림 불러오기", "width=400, height=300, directories=no, fullscreen=no, status=no, menubar=no, resizable=no, scrollorbars=no, toolbar=no, location=no");
 });

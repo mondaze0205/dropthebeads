@@ -33,7 +33,7 @@
 	<p id="p2">자랑</p>
 	<p id="p3">리뷰</p>
 	<p id="p4">질문</p>
-	<button type="button" class="writebtn" onclick="location.href='write'">글쓰기</button>
+	<button type="button" class="writebtn" onclick="location.href='writeform'">글쓰기</button>
 </div>
 	<div class="side_left">
 	</div>

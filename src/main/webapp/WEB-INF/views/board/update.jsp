@@ -44,7 +44,7 @@
 			<div id="질문" class="c_head_s">질문</div>
 		</div>
 		<div class="c_title">
-			<input type="text" id="dummyid" placeholder="제목을 입력해주세요">
+			<input type="text" id="dummyid" value="${dto.title}">
 		</div>
 		<div class="c_preview">
 			<button id="loadbtn" type="button">불러오기</button>
@@ -54,12 +54,13 @@
 		</div>
 		
 		<div class="c_content">
-			<form action="write" method="post" name="writeform">
-				<textarea id="postcon" name="postcon"></textarea>
-				<input type="hidden" id="head" name="head" value="일반">
-				<input type="hidden" id="userid" name="userid" value="dulgi">
-				<input type="hidden" id="title" name="title">
-				<input type="hidden" id="pictureid" name="pictureid" value="1">
+			<form action="update" method="post" name="writeform">
+				<textarea id="postcon" name="postcon">${dto.postcon}</textarea>
+				<input type="hidden" id="postid" name="postid" value="${dto.postid}">
+				<input type="hidden" id="head" name="head" value="${dto.head}">
+				<input type="hidden" id="userid" name="userid" value="${dto.userid}">
+				<input type="hidden" id="title" name="title" value="${dto.title}">
+				<input type="hidden" id="pictureid" name="pictureid" value="${dto.pictureid}">
 				<div class="c_btn">
 					<button type="button" id="cancelbtn">취소</button>
 					<button type="button" id="submitbtn">등록</button>

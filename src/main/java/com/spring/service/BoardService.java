@@ -1,12 +1,8 @@
 package com.spring.service;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,85 +32,59 @@ public class BoardService {
 		return dao.count();
 	}
 	
-	public int savePicOld(String code, String pic_id, String pic_name) {
-		String path = "";
-		
-		try {
-			String dir = "C:/project5031/";
-			Random r = new Random();
-			String filename = pic_name + "_" + System.currentTimeMillis() + r.nextInt(99)+".txt";
-			path = dir + filename;
-			FileWriter fw = new FileWriter(path);
-			fw.write(code);
-			fw.close();	
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		PicDto dto = new PicDto();
-		dto.setPictureid(Integer.parseInt(pic_id));
-		dto.setPicname(pic_name);
-		dto.setPicpath(path);
-		dao.savePicOld(dto);
-		return dto.getPictureid();
+	public int boardwrite(BoardDto dto) {
+		return dao.boardwrite(dto);
 	}
 	
-	public int savePicNew(String code, String pic_name) {
-		
-		String path = "";
-		
-		try {
-			String dir = "C:/project5031/";
-			Random r = new Random();
-			String filename = pic_name + "_" + System.currentTimeMillis() + r.nextInt(99)+".txt";
-			path = dir + filename;
-			FileWriter fw = new FileWriter(path);
-			fw.write(code);
-			fw.close();	
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
-		PicDto dto = new PicDto();
-		dto.setPicname(pic_name);
-		dto.setPicpath(path);
-		dao.savePicNew(dto);
-		return (dao.lastNum() - 1);
+	public BoardDto dtobypostid(int postid) {
+		return dao.dtobypostid(postid);
 	}
 	
-	public String paintLoad(int pictureid) {
+	public int readcountplus(int postid) {
+		return dao.readcountplus(postid);
+	}
+	
+	public String recplus(int postid, String userid) {
+		Map<String, Object> m = new HashMap<String, Object>();
+		m.put("postid", postid);
+		m.put("userid", userid);
 		
-		int n = dao.checkPic(pictureid);
 		Gson g = new Gson();
 		JsonObject j = new JsonObject();
 		
-		if(n != 1) {
-			j.addProperty("code", "none");
+		if(dao.reccheck(m) == 0) {
+			dao.recplus(postid);
+			dao.recregist(m);
+			j.addProperty("result", "추천했습니다.");
 		} else {
-			PicDto dto = dao.paintLoad(pictureid);
-			String path = dto.getPicpath();
-			String code = "";
-			
-			try {
-				FileReader f = new FileReader(path);
-				BufferedReader br = new BufferedReader(f);
-				String temp;
-				while((temp = br.readLine()) != null) {
-					code = code + temp + "\n";
-				}
-				br.close();
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-			
-			j.addProperty("code", code);
-			j.addProperty("pictureid", dto.getPictureid());
-			j.addProperty("picname", dto.getPicname());	
-			
+			j.addProperty("result", "이미 추천하셨습니다.");
 		}
 		
 		return g.toJson(j);
+	}
+	
+	
+	public int boardupdate(BoardDto dto) {
+		return dao.boardupdate(dto);
+	}
+	
+	public int boarddelete(int postid) {
+		return dao.boarddelete(postid);
+	}
+	
+	public List<BoardReplyDto> selectReply(int postid){
+		return dao.selectReply(postid);
+	}
+	
+	public int countReply(int postid) {
+		return  dao.countReply(postid);
+	}
+	
+	public int insertReply(BoardReplyDto dto){
+		return dao.insertReply(dto);
+	}
+	
+	public int deleteReply(int replyid) {
+		return dao.deleteReply(replyid);
 	}
 }
