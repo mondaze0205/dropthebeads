@@ -16,5 +16,6 @@
 <a href = "painter/painter">그림판</a>
 <a href = "board/list">게시판</a>
 <a href = "shop/test">상점</a>
+<a href = "flea/flist">벼룩시장</a>
 </body>
 </html>

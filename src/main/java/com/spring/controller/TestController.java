@@ -29,7 +29,4 @@ public class TestController {
 		return "shop/test3";
 	}
 	
-	
-	
-	
 }

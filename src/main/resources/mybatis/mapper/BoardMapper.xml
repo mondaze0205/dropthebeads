@@ -77,23 +77,46 @@
 		</if>
 	</if>
 	order by postdate desc) where r &gt;= #{start} and r &lt;= #{end}
-</select> 
+</select>
 <select id="count" resultType="int">
 	select count(*) from board
 </select>
-<select id="lastNum" resultType="int">
-	select last_number from user_sequences where sequence_name = 'PICTURE_SEQ'
-</select>
-<select id="paintLoad" parameterType="int" resultType="com.spring.dto.PicDto">
-	select * from picture where pictureid = #{pictureid}
-</select>
-<select id="checkPic" parameterType="int" resultType="int">
-	select count(*) from picture where pictureid = #{int}
-</select>
-<insert id="savePicNew" parameterType="com.spring.dto.PicDto">
-	insert into picture values (picture_seq.nextval, #{picname}, #{picpath})	
+<insert id="boardwrite" parameterType="com.spring.dto.BoardReplyDto">
+	insert into board (postid, userid, title, postcon, pictureid, postdate, head) values(board_seq.nextval, #{userid}, #{title}, #{postcon}, #{pictureid}, sysdate, #{head})
 </insert>
-<update id="savePicOld" parameterType="com.spring.dto.PicDto">
-	update picture set picname = #{picname}, picpath = #{picpath} where pictureid = #{pictureid}
+<select id="dtobypostid" parameterType="int" resultType="com.spring.dto.BoardDto">
+	select * from board where postid = #{postid}
+</select>
+<update id="readcountplus" parameterType="int">
+	update board set readcount = readcount+1 where postid = #{postid}
 </update>
+<update id="recplus" parameterType="int">
+	update board set rec = rec+1 where postid = #{postid}
+</update>
+<insert id="recregist" parameterType="map">
+	insert into recommend (userid, postid) values(#{userid}, #{postid})
+</insert>
+<select id="reccheck" parameterType="map" resultType="int">
+	select count(*) from recommend where postid = #{postid} and userid = #{userid}
+</select>
+<update id="boardupdate" parameterType="com.spring.dto.BoardReplyDto">
+	update board set title=#{title}, postcon=#{postcon}, pictureid=#{pictureid}, head= #{head} where postid = #{postid}
+</update>
+<delete id="boarddelete" parameterType="int">
+	delete from board where postid = #{postid}
+</delete>
+<select id="selectReply" parameterType="int" resultType="com.spring.dto.BoardReplyDto">
+	select * from reply where postid = #{postid} order by replydate 
+</select>
+<select id="countReply" parameterType="int" resultType="int">
+	select count(*) from reply where postid = #{postid}
+</select>
+<insert id="insertReply" parameterType="com.spring.dto.BoardReplyDto">
+	insert into reply values(reply_seq.nextval, #{postid}, #{repcon}, sysdate, #{userid})
+</insert>
+<delete id="deleteReply" parameterType="int">
+	delete from reply where replyid = #{replyid} 
+</delete>
+
+
 </mapper>

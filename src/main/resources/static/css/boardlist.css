@@ -1,13 +1,13 @@
 .container {
 	display: grid;
 	grid-template-areas:
-	"b a d"
-	"b c d";
+	"l t r"
+	"l c r";
 	grid-template-columns: 120px 1000px auto;
 }
 
 .side_top {
-	grid-area: a;
+	grid-area: t;
 	height: 50px;
 	flex-wrap: nowrap;
 	align-items: flex-end;
@@ -38,14 +38,18 @@
 	cursor: default;
 }
 
+.side_top .writebtn {
+	margin-left: auto;
+	margin-right: 10px;
+}
 
 .side_left {
-	grid-area: b;
+	grid-area: l;
 	background-color: red;
 }
 
 .side_right {
-	grid-area: d;
+	grid-area: r;
 	background-color: blue;
 }
 
@@ -74,7 +78,6 @@
 
 .center .tdmin {
 	min-height: 30px;
-	
 	line-height: 30px;
 	text-align: center;
 }
@@ -136,6 +139,40 @@
 }
 
 
-#page {
-	text-align: center;
+.page {
+	margin-top: 7px;
+	margin-bottom: 7px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 25px;
+}
+
+.page div {
+	margin: 0px 3px;
+}
+
+.searcharea {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.searcharea select {
+	width: 60px;
+	height: 25px;
+	margin: 0px 3px;
+}
+
+.searcharea input[type=text] {
+	width: 170px;
+	height: 19px;
+	margin: 0px 3px;
+}
+
+.searcharea button {
+	width: 45px;
+	height: 25px;
+	padding: 0px;
+	margin: 0px 3px;
 }
