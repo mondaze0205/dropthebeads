@@ -7,16 +7,14 @@
 <title>index</title>
 </head>
 <body>
-<h1>project5031</h1>
-<h2>${user.userid}</h2>
-<br>
-<a href = "test">테스트 페이지로</a>
-<hr>
+
+<jsp:include page="header.jsp"></jsp:include>
+
+
 <img src="/image/index.png" style="width:50%">
-<hr>
-<a href = "painter/painter">그림판</a>
-<a href = "board">게시판</a>
-<a href = "shop/test">상점</a>
-<a href = "flea/flist">벼룩시장</a>
+본문내용
+
+<jsp:include page="footer.jsp"></jsp:include>
+
 </body>
-</html>
+</html> 
