@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.dao.UsersDao">
+<insert id="insertUsers" parameterType="com.spring.dto.UsersDto">
+	insert into users values(#{userid},#{pw},#{nickname}, #{address},#{email},#{birth}) 
+</insert>
+<select id="login" parameterType="com.spring.dto.UsersDto" 
+	resultType="com.spring.dto.UsersDto">
+	select * from users where userid=#{userid} and pw=#{pw}
+	</select> 
+	<select id="checkUser" resultType="int" parameterType="com.spring.dto.UsersDto">
+select count(*) from users where userid = #{userid} and pw = #{pw}
+</select>
+<select id="findid" resultType="com.spring.dto.UsersDto"
+ parameterType="com.spring.dto.UsersDto">
+	select userid from users where nickname=#{nickname} and email=#{email}
+</select>
+
+<select id="idCheck" parameterType="String" resultType="String">
+		select userid from users where userid =#{userid}
+	</select>
+	<select id="nickCheck" parameterType="String" resultType="String">
+		select nickname from users where nickname =#{nickname}
+	</select>
+</mapper>
