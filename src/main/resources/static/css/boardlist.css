@@ -61,7 +61,6 @@
 
 .center table {
 	width: 100%;
-	border-collapse: collapse;
 	font-size: 12pt;
 	border-bottom: 2px solid aquamarine;
 }
@@ -70,62 +69,53 @@
 	border-top: 1px dashed skyblue;
 }
 
-.center .tbmin {
+.center .tabletop {
+	width: 100%;
+	font-size: 12pt;
+	border-top: 2px solid aquamarine;
+	border-bottom: 2px solid aquamarine;
+	display: flex;
+}
+
+.center .tabletop > * {
 	min-height: 50px;
 	text-align: center;
 	line-height: 50px;
 }
 
-.center .tdmin {
-	min-height: 30px;
-	line-height: 30px;
-	text-align: center;
-}
-
 .center .tbno {
 	width: 60px;
-	border-top: 3px solid aquamarine;
-	border-bottom: 2px solid aquamarine;
 }
 
 .center .tbhead {
-	border-top: 3px solid aquamarine;
-	border-bottom: 2px solid aquamarine;
 	width: 60px;
 }
 
 .center .tbtitle {
-	border-top: 3px solid aquamarine;
-	border-bottom: 2px solid aquamarine;
-	width: auto;
+	width: 540px;
 }
 
 .center .tbuser {
-	border-top: 3px solid aquamarine;
-	border-bottom: 2px solid aquamarine;
 	width: 100px;
 }
 
 .center .tbdate {
-	border-top: 3px solid aquamarine;
-	border-bottom: 2px solid aquamarine;
 	width: 100px;
 }
 
 .center .tbcount {
-	border-top: 3px solid aquamarine;
-	border-bottom: 2px solid aquamarine;
 	width: 60px;
 }
 
 .center .tbrec {
-	border-top: 3px solid aquamarine;
-	border-bottom: 2px solid aquamarine;
 	width: 60px;
 }
 
-.center .tdcen {
-	text-align: center;
+.center .table {
+	width: 100%;
+	font-size: 12pt;
+	border-bottom: 1px solid skyblue;
+	display: flex;
 }
 
 .center a {
@@ -138,7 +128,6 @@
 	color : black;
 }
 
-
 .page {
 	margin-top: 7px;
 	margin-bottom: 7px;
@@ -146,6 +135,19 @@
 	align-items: center;
 	justify-content: center;
 	height: 25px;
+}
+
+.center .table > *:not(.title) {
+	min-height: 30px;
+	text-align: center;
+	line-height: 30px;
+}
+
+.title {
+	width: 540px;
+	min-height: 30px;
+	line-height: 30px;
+	text-align: left;
 }
 
 .page div {

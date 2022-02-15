@@ -8,6 +8,7 @@ import lombok.Data;
 public class BoardDto {
 	private int postid;
 	private String userid;
+	private String nickname;
 	private String title;
 	private String postcon;
 	private String pictureid;

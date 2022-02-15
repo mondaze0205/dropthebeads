@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.dao.BoardDao">
 <select id="postList" parameterType="map" resultType="com.spring.dto.BoardDto">
-	select * from (select postid, userid, title, postcon, pictureid, postdate, readcount, rec, head, rownum r from (select * from board order by postdate desc) 
+	select * from (select postid, userid, title, postcon, pictureid, postdate, readcount, rec, head, nickname, rownum r from (select * from board order by postdate desc) 
 	<if test="searchtype == 0">
 		<if test="rec == 0">
 		<if test="head == 0"> where postid &gt;= 1</if>
@@ -81,8 +81,8 @@
 <select id="count" resultType="int">
 	select count(*) from board
 </select>
-<insert id="boardwrite" parameterType="com.spring.dto.BoardReplyDto">
-	insert into board (postid, userid, title, postcon, pictureid, postdate, head) values(board_seq.nextval, #{userid}, #{title}, #{postcon}, #{pictureid}, sysdate, #{head})
+<insert id="boardwrite" parameterType="com.spring.dto.ReplyDto">
+	insert into board (postid, userid, title, postcon, pictureid, postdate, head, nickname) values(board_seq.nextval, #{userid}, #{title}, #{postcon}, #{pictureid}, sysdate, #{head}, #{nickname})
 </insert>
 <select id="dtobypostid" parameterType="int" resultType="com.spring.dto.BoardDto">
 	select * from board where postid = #{postid}
@@ -99,24 +99,22 @@
 <select id="reccheck" parameterType="map" resultType="int">
 	select count(*) from recommend where postid = #{postid} and userid = #{userid}
 </select>
-<update id="boardupdate" parameterType="com.spring.dto.BoardReplyDto">
+<update id="boardupdate" parameterType="com.spring.dto.ReplyDto">
 	update board set title=#{title}, postcon=#{postcon}, pictureid=#{pictureid}, head= #{head} where postid = #{postid}
 </update>
 <delete id="boarddelete" parameterType="int">
 	delete from board where postid = #{postid}
 </delete>
-<select id="selectReply" parameterType="int" resultType="com.spring.dto.BoardReplyDto">
+<select id="selectReply" parameterType="int" resultType="com.spring.dto.ReplyDto">
 	select * from reply where postid = #{postid} order by replydate 
 </select>
 <select id="countReply" parameterType="int" resultType="int">
 	select count(*) from reply where postid = #{postid}
 </select>
-<insert id="insertReply" parameterType="com.spring.dto.BoardReplyDto">
+<insert id="insertReply" parameterType="com.spring.dto.ReplyDto">
 	insert into reply values(reply_seq.nextval, #{postid}, #{repcon}, sysdate, #{userid})
 </insert>
 <delete id="deleteReply" parameterType="int">
 	delete from reply where replyid = #{replyid} 
 </delete>
-
-
 </mapper>

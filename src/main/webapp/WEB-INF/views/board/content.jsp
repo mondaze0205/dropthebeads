@@ -48,7 +48,7 @@
 			<p>[${dto.head}] ${dto.title}</p>
 		</div>
 		<div class="user">
-			<div><h4>${dto.userid}</h4></div>
+			<div><h4>${dto.nickname}</h4></div>
 			<div><h5><fmt:formatDate value="${dto.postdate}" pattern="yy.MM.dd HH:mm:ss"/></h5></div>
 			<div class="makespace"></div> 
 			<div><h5>조회 ${dto.readcount} 추천 ${dto.rec} 댓글 ${countReply}</h5></div>
@@ -71,7 +71,7 @@
 			<div class="rs">
 			<c:forEach items="${rlist}" var="r" varStatus="status">
 				<div class="r">
-					<div class="r_id"><h5>${r.userid}</h5></div>
+					<div class="r_id"><h5>${r.nickname}</h5></div>
 					<div><h5>${r.repcon}</h5></div>
 					<div class="makespace"></div>
 					<div class="r_del" id="${r.replyid}"><h6>삭제</h6></div>
@@ -87,7 +87,9 @@
 				<form class="replyzone" name="replyzone">
 					<textarea placeholder="댓글을 작성해주세요." name="repcon" id="repcon"></textarea>
 					<input type="hidden" id="userid" name="userid" value="dulgi">
+					<input type="hidden" id="nickname" name="nickname" value="bidulgi">
 					<input type="hidden" id="postid" name="postid" value="${dto.postid}">
+					
 				</form>
 			</div>
 			<div class="writereply_2">
