@@ -39,40 +39,35 @@
 	</div>
 <div class="center">
 	<c:if test="${count != 0}">
-		<table>
-			<tr>
-				<th class="tbno"><div class="tbmin">번호</div></th>
-				<th class="tbhead">말머리</th>
-				<th class="tbtitle">제목</th>
-				<th class="tbuser">작성자</th>
-				<th class="tbdate">작성일</th>
-				<th class="tbcount">조회수</th>
-				<th class="tbrec">추천</th>
-			</tr>
-			<c:forEach items="${postList}" var="post">
-				<tr>
-					<td class="tdcen"><div class="tdmin">${post.postid}</div></td>
-					<td class="tdcen">${post.head}</td>
-					<td><a href="content/${post.postid}">${post.title}</a></td>
-					<td class="tdcen">${post.userid}</td>
-					<td class="tdcen"><fmt:formatDate value="${post.postdate}"
-							dateStyle="short" /></td>
-					<td class="tdcen">${post.readcount}</td>
-					<td class="tdcen">${post.rec}</td>
-				</tr>
-			</c:forEach>
-		</table>
+		<div class="tabletop">
+			<div class="tbno">번호</div>
+			<div class="tbhead">말머리</div>
+			<div class="tbtitle">제목</div>
+			<div class="tbuser">작성자</div>
+			<div class="tbdate">작성일</div>
+			<div class="tbcount">조회수</div>
+			<div class="tbrec">추천</div>
+		</div>
+		<c:forEach items="${postList}" var="post">
+			<div class="table">
+				<div class="tbno">${post.postid}</div>
+				<div class="tbhead">${post.head}</div>
+				<div class="title"><a href="content/${post.postid}">${post.title}</a></div>
+				<div class="tbuser">${post.nickname}</div>
+				<div class="tbdate"><fmt:formatDate value="${post.postdate}" dateStyle="short" /></div>
+				<div class="tbcount">${post.readcount}</div>
+				<div class="tbrec">${post.rec}</div>
+			</div>
+		</c:forEach>
+	
 		<div class="page">
 			<c:if test="${begin > pageNum}">
-				<!--  <a href="list?p=${begin-1}">[이전]</a> -->
 				<div class="before" id="p=${begin-1}">[이전]</div>
 			</c:if>
 			<c:forEach begin="${begin}" end="${end}" var="i">
-				<!-- <a href="list?p=${i}">${i}</a> -->
 				<div class="pages" id="p=${i}">${i}</div>
 			</c:forEach>
 			<c:if test="${end < pageNum}">
-				<!-- <a href="list?p=${end+1}">[다음]</a> -->
 				<div class="next" id="p=${end+1}">[다음]</div>
 			</c:if>
 		</div>

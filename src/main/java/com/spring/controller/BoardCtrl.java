@@ -80,7 +80,7 @@ public class BoardCtrl {
 	*/
 	@GetMapping("board/content/{postid}")
 	public String boardcontent(@PathVariable int postid, BoardDto dto, Model m) {
-		List<BoardReplyDto> rlist = service.selectReply(postid);
+		List<ReplyDto> rlist = service.selectReply(postid);
 		dto = service.dtobypostid(postid);
 		int countReply = service.countReply(postid);
 		service.readcountplus(postid);
@@ -112,7 +112,7 @@ public class BoardCtrl {
 	@GetMapping("/reply/refresh")
 	@ResponseBody
 	public String replyRefresh(int postid) {
-		List<BoardReplyDto> rlist = service.selectReply(postid);
+		List<ReplyDto> rlist = service.selectReply(postid);
 		Gson g = new Gson();
 		return g.toJson(rlist);
 	}
@@ -126,7 +126,7 @@ public class BoardCtrl {
 	
 	@PostMapping("/reply/insert")
 	@ResponseBody
-	public String insertReply(BoardReplyDto dto){
+	public String insertReply(ReplyDto dto){
 		service.insertReply(dto);
 		//String s = "redirect:/board/content/" + dto.getPostid();
 		return "";

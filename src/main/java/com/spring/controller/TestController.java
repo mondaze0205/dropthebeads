@@ -9,11 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TestController {
 
-	@RequestMapping("/")
-    public String main() {
-        return "index";
-    }
-	
 	@GetMapping("/test")
 	public String test() {
 		return "test";

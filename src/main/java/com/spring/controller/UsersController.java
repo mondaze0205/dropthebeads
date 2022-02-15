@@ -31,6 +31,16 @@ public class UsersController {
 		return new UsersDto();
 	}
 	
+	@RequestMapping("/")
+    public String main(@ModelAttribute("user") UsersDto user) {
+        return "index";
+    }
+	
+	@GetMapping("/board")
+	public String board() {
+		return "redirect:/board/list";
+	}
+	
 	@GetMapping("/idCheck")
 	@ResponseBody
 	public String idCheck(String userid) {
@@ -49,22 +59,23 @@ public class UsersController {
 		return "user/join";
 	}
 	
-	@PostMapping("insert")
+	@PostMapping("/insert")
 	public String insert(UsersDto dto, Model m) {
 		service.insertUsers(dto);
 		m.addAttribute("dto", dto);
-		return "/index";
+		return "redirect:/";
 	}
 	
 
 	@GetMapping("/login")
 		public String logincheck() {
 		if(service.online) {
-			return "/index";
+			return "redirect:/";
 		} else {
 			return "user/login";
 		}
 	}
+	
 	@PostMapping("/trylogin")
 	public String login(@ModelAttribute("welcome") @Valid UsersDto dto, BindingResult result, Model m, 
 						RedirectAttributes ra) {
@@ -72,7 +83,7 @@ public class UsersController {
 			service.online=true;
 			UsersDto resultDto = service.login(dto);
 			m.addAttribute("user", resultDto);
-			return "/index"; 
+			return "redirect:/"; 
 		} else {
 			result.reject("nocode", "로그인 실패: 아이디나 비밀번호가 틀림");	
 			return "user/login";

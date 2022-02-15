@@ -21,9 +21,9 @@ public interface BoardDao {
 	int boardupdate(BoardDto dto);
 	int boarddelete(int postid);
 	//´ñ±Û crud
-	List<BoardReplyDto> selectReply(int postid);
+	List<ReplyDto> selectReply(int postid);
 	int countReply(int postid);
-	int insertReply(BoardReplyDto dto);
+	int insertReply(ReplyDto dto);
 	int deleteReply(int replyid);
 	
 }

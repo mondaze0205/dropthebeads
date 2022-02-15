@@ -72,7 +72,7 @@ public class BoardService {
 		return dao.boarddelete(postid);
 	}
 	
-	public List<BoardReplyDto> selectReply(int postid){
+	public List<ReplyDto> selectReply(int postid){
 		return dao.selectReply(postid);
 	}
 	
@@ -80,7 +80,7 @@ public class BoardService {
 		return  dao.countReply(postid);
 	}
 	
-	public int insertReply(BoardReplyDto dto){
+	public int insertReply(ReplyDto dto){
 		return dao.insertReply(dto);
 	}
 	
