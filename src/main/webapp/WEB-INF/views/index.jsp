@@ -9,6 +9,7 @@
 <title>index</title>
 <!-- 부트스트랩 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 <body>
 <!-- 부트스트랩 -->
@@ -23,33 +24,32 @@
 <div class="container-xxl">
 	<!-- 그림판 예시 누르면 그림판 이동 -->
 	<h3>그림판</h3>
+	
 	<hr>
 	<!-- 게시판 인기글 -->
 	<h3>게시판 인기글</h3>
-	<div class="boardbest">
 	<c:forEach items="${bbdto}" var="bbdto">
 		<div class="card" style="width: 18rem;">
 			<div class="canvas">
-			<!-- 그림가져오기 -->
-			
+				<!-- 그림가져오기 -->
+			그림
 			</div>  
 			<div class="card-body">
 		    <h5 class="card-title"> ${bbdto.title} </h5>
 		    
-		    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-		    <a href="#" class="btn btn-primary">Go somewhere</a>
-		  </div>
+		    <p class="card-text"> ${bbdto.postcon} </p>
+		    <a href="#" class="btn btn-primary">자세히보기</a>
+			</div>
 		</div>
 	</c:forEach>
-	</div>
 	<hr>
 	<!-- 벼룩 급매품 -->
 	<h3>벼룩 급매</h3>
 	<div class="fleabest">
 		
 	</div>
+	
 </div>
-<hr>
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
 
