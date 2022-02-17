@@ -28,20 +28,23 @@
 	<hr>
 	<!-- 게시판 인기글 -->
 	<h3>게시판 인기글</h3>
-	<c:forEach items="${bbdto}" var="bbdto">
-		<div class="card" style="width: 18rem;">
-			<div class="canvas">
-				<!-- 그림가져오기 -->
-			그림
-			</div>  
-			<div class="card-body">
-		    <h5 class="card-title"> ${bbdto.title} </h5>
-		    
-		    <p class="card-text"> ${bbdto.postcon} </p>
-		    <a href="#" class="btn btn-primary">자세히보기</a>
+	  <div class="row row-cols-3">
+		<c:forEach items="${bbdto}" var="bb">
+			<div class="card">
+				<div class="canvas">
+					<!-- 그림가져오기 -->
+				그림
+				</div>  
+				<div class="card-body">
+			    <h5 class="card-title"> ${bb.title} 
+			    	<span class="badge rounded-pill bg-danger">조회수 ${bb.readcount }</span></h5>
+			    
+			    <p class="card-text"> ${bb.postcon} </p>
+				</div>
 			</div>
-		</div>
-	</c:forEach>
+		</c:forEach>
+	  </div>
+	
 	<hr>
 	<!-- 벼룩 급매품 -->
 	<h3>벼룩 급매</h3>
