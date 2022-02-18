@@ -264,11 +264,13 @@
 		<textarea id="code" name="code" readonly></textarea>
 		<input type="text" id="pic_id" name="pic_id" value="새 그림" readonly>
 		<input type="text" id="pic_name" name="pic_name" value="새 그림" readonly>
+		<input type="text" id="pic_user" name="pic_user" value="${user.userid}" readonly>
 		<button type="button" id="save" name="save" value="save">저장</button>
 	</form>
 	<button type="button" id="copypic">복사</button>
 	</div>
 	<input type="button" id="btn001" value="click">
+	<input type="text" id="login_userid" name="userid" value="${user.userid}">
 	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="/js/painter.js"></script>
 </body>

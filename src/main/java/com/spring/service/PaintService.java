@@ -18,7 +18,7 @@ public class PaintService {
 	@Autowired
 	PaintDao dao;
 	
-	public int savePicOld(String code, String pic_id, String pic_name) {
+	public int savePicOld(String code, String pic_id, String pic_name, String pic_user) {
 		
 		String path = "";
 		
@@ -38,11 +38,12 @@ public class PaintService {
 		dto.setPictureid(Integer.parseInt(pic_id));
 		dto.setPicname(pic_name);
 		dto.setPicpath(path);
+		dto.setUserid(pic_user);
 		dao.savePicOld(dto);
 		return dto.getPictureid();
 	}
 	
-	public int savePicNew(String code, String pic_name) {
+	public int savePicNew(String code, String pic_name, String pic_user) {
 		
 		String path = "";
 		
@@ -61,6 +62,7 @@ public class PaintService {
 		PicDto dto = new PicDto();
 		dto.setPicname(pic_name);
 		dto.setPicpath(path);
+		dto.setUserid(pic_user);
 		dao.savePicNew(dto);
 		return (dao.lastNum() - 1);
 	}

@@ -1,27 +1,37 @@
 const pixelCanvas = document.querySelector('.pixel-canvas');
 const replyArea =document.querySelector('.rs');
+const compare = (document.getElementById("post_userid").value == document.getElementById("login_userid").value)
 
 $(function(){    
 	
 	while (pixelCanvas.firstChild) {
     	pixelCanvas.removeChild(pixelCanvas.firstChild);
     }
- 
+    
+    if(document.getElementById("login_userid").value == "") {
+		document.getElementById("submit").disabled = true;
+		document.getElementById("recommend").disabled = true;
+		document.getElementById("withrec").disabled = true;
+	}
+	
+	if(!compare) {
+		document.getElementById("editbtn").disabled = true;
+		document.getElementById("delbtn").disabled = true;
+	}
+ 	
  	var pictureid = document.getElementById('pictureid').value;
 		
 	$.getJSON("/painter/paintLoad2",{"pictureid":pictureid},function(data){
 		var code = data.code;
 		var picname = data.picname;
 		document.getElementById("code").value = code;
-		//document.getElementById("pic_name").value = picname;
-				
+		
 		var codes = document.querySelector('#code').value;
   		var ss = codes.split("\n");
   	
 		var newHeight = ss.length - 1;
   		var newWidth = ss[0].split(" ").length - 1;
 
-  		// 행과 열을 만든다.
   		for (let i = 1; i <= newHeight; i++) {
     		let newgridRow = document.createElement('tr');
     		var code_row = ss[i-1].split(" ");
@@ -50,10 +60,12 @@ $(function(){
 $("#replyRefresh").click(function(){
 	
 	var postid = document.getElementById("postid").value;
-
+	
 	while (replyArea.firstChild) {
     	replyArea.removeChild(replyArea.firstChild);
     }
+    
+	document.getElementById("repcon").value='';
 	
 	$.getJSON("/reply/refresh",{"postid":postid},function(data){
 		$("#countReply").empty();
@@ -62,12 +74,11 @@ $("#replyRefresh").click(function(){
 		for(let i in data) {
 			let r = data[i];
 			var d = changeDate(r["replydate"]);
-			var d2 = r["replydate"];
 			$(".rs").append("<div class='r'></div>");
-			$(".r:last-child").append('<div class="r_id"><h5>' + r["userid"] + '</h5></div>');
+			$(".r:last-child").append('<div class="r_id"><h5>' + r["nickname"] + '</h5><input type="hidden" id="' + i + '" value="' + r["userid"] + '"></div>');
 			$(".r:last-child").append('<div><h5>' + r["repcon"] + '</h5></div>');
 			$(".r:last-child").append('<div class="makespace"></div>');
-			$(".r:last-child").append('<div class="r_del" id="' + r["replyid"] + '"><h6>삭제</h6></div>');
+			$(".r:last-child").append('<div class="r_del" id="' + r["replyid"] + '"><h6 id="' + i + '">삭제</h6></div>');
 			$(".r:last-child").append('<div class="r_date"><h6>' + d + '</h6></div>');
 		}
 		
@@ -132,14 +143,30 @@ function changeDate(date) {
 	
 }
 
+$("#editbtn").click(function(){
+	if(!compare) {
+		alert('권한이 없습니다.')
+		return false;
+	}
+})
+
+$("#delbtn").click(function(){
+	if(!compare) {
+		alert('권한이 없습니다.')
+		return false;
+	}
+})
+
 $("#submit").click(function(){
+	
 	if(document.getElementById("repcon").value == "") {
 		alert('내용을 입력해주세요.')
 		return false;
 	}
 
 	var postid = document.getElementById("postid").value;
-	var userid = document.getElementById("userid").value;
+	var userid = document.getElementById("login_userid").value;
+	var nickname =  document.getElementById("login_nickname").value;
 	var repcon = document.getElementById("repcon").value;
 	
 	$.ajax({
@@ -147,6 +174,7 @@ $("#submit").click(function(){
 		type:"post",
 		data: {
 			userid:userid,
+			nickname:nickname,
 			postid:postid,
 			repcon:repcon
 		},	
@@ -159,7 +187,7 @@ $("#submit").click(function(){
 $("#recommend").click(function(){
 	
 	var postid = document.getElementById("postid").value;
-	var userid = document.getElementById("userid").value;
+	var userid = document.getElementById("login_userid").value;
 	
 	$.getJSON("/reply/recommend",{"postid":postid,"userid":userid},function(data){
 		alert(data.result);
@@ -178,6 +206,16 @@ $("#withrec").click(function(){
 $(document).on("click", ".r_del", function() {
 	
 	var replyid = this.id;
+	/*
+	alert(document.getElementById("loginuser_id").value);
+	alert($(this).find("h6").attr("id"));
+	alert(document.getElementById($(this).find("h6").attr("id")).value);
+	*/
+	
+	if(document.getElementById("loginuser_id").value != document.getElementById($(this).find("h6").attr("id")).value) {
+		alert('권한이 없습니다')
+		return false;
+	}
 	
 	$.ajax({
 		url:"/reply/delete", 
@@ -188,6 +226,7 @@ $(document).on("click", ".r_del", function() {
 		success : function(){$("#replyRefresh").trigger('click');},
 		error : function(){alert('error');}		
 	});
+	
 })
 
 

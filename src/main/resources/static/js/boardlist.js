@@ -74,13 +74,23 @@ $(".next").click(function(){
 	window.location = window.location.pathname + "?" + params.toString() + "&" + this.id;
 })
 
+$("#writebtn").click(function(){
+	if(document.getElementById("loginuser_id").value == "") {
+		alert('로그인 해주세요')
+		return false;
+	} else {
+		window.location.href = "/board/writeform";
+	}
+})
+
+
 $("#searchbtn").click(function(){
 	var url = window.location;
 	var params = new URLSearchParams(url.search.slice(1));
 	
 	if(document.getElementById("searchword").value == "") {
 		alert('검색어를 입력해주세요.')
-		return false();
+		return false;
 	}
 	params.delete('p');
 	params.set('t', document.getElementById("searchtype").value);

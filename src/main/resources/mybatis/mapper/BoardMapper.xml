@@ -112,7 +112,7 @@
 	select count(*) from reply where postid = #{postid}
 </select>
 <insert id="insertReply" parameterType="com.spring.dto.ReplyDto">
-	insert into reply values(reply_seq.nextval, #{postid}, #{repcon}, sysdate, #{userid})
+	insert into reply values(reply_seq.nextval, #{postid}, #{repcon}, sysdate, #{userid}, #{nickname})
 </insert>
 <delete id="deleteReply" parameterType="int">
 	delete from reply where replyid = #{replyid} 

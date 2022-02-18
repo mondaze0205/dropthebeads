@@ -22,6 +22,10 @@
 		<div class="g2"><a href="#">구매페이지</a></div>
 	</div>
 </header>
+<input type="hidden" id="post_userid" value="${dto.userid}">
+<input type="hidden" id="postid" value="${dto.postid}">
+<input type="hidden" id="login_userid" name="userid" value="${user.userid}">
+<input type="hidden" id="login_nickname" name="nickname" value="${user.nickname}">		
 <div class="container">
 	<div class="side_top">
 		<div><p>자유게시판 / ${dto.postid}</p></div>
@@ -71,10 +75,13 @@
 			<div class="rs">
 			<c:forEach items="${rlist}" var="r" varStatus="status">
 				<div class="r">
-					<div class="r_id"><h5>${r.nickname}</h5></div>
+					<div class="r_id">
+						<h5>${r.nickname}</h5>
+						<input type="hidden" id="${status.index}" value="${r.userid}">
+					</div>
 					<div><h5>${r.repcon}</h5></div>
 					<div class="makespace"></div>
-					<div class="r_del" id="${r.replyid}"><h6>삭제</h6></div>
+					<div class="r_del" id="${r.replyid}"><h6 id="${status.index}">삭제</h6></div>
 					<div class="r_date">
 						<h6><fmt:formatDate value="${r.replydate}" pattern="yy.MM.dd HH:mm:ss"/></h6>
 					</div>					
@@ -86,10 +93,9 @@
 			<div class="writereply_1">
 				<form class="replyzone" name="replyzone">
 					<textarea placeholder="댓글을 작성해주세요." name="repcon" id="repcon"></textarea>
-					<input type="hidden" id="userid" name="userid" value="dulgi">
-					<input type="hidden" id="nickname" name="nickname" value="bidulgi">
-					<input type="hidden" id="postid" name="postid" value="${dto.postid}">
-					
+					<input type="hidden" name="userid" value="${user.userid}">
+					<input type="hidden" name="nickname" value="${user.nickname}">
+					<input type="hidden" name="postid" value="${dto.postid}">
 				</form>
 			</div>
 			<div class="writereply_2">
