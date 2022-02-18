@@ -57,7 +57,8 @@
 			<form action="write" method="post" name="writeform">
 				<textarea id="postcon" name="postcon"></textarea>
 				<input type="hidden" id="head" name="head" value="일반">
-				<input type="hidden" id="userid" name="userid" value="dulgi">
+				<input type="hidden" id="userid" name="userid" value="${user.userid}">
+				<input type="hidden" id="nickname" name="nickname" value="${user.nickname}">
 				<input type="hidden" id="title" name="title">
 				<input type="hidden" id="pictureid" name="pictureid" value="1">
 				<div class="c_btn">

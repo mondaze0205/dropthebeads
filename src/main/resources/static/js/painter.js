@@ -31,8 +31,6 @@ function makeGrid() {
   	}
 }
 
-makeGrid(24, 24);
-
 // 유저가 크기설정을 하고나면, 함수를 다시 실행한다. 
 // 이때 e.preventdefault로 페이지가 새로 생성되지 않고 그리드만 다시 만들게 한다.
 sizePicker.addEventListener('submit', function(e) {
@@ -289,4 +287,11 @@ $("#btn001").click(function(){
 	
 	
 	alert(code);
+});
+
+$(function(){
+	
+	makeGrid(24, 24);
+	
+	
 });

@@ -23,6 +23,7 @@
 		<div class="g2"><a href="#">구매페이지</a></div>
 	</div>
 </header>
+<input type="hidden" id="loginuser_id" value="${user.userid}">
 <div class="container">
 <div class="side_top">
 	<button type="button" onclick="location.href='list?h=0'">새로고침</button>
@@ -33,7 +34,7 @@
 	<p id="p2">자랑</p>
 	<p id="p3">리뷰</p>
 	<p id="p4">질문</p>
-	<button type="button" class="writebtn" onclick="location.href='writeform'">글쓰기</button>
+	<button type="button" class="writebtn" id="writebtn">글쓰기</button>
 </div>
 	<div class="side_left">
 	</div>
@@ -84,6 +85,9 @@
 	</c:if>
 </div>
 	<div class="side_right">
+	<h1>${user.nickname}</h1>
+	<a href="/">홈으로</a>
+	<a href="../logout">로그아웃테스트</a>
 	</div>
 </div>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>

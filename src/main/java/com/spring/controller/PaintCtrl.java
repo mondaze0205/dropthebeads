@@ -21,20 +21,25 @@ public class PaintCtrl {
 	@Autowired
 	PaintService service;
 	
+	@RequestMapping("/painter")
+	public String board() {
+		return "redirect:/painter/painter";
+	}
+	
 	@GetMapping("/painter/painter")
 	public String paintBoard() {
 		return "painter/painter";
 	}
 	
 	@PostMapping("/painter/paintSave")
-	public String paintSave(String code, String pic_id, String pic_name, RedirectAttributes ra) {
+	public String paintSave(String code, String pic_id, String pic_name, String pic_user, RedirectAttributes ra) {
 		
 		int n = 0;
 		if(pic_id.equals("new")) {
-			n = service.savePicNew(code, pic_name);
+			n = service.savePicNew(code, pic_name, pic_user);
 			ra.addFlashAttribute("n", n);
 		} else {
-			n = service.savePicOld(code, pic_id, pic_name);
+			n = service.savePicOld(code, pic_id, pic_name, pic_user);
 			ra.addFlashAttribute("n", n);
 		}
 		

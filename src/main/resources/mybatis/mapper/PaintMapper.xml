@@ -10,10 +10,10 @@
 	select count(*) from picture where pictureid = #{int}
 </select>
 <insert id="savePicNew" parameterType="com.spring.dto.PicDto">
-	insert into picture values (picture_seq.nextval, #{picname}, #{picpath})	
+	insert into picture values (picture_seq.nextval, #{picname}, #{picpath}, #{userid})	
 </insert>
 <update id="savePicOld" parameterType="com.spring.dto.PicDto">
-	update picture set picname = #{picname}, picpath = #{picpath} where pictureid = #{pictureid}
+	update picture set picname = #{picname}, picpath = #{picpath} where pictureid = #{pictureid} and userid = #{userid}
 </update>
 <select id="lastNum" resultType="int">
 	select last_number from user_sequences where sequence_name = 'PICTURE_SEQ'

@@ -92,15 +92,15 @@
 }
 
 .center .tbtitle {
-	width: 540px;
+	width: 500px;
 }
 
 .center .tbuser {
-	width: 100px;
+	width: 120px;
 }
 
 .center .tbdate {
-	width: 100px;
+	width: 120px;
 }
 
 .center .tbcount {
@@ -144,7 +144,7 @@
 }
 
 .title {
-	width: 540px;
+	width: 500px;
 	min-height: 30px;
 	line-height: 30px;
 	text-align: left;

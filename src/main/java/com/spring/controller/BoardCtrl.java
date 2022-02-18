@@ -2,15 +2,20 @@ package com.spring.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import com.spring.service.BoardService;
 import com.google.gson.Gson;
@@ -21,6 +26,11 @@ public class BoardCtrl {
 	
 	@Autowired 
 	BoardService service;
+	
+	@RequestMapping("/board")
+	public String board() {
+		return "redirect:/board/list";
+	}
 	
 	@RequestMapping("/board/list")
 	public String postList(@RequestParam(name="h", defaultValue="0") int head, 
@@ -79,11 +89,11 @@ public class BoardCtrl {
 	}
 	*/
 	@GetMapping("board/content/{postid}")
-	public String boardcontent(@PathVariable int postid, BoardDto dto, Model m) {
-		List<ReplyDto> rlist = service.selectReply(postid);
-		dto = service.dtobypostid(postid);
-		int countReply = service.countReply(postid);
+	public String boardcontent(@PathVariable int postid, Model m) {
 		service.readcountplus(postid);
+		BoardDto dto = service.dtobypostid(postid);
+		List<ReplyDto> rlist = service.selectReply(postid);
+		int countReply = service.countReply(postid);
 		m.addAttribute("rlist", rlist);
 		m.addAttribute("dto", dto);
 		m.addAttribute("countReply", countReply);
@@ -91,8 +101,8 @@ public class BoardCtrl {
 	}
 	
 	@PostMapping("/board/updateform")
-	public String updateform(int postid, BoardDto dto, Model m) {
-		dto = service.dtobypostid(postid);
+	public String updateform(int postid, Model m) {
+		BoardDto dto = service.dtobypostid(postid);
 		m.addAttribute("dto", dto);
 		return "board/update";
 	}
@@ -128,7 +138,6 @@ public class BoardCtrl {
 	@ResponseBody
 	public String insertReply(ReplyDto dto){
 		service.insertReply(dto);
-		//String s = "redirect:/board/content/" + dto.getPostid();
 		return "";
 	}
 	

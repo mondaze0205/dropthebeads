@@ -7,4 +7,5 @@ public class PicDto {
 	private int pictureid;
 	private String picname;
 	private String picpath;
+	private String userid;
 }

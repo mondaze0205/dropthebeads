@@ -2,6 +2,8 @@ package com.spring.controller;
 
 import org.springframework.stereotype.Controller;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -32,14 +34,9 @@ public class UsersController {
 	}
 	
 	@RequestMapping("/")
-    public String main(@ModelAttribute("user") UsersDto user) {
+    public String main() {
         return "index";
     }
-	
-	@GetMapping("/board")
-	public String board() {
-		return "redirect:/board/list";
-	}
 	
 	@GetMapping("/idCheck")
 	@ResponseBody
