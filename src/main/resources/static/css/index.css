@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+h3{ 
+	padding: 50px 0;
+	text-align: center;
+}
+.main1{
+		text-align: center;
+}
+.mainimage{
+	float: left;
+	padding: 30px;
+	width: 35%;
+	height: 400px;
+}
+.login{
+	margin: 100px 0;
+	padding: 30px;
+	border: 1px solid #fbfabb;
+	float: right;
+	background-color: #fffff0;
+	width: 30%;
+	height: 200px;
+}
+.login a:link, a:visited{
+	color: gray;
+	text-decoration: none;
+}
+.login a:hover, a:active{
+	color: black;
+}
+.loginbox a:link, a:visited{
+	margin: 3px;
+	padding: 10px;
+	border: 1px solid #F6DD00;
+	background-color: #FEE500;
+	display: block;
+}
+.loginbox a:hover, a:active{
+	background-color: orange;
+	color: black;
+}
+
+.clear{
+	clear:both;
+}

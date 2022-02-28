@@ -24,48 +24,6 @@ $(function(){
 	
 });
 
-function change(){
-	
-	if(document.getElementById("none")) {
-		document.getElementById("none").remove();
-	}
-	
-	$("#picid").empty();
-	
- 	var s = document.getElementById("picselect")
- 	var pictureid = s.options[s.selectedIndex].value;
- 	
- 	$.getJSON("/painter/paintLoad2",{"pictureid":pictureid},function(data){
-		var code = data.code;
-		var picid = data.pictureid;
-		var picname = data.picname;
-		var id = data.userid;
-		let nickname = "";
-		
-		$.getJSON("/user/match",{"userid":id},function(data2){
-			nickname = data2.nickname;
-			if (code == "none") {
-				alert('없는 번호입니다.')
-			} else {
-				document.getElementById("h_code").value = code;
-				document.getElementById("h_name").value = picname;
-				document.getElementById("h_picid").value = picid;
-				document.getElementById("h_userid").value = id;
-				
-				$(".picinfo").empty();
-				$(".picinfo").append('<h5>번호 : ' + picid + '</h5>');
-				$(".picinfo").append('<h5>작가 : ' + nickname + '</h5>');
-				$(".picinfo").append('<h5>제목 : ' + picname + '</h5>');
-				
-				$("#h_copy").trigger('click');
-			}
-		});
-		
-		
-	}); //getJSON
-	
-}
-
 $("#picid").click(function(){
 	
 	if(document.getElementById("none")) {
@@ -151,13 +109,23 @@ $("#loadbtn").click(function(){
 	
 	var code = document.getElementById('h_code').value;
 	var pictureid = document.getElementById('h_picid').value;
-	var picname = document.getElementById("h_name").value
-	var id = document.getElementById("h_userid").value
+	var picname = document.getElementById("h_name").value;
+	var id = document.getElementById("h_userid").value;
 	
+	var login = opener.document.getElementById("login_userid").value;
+	alert(login);
 	if(code == "") {
 		alert('선택된 그림이 없습니다.')
 		return false;
 	}
+	
+	
+	if (id != login) {
+		alert("dulgi")
+	} else {
+		alert("ss")
+	}
+	
 	
 	opener.document.getElementById("code").value = code;
 	opener.document.getElementById("pic_id").value = picid;
@@ -173,5 +141,49 @@ $("#cancelbtn").click(function(){
 	window.close();
 })
 
+
+
+function change(){
 	
+	if(document.getElementById("none")) {
+		document.getElementById("none").remove();
+	}
+	
+	$("#picid").empty();
+	
+ 	var s = document.getElementById("picselect")
+ 	var pictureid = s.options[s.selectedIndex].value;
+ 	
+ 	$.getJSON("/painter/paintLoad2",{"pictureid":pictureid},function(data){
+		var code = data.code;
+		var picid = data.pictureid;
+		var picname = data.picname;
+		var id = data.userid;
+		let nickname = "";
+		
+		$.getJSON("/user/match",{"userid":id},function(data2){
+			nickname = data2.nickname;
+			if (code == "none") {
+				alert('없는 번호입니다.')
+			} else {
+				document.getElementById("h_code").value = code;
+				document.getElementById("h_name").value = picname;
+				document.getElementById("h_picid").value = picid;
+				document.getElementById("h_userid").value = id;
+				
+				$(".picinfo").empty();
+				$(".picinfo").append('<h5>번호 : ' + picid + '</h5>');
+				$(".picinfo").append('<h5>작가 : ' + nickname + '</h5>');
+				$(".picinfo").append('<h5>제목 : ' + picname + '</h5>');
+				
+				$("#h_copy").trigger('click');
+			}
+		});
+		
+		
+	}); //getJSON
+	
+}
+
+
 

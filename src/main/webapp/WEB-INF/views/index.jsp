@@ -9,6 +9,7 @@
 <title>index</title>
 <!-- 부트스트랩 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/css/index.css">
 
 </head>
 <body>
@@ -23,30 +24,81 @@
 
 <!-- 컨테이너 -->
 <div class="container-xxl">
+
 	<!-- 그림판 예시 누르면 그림판 이동 -->
-	<h3>그림판</h3>
+	<h3>직접 그려서 만들고 자랑해봐요!</h3>
+	<div class="main1">
+ 		<a href="/painter/painter"><img class="mainimage" src="/image/apple.png"></a>
+	  	<a href="/painter/painter"><img class="mainimage" src="/image/rabbit.png"></a>
+	 	<div class="login">
+		 	<div class="loginbox">
+		 		<a href="/login">로그인</a>
+		 		<a href="/join">카카오 로그인</a>
+		 	</div>
+		 		<a href="/join">회원가입</a>
+	 	</div>
+	</div>
 	
-	<hr>
+	<div class="clear"></div>
+	
 	<!-- 게시판 인기글 -->
 	<h3>게시판 인기글</h3>
-	  <div class="row row-cols-3">
-		<c:forEach items="${bbdto}" var="bb">
+	  <div class="row row-cols-3 m-1">
+	  <!-- 1번 -->
 			<div class="card">
-				<div class="canvas">
-					<!-- 그림가져오기 -->
-				그림
+				<div class="canvas m-3">
+					<a href="/board/content/${bb1.postid}">
+					<input type="hidden" id="pictureid1" value="${bb1.pictureid}">
+					<textarea style="display:none" id="code1" class="hidden"></textarea>
+					<table id="pixel-canvas1"></table>
+				</a>
+				
 				</div>  
 				<div class="card-body">
-			    <h5 class="card-title"> ${bb.title} 
-			    	<span class="badge rounded-pill bg-danger">조회수 ${bb.readcount }</span></h5>
+			    <h5 class="card-title"> ${bb1.title} 
+			    	<span class="badge rounded-pill bg-danger">조회수 ${bb1.readcount}</span></h5>
 			    
-			    <p class="card-text"> ${bb.postcon} </p>
+			    <p class="card-text"> ${bb1.postcon} </p>
 				</div>
 			</div>
-		</c:forEach>
+	  <!-- 2번 -->
+			<div class="card">
+				<div class="canvas m-3">
+				<a href="/board/content/${bb2.postid}">
+					<input type="hidden" id="pictureid2" value="${bb2.pictureid}">
+					<textarea style="display:none" id="code2" class="hidden"></textarea>
+					<table id="pixel-canvas2"></table>
+				</a>
+				
+				</div>  
+				<div class="card-body">
+			    <h5 class="card-title"> ${bb2.title} 
+			    	<span class="badge rounded-pill bg-danger">조회수 ${bb2.readcount}</span></h5>
+			    
+			    <p class="card-text"> ${bb2.postcon} </p>
+				</div>
+			</div>
+	  <!-- 3번 -->
+			<div class="card">
+				<div class="canvas m-3">
+				<!-- 그림가져오기 -->
+				<a href="/board/content/${bb3.postid}">
+					<input type="hidden" id="pictureid3" value="${bb3.pictureid}">
+					<textarea style="display:none" id="code3" class="hidden"></textarea>
+					<table id="pixel-canvas3"></table>
+				</a>
+				
+				</div>  
+				<div class="card-body">
+			    <h5 class="card-title"> ${bb3.title} 
+			    	<span class="badge rounded-pill bg-danger">조회수 ${bb3.readcount}</span></h5>
+			    
+			    <p class="card-text"> ${bb3.postcon} </p>
+				</div>
+			</div>
+			
 	  </div>
 	
-	<hr>
 	<!-- 벼룩 급매품 -->
 	<h3>벼룩 급매</h3>
 	<div class="fleabest">
@@ -56,6 +108,8 @@
 </div>
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="/js/index.js"></script>
 
 
 </body>

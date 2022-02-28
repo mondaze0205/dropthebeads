@@ -17,10 +17,15 @@ public class IndexCtrl {
 	@Autowired
 	IndexService service;
 	
-	@RequestMapping("/index")
+	@RequestMapping(value = {"/index", "/main", "/"})
 	public String boardbest(Model m) {
 		List<BoardDto> bbdto = service.boardbest();
-		m.addAttribute("bbdto",bbdto);
+		BoardDto bb1 = bbdto.get(0);
+		BoardDto bb2 = bbdto.get(1);
+		BoardDto bb3 = bbdto.get(2);
+		m.addAttribute("bb1",bb1);
+		m.addAttribute("bb2",bb2);
+		m.addAttribute("bb3",bb3);
 		
 		return "index";
 	}
