@@ -6,26 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 테스트 페이지</title>
-<link rel="stylesheet" type="text/css" href="/css/header.css">
-<link rel="stylesheet" type="text/css" href="/css/content.css">
+<link rel="stylesheet" type="text/css" href="/css/board/content.css">
 </head>
 <body>
-<header>
-	<div class="h1">
-		<div class="g1"><a href="#">로그인</a></div>	
-		<div class="g1"><a href="#">마이페이지</a></div>
-		<div class="g1"><a href="#">관리자 메뉴</a></div>
-	</div>
-	<div class="h2">
-		<div class="g2"><a href="#">픽셀아트</a></div>
-		<div class="g2"><a href="#">커뮤니티</a></div>
-		<div class="g2"><a href="#">구매페이지</a></div>
-	</div>
-</header>
-<input type="hidden" id="post_userid" value="${dto.userid}">
-<input type="hidden" id="postid" value="${dto.postid}">
-<input type="hidden" id="login_userid" name="userid" value="${user.userid}">
-<input type="hidden" id="login_nickname" name="nickname" value="${user.nickname}">		
+<jsp:include page="../header2.jsp"></jsp:include>
+<div>
+	<input type="hidden" id="post_userid" value="${dto.userid}">
+	<input type="hidden" id="postid" value="${dto.postid}">
+</div>
 <div class="container">
 	<div class="side_top">
 		<div><p>자유게시판 / ${dto.postid}</p></div>
@@ -109,6 +97,6 @@
 	</div>
 </div>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="/js/content.js"></script>
+<script src="/js/board/content.js"></script>
 </body>
 </html>

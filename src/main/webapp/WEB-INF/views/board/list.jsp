@@ -7,23 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <title>list.jsp</title>
-<link rel="stylesheet" type="text/css" href="/css/header.css">
-<link rel="stylesheet" type="text/css" href="/css/boardlist.css">
+<link rel="stylesheet" type="text/css" href="/css/board/list.css">
 </head>
 <body>
-<header>
-	<div class="h1">
-		<div class="g1"><a href="#">로그인</a></div>	
-		<div class="g1"><a href="#">마이페이지</a></div>
-		<div class="g1"><a href="#">관리자 메뉴</a></div>
-	</div>
-	<div class="h2">
-		<div class="g2"><a href="#">픽셀아트</a></div>
-		<div class="g2"><a href="#">커뮤니티</a></div>
-		<div class="g2"><a href="#">구매페이지</a></div>
-	</div>
-</header>
-<input type="hidden" id="loginuser_id" value="${user.userid}">
+<jsp:include page="../header2.jsp"></jsp:include>
 <div class="container">
 <div class="side_top">
 	<button type="button" onclick="location.href='list?h=0'">새로고침</button>
@@ -84,13 +71,15 @@
 		</div>
 	</c:if>
 </div>
-	<div class="side_right">
+<div class="noname">
 	<h1>${user.nickname}</h1>
 	<a href="/">홈으로</a>
 	<a href="../logout">로그아웃테스트</a>
+</div>
+	<div class="side_right">
 	</div>
 </div>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="/js/boardlist.js"></script>
+<script src="/js/board/list.js"></script>
 </body>
 </html>

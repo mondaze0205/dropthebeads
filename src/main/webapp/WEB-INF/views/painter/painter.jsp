@@ -4,73 +4,43 @@
 <head>
 <meta charset="utf-8">
 <title>Pixel Art Maker</title>
-<link rel="stylesheet" type="text/css" href="/css/header.css">
-<link rel="stylesheet" type="text/css" href="/css/painter.css">
+<link rel="stylesheet" type="text/css" href="/css/painter/painter.css">
 </head>
 <body>
-	<header>
-		<div class="h1">
-			<div class="g1">
-				<a href="#">로그인</a>
-			</div>
-			<div class="g1">
-				<a href="#">마이페이지</a>
-			</div>
-			<div class="g1">
-				<a href="#">관리자 메뉴</a>
-			</div>
-		</div>
-		<div class="h2">
-			<div class="g2">
-				<a href="#">픽셀아트</a>
-			</div>
-			<div class="g2">
-				<a href="#">커뮤니티</a>
-			</div>
-			<div class="g2">
-				<a href="#">구매페이지</a>
-			</div>
-		</div>
-	</header>
+<jsp:include page="../header2.jsp"></jsp:include>
+
 	<div class="container">
+		<div class="left"></div>
+		<div class="right"></div>
 		<div class="size_side">
-			<form class="size_picker">
-			<div class="size_pick">
-				<ul class="size_ul">
-					<li class="size_li_center">크기 설정</li>
-				</ul>
-				<ul class="size_ul2">
-					<li class="size_li_center">가로</li>
-					<li class="size_li">
-						<select class="input-width" name="width">
-							<option value="6">6</option>
-							<option value="24" selected="selected">24</option>
-							<option value="48">48</option>
-							<option value="72">72</option>
-							<option value="96">96</option>
-						</select>
-					</li>
-				</ul>
-				<ul class="size_ul2">
-					<li class="size_li_center">세로</li>
-					<li class="size_li">
-						<select class="input-height" name="height">
-							<option value="6">6</option>
-							<option value="24" selected="selected">24</option>
-							<option value="48">48</option>
-							<option value="72">72</option>
-							<option value="96">96</option>
-						</select>
-					</li>
-				</ul>
-				<ul class="hidden">
-					<li>
-						<button type="submit" id="submit" class="submit-button">만들기</button>	
-					</li>
-				</ul>
+			<div class="size_top"><p>크기 설정</p></div>
+			<div class="size_c">
+				<div><p>가로</p></div>
+				<div class="makespace"></div>
+				<div>
+					<select class="input-width" name="width">
+						<option value="6">6</option>
+						<option value="24" selected="selected">24</option>
+						<option value="48">48</option>
+						<option value="72">72</option>
+						<option value="96">96</option>
+					</select>
+				</div>
 			</div>
-			</form>
-		</div>
+			<div class="size_c">
+				<div><p>세로</p></div>
+				<div class="makespace"></div>
+				<div>
+					<select class="input-height" name="height">
+						<option value="6">6</option>
+						<option value="24" selected="selected">24</option>
+						<option value="48">48</option>
+						<option value="72">72</option>
+						<option value="96">96</option>
+					</select>
+				</div>
+			</div>
+    	</div>
 		<div class="pal_l">
 			<div class="pal_l_1">
 				<p>직접 선택 : </p>
@@ -84,8 +54,8 @@
 					</tr>
 				</table>
 			</div>
-			<div class="pal_1_3">
-				<p id="color_info">선택하세요<br>　</p>
+			<div class="pal_l_3">
+				<h4 id="color_info">선택하세요</h4>
 			</div>
 		</div>
 		<div class="pal_r">
@@ -243,16 +213,14 @@
 			</table>
 		</div>
 		<div class="pal_btn">
-			<button type="button" id="dummy" class="btn0">만들기</button>
+			<button type="button" id="makegrid" class="btn0">만들기</button>
+			<button type="button" id="readme" class="btn0">참고사항</button>
 			<button type="button" id="fill" class="btn1">채우기</button>
 			<button type="button" id="draw" class="btn1">그리기</button>
 			<button type="button" id="erase" class="btn1">지우기</button>
-			<p>
-			더블클릭하셔도 지워집니다.
-			</p>
-			<button type="button" id="readme" class="btn2">참고사항</button>
 			<button type="button" id="dummy2" class="btn2">저장</button>
 			<button type="button" id="load" class="btn2">불러오기</button>
+			<p> 더블클릭하셔도 지워집니다.</p>
 		</div>
 		<div class="canvas">
 			<table class="pixel-canvas"></table>
@@ -269,9 +237,7 @@
 	</form>
 	<button type="button" id="copypic">복사</button>
 	</div>
-	<input type="button" id="btn001" value="click">
-	<input type="text" id="login_userid" name="userid" value="${user.userid}">
 	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="/js/painter.js"></script>
+	<script src="/js/painter/painter.js"></script>
 </body>
 </html>

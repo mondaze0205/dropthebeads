@@ -1,0 +1,76 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 150px 10px 0px 10px;
+}
+
+.login {
+	margin: auto;
+}
+
+.loginform {
+	width: 330px;
+	padding: 10px;
+	border: 1px solid green;
+}
+
+.id_pw {
+	display: grid;
+	justify-content: center;
+}
+
+.id_pw input[type="text"], .id_pw input[type="password"] {
+	width: 300px;
+	height: 30px;
+	box-sizing: border-box;
+	margin: 0px;
+}
+
+.msg {
+	height: 25px;
+	line-height: 25px;
+}
+
+.msg p {
+	font-size: 12px;
+	color: red;
+	margin: 0px 0px 0px 17px;
+}
+
+.buttons {
+	display: grid;
+	justify-content: center;
+}
+
+.buttons button {
+	width: 300px;
+	height: 30px;
+	box-sizing: border-box;
+	background-color: lightskyblue;
+	border-radius: 2px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.others {
+	display: flex;
+	justify-content: center;
+}
+
+.others p {
+	color: dimgray;
+	font-size: 13px;
+	padding: 0px 7px;
+	margin: 5px 0px;
+	text-align: center;
+}
+
+.others > p:first-child {
+	border-right: 1px solid dimgray;
+}
+
+.others > p:last-child {
+	border-left: 1px solid dimgray;
+}

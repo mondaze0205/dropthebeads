@@ -1,7 +1,5 @@
 package com.spring.dto;
 
-
-
 public class EmailVo {
 	private String subject;
 	private String content;

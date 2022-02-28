@@ -6,6 +6,9 @@
 <select id="paintLoad" parameterType="int" resultType="com.spring.dto.PicDto">
 	select * from picture where pictureid = #{pictureid}
 </select>
+<select id="mypaints" parameterType="String" resultType="com.spring.dto.PicDto">
+	select * from picture where userid = #{userid}
+</select>
 <select id="checkPic" parameterType="int" resultType="int">
 	select count(*) from picture where pictureid = #{int}
 </select>
@@ -18,4 +21,5 @@
 <select id="lastNum" resultType="int">
 	select last_number from user_sequences where sequence_name = 'PICTURE_SEQ'
 </select>
+
 </mapper>

@@ -5,17 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.spring.dao.UsersDao;
 import com.spring.dto.UsersDto;
 
 @Service
 public class UsersService {
 
-	
 	@Autowired
 	UsersDao dao;
-	public boolean online = false;
 	
+	public String match(String userid) {
+		Gson g = new Gson();
+		JsonObject j = new JsonObject();
+		j.addProperty("nickname", dao.match(userid));
+		return g.toJson(j);
+	}
+
 	public int insertUsers(UsersDto dto) {
 		return dao.insertUsers(dto);
 	}
@@ -31,6 +38,7 @@ public class UsersService {
 			return false;
 		}
 	}
+	
 	public List<UsersDto> findid(UsersDto dto) {
 			return dao.findid(dto);
 		}
@@ -39,5 +47,12 @@ public class UsersService {
 	}
 	public String nickCheck(String nickname) {
 		return dao.nickCheck(nickname);
+	}
+	
+	public int findpw(String userid, String email, String pw) {
+		return dao.findpw(userid, email, pw);
+	}
+	public UsersDto userlist(UsersDto dto) {
+		return dao.userlist(dto);
 	}
 }

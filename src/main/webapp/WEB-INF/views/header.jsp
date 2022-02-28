@@ -12,19 +12,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
 
 <style>
-#nav{
-height: 220px;
+#nav {
+	height: 220px;
 	width: 100%;
 	display: flex;
 	overflow: hidden;
 	position: relative;
-	background-image: url("../image/title3.png");
+	background-image: url("image/title3.png");
 	margin: 0;
-	padding: 0;}
-a{font-family: 'Dongle', sans-serif;}
-#title{font-size: 64px;}
-.nav-item{font-size: 40px;}
-
+	padding: 0;
+}
+.container-xxl a {
+	font-family: 'Dongle', sans-serif;
+}
+#title {
+	font-size: 64px;
+}
+.nav-item {
+	font-size: 40px;
+}
 </style>
 </head>
 <body>
