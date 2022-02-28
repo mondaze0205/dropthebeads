@@ -32,11 +32,6 @@ public class UsersController {
 		return new UsersDto();
 	}
 
-	@RequestMapping("/")
-    public String main() {
-        return "index";
-    }
-
 	@GetMapping("/join")
 	public String joinform(Model m) {
 		UsersDto dto = new UsersDto();

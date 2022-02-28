@@ -4,16 +4,21 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.spring.service.PaintService;
 
 @Controller
@@ -79,6 +84,13 @@ public class PaintCtrl {
 	@ResponseBody
 	public String mypaints(String userid){
 		return service.mypaints(userid);
+	}
+	
+	@GetMapping("/painter/readonly/{pictureid}")
+	public String readonly(@PathVariable int pictureid, Model m) {
+		String s = service.paintLoad(pictureid);
+		m.addAttribute("s", s);
+		return "painter/readonly";
 	}
 	
 }
