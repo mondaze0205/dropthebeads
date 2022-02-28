@@ -1,0 +1,210 @@
+.container {
+	display: grid;
+	grid-template-areas:
+		"a b c"
+		"d d d"
+		"p p p";
+	grid-template-columns: 150px 180px auto;
+}
+
+.hidden, .code {
+	display: none;
+}
+
+.size_side {
+	height: 170px;
+	grid-area: a;
+	
+	font-size: 15px;
+	text-align: left;
+	box-sizing: border-box;
+	background-color: snow;
+	
+}
+
+.size_side button {
+	background-color: lightblue;
+	border-radius: 8px;
+  	font-size: 14px;
+	padding: 8px 18px;
+	margin: 10px;
+
+}
+
+.size_side ul, .size_side li {
+	list-style: none;
+	padding: 0;
+}
+
+.size_pick {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.size_ul {
+	margin: 12px, auto;
+}
+
+.size_ul2 {
+	display: grid;
+	grid-template-columns: 60px 60px;
+	justify-items: center;
+	margin: 17px, auto;
+	/*margin-bottom: 10px;*/
+}
+
+.size_li_center {
+	align-items: center;
+}
+
+
+.pal_l {
+	height: 170px;
+	grid-area: b;
+	display : flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	overflow: hidden;
+	justify-content: center;
+	align-items: center;
+}
+
+.pal_l p {
+	margin-right: 7px;
+}
+
+.pal_l_1 {
+	height: 25%;
+	display: flex;
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.color_picker {
+	border: 1px solid #dcdcdc;
+  	-webkit-appearance: none;
+ 	padding: 0;
+  	border: none;
+  	width: 25px;
+  	height: 25px;
+  	cursor: pointer;
+}
+
+.color_picker::-webkit-color-swatch {
+  	border: none;
+  	padding: 0;
+}
+
+.color_picker::-webkit-color-swatch-wrapper {
+ 	border: none;
+  	padding: 0;
+}
+
+.pal_l_2 {
+	height: 25%;
+	display: flex;
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+}
+
+.pal_l_3 {
+	height: 40%;
+}
+
+.pal_r {
+	grid-area: c;
+	align-self : center;
+}
+
+.pal_r table, .pal_r tr, .pal_r td, .pal_l table, .pal_l tr, .pal_l td{
+  border: silver 1px dotted;
+}
+
+.pal_r table, .pal_l table {
+  border-collapse: collapse;
+}
+
+.pal_r tr, .pal_l tr {
+  height: 25px;
+}
+
+.pal_r td, .pal_l td {
+  min-width: 25px;
+  box-sizing: border-box;
+}
+
+.pal_btn {
+	grid-area: d;
+	height : 60px;
+	display: flex;
+	flex-wrap: nowrap;
+	white-space: nowrap;
+	overflow: hidden;
+	align-items: center;
+	background-color: snow;
+}
+
+.pal_btn button {
+	border-radius: 8px;
+	padding: 8px 18px;
+	margin: 10px;
+  	font-size: 14px;
+}
+
+.pal_btn .btn0 {
+	background-color: lightblue;	
+}
+
+.pal_btn .btn1 {
+	background-color: #ffdab9;	
+}
+
+.pal_btn .btn2 {
+	background-color: mintcream;	
+}
+
+.pal_btn p {
+  font-size: 15px;
+  color: #696969;
+}
+
+.canvas {
+	grid-area: p;	
+}
+
+.pixel-canvas {
+  background-color : white;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.canvas table, .canvas tr, .canvas td {
+  border: silver 1px dotted;
+}
+
+.canvas table {
+  border-collapse: collapse;
+}
+
+.canvas tr {
+  height: 20px;
+}
+
+.canvas td {
+  min-width: 20px;
+  box-sizing: border-box;
+}
+
+.slzone {
+	display: none;
+}

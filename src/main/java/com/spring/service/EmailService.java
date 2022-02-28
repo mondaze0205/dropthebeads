@@ -12,8 +12,9 @@ import com.spring.dto.EmailVo;
 
 @Service("emailService")
 public class EmailService {
-	@Autowired
+	
 
+	@Autowired
 	protected JavaMailSender mailSender;
 
 	public boolean sendMail(EmailVo email) throws Exception {
@@ -40,6 +41,36 @@ public class EmailService {
 
 		return false;
 
+		
+		//¼öÁ¤
 	}
+	
+	public boolean sendMail1(EmailVo email1) throws Exception {
 
+		try {
+
+			MimeMessage msg = mailSender.createMimeMessage();
+
+			msg.setSubject(email1.getSubject());
+
+			msg.setText(email1.getContent());
+
+			msg.setRecipient(RecipientType.TO, new InternetAddress(email1.getReceiver()));
+
+			mailSender.send(msg);
+
+			return true;
+
+		} catch (Exception ex) {
+
+			ex.printStackTrace();
+
+		}
+
+		return false;
+
+	}
+	
+	
+	
 }

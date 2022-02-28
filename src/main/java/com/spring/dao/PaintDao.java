@@ -1,5 +1,7 @@
 package com.spring.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.spring.dto.PicDto;
@@ -11,4 +13,5 @@ public interface PaintDao {
 	int lastNum();
 	int checkPic(int pictureid);
 	PicDto paintLoad(int pictureid);
+	List<PicDto> mypaints(String userid);
 }

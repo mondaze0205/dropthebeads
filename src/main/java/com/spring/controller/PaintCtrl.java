@@ -31,6 +31,11 @@ public class PaintCtrl {
 		return "painter/painter";
 	}
 	
+	@GetMapping("/painter/save")
+	public String paintSave() {
+		return "painter/save";
+	}
+	
 	@PostMapping("/painter/paintSave")
 	public String paintSave(String code, String pic_id, String pic_name, String pic_user, RedirectAttributes ra) {
 		
@@ -47,24 +52,19 @@ public class PaintCtrl {
 	}
 	
 	@RequestMapping("/painter/picsaved")
-	public String test1(HttpServletRequest request, Model m) {
+	public String paintSave2(HttpServletRequest request, Model m) {
 		String n = "";
 		Map<String, ?> map = RequestContextUtils.getInputFlashMap(request);
 		if(map != null) {
 			n = Integer.toString((int)map.get("n"));			
 		}
 		m.addAttribute("n", n);
-		return "painter/picsaved";
+		return "painter/result";
 	}
 	
-	@GetMapping("/painter/paintName")
-	public String paintName() {
-		return "painter/paintName";
-	}
-	
-	@GetMapping("/painter/paintLoad")
+	@GetMapping("/painter/load")
 	public String paintLoad() {
-		return "painter/paintLoad";
+		return "painter/load";
 	}
 	
 	@GetMapping("/painter/paintLoad2")
@@ -73,6 +73,12 @@ public class PaintCtrl {
 		int pictureidint = Integer.parseInt(pictureid);
 		String temp = service.paintLoad(pictureidint);
 		return temp;
+	}
+	
+	@GetMapping("/painter/mypaints")
+	@ResponseBody
+	public String mypaints(String userid){
+		return service.mypaints(userid);
 	}
 	
 }

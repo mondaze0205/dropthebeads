@@ -4,4 +4,156 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.dao.FleaDao">
 
+	<insert id="fInsert" parameterType="com.spring.dto.FleaDto">
+		insert into
+		fleaboard(f_postno, f_title, f_content, f_date, f_category, f_price,
+		f_addr, imgid, userid)
+		values(f_seq.nextval, #{f_title},
+		#{f_content},sysdate, #{f_category}, #{f_price}, #{f_addr}, #{imgid},
+		#{userid})
+	</insert>
+
+	<select id="fList" parameterType="map" resultType="com.spring.dto.FleaDto">
+		select * from
+		(select f_postno, f_title, f_content, f_viewcount,
+		f_date, f_category,f_price, f_addr, commcnt, userid, rownum r
+		FROM (SELECT * FROM fleaboard ORDER BY f_date desc)
+		<if test="f_category == 1">
+		</if>
+		<if test="f_category == 2">
+			where f_category = '판매'
+		</if>
+		<if test="f_category == 3">
+			where f_category = '구매'
+		</if>
+		ORDER BY f_postno DESC)WHERE r &gt;= #{start} AND r &lt;= #{end}
+	</select>
+
+	<update id="updateReplyCount" parameterType="int">
+		update fleaboard b
+		set b.commcnt = (select count(f_cno) from fleacomment where f_postno =
+		#{f_postno})
+		where b.f_postno = #{f_postno}
+	</update>
+
+	<select id="count" resultType="int">
+		select count(*) from fleaboard
+	</select>
+
+	<select id="fBoard" parameterType="int" resultType="com.spring.dto.FleaDto">
+		select * from fleaboard where f_postno = #{f_postno}
+	</select>
+
+	<update id="updateFboard" parameterType="com.spring.dto.FleaDto">
+		update fleaboard set
+		f_title=#{f_title} , f_content=#{f_content} where f_postno=#{f_postno}
+	</update>
+
+	<delete id="deleteFboard" parameterType="int">
+		delete from fleaboard
+		where f_postno = #{f_postno}
+	</delete>
+
+	<select id="countSearch" resultType="int" parameterType="map">
+		select count(*) from fleaboard
+		<where>
+			<choose>
+				<when test="searchn == 0">f_title like '%'||#{search}||'%' </when>
+				<when test="searchn == 1">f_content like '%'||#{search}||'%'</when>
+				<when test="searchn == 2">userid like '%'||#{search}||'%' </when>
+			</choose>
+		</where> <!-- where 태그 붙이는 이유 : -->
+	</select>
+
+	<select id="boardListSearch" parameterType="map" resultType="com.spring.dto.FleaDto">
+
+		select * from
+		(select f_postno, f_title, f_content, f_date, f_category,
+		f_viewcount, userid, rownum r
+		from (select * from fleaboard order by
+		f_date desc)
+		<where>
+			<choose>
+				<when test="searchn == 0">f_title like '%'||#{search}||'%'</when>
+				<when test="searchn == 1">f_content like '%'||#{search}||'%' </when>
+				<when test="searchn == 2">userid like '%'||#{search}||'%' </when>
+			</choose>
+		</where>
+		order by f_date desc
+		) where r &gt;= #{start} AND r &lt;= #{end}
+
+	</select>
+
+	<update id="fViewCount" parameterType="int">
+		update fleaboard set
+		f_viewcount = f_viewcount +1 where f_postno = #{f_postno}
+	</update>
+
+	<insert id="imgInsert" parameterType="com.spring.dto.ImgDto">
+		insert into fimg values
+		(img_seq.nextval,#{imgname},#{imgpath},#{imgsize})
+	</insert>
+
+	<select id="iBoard" parameterType="int"
+		resultType="com.spring.dto.ImgDto">
+		select * from fimg where imgid=#{imgid}
+	</select>
+
+	<select id="laImg" resultType="int">
+		select last_number from
+		user_sequences where sequence_name='IMG_SEQ'
+	</select>
+
+	<!-- 게시물n번의 댓글출력 -->
+	<select id="selectComm" parameterType="int"
+		resultType="com.spring.dto.FleaCommDto">
+		select * from fleacomment where f_postno = #{f_postno} order by f_cdate desc
+	</select>
+
+
+	<!-- 댓글 입력 -->
+	<insert id="insertComm"
+		parameterType="com.spring.dto.FleaCommDto">
+		insert into fleacomment(f_postno, f_cno, f_comment, userid, f_cdate) values(
+		#{f_postno}, fcomm_seq.nextval, #{f_comment}, #{userid}, sysdate)
+	</insert>
+
+
+	<!-- 댓글 삭제 -->
+	<delete id="deleteComm" parameterType="int">
+		delete from fleacomment where f_cno = #{f_cno}
+	</delete>
+
+
+	<!-- 게시물n번의 댓글 개수 -->
+	<select id="commCount" parameterType="int" resultType="int">
+		select count(*) from fleacomment where f_postno=#{f_postno}
+	</select>
+
+
+	<!-- 댓글 수정 -->
+	<update id="updateComm"
+		parameterType="com.spring.dto.FleaCommDto">
+		update fleacomment set f_comment = #{f_comment} where f_cno = #{f_cno}
+	</update>
+
+
+	<!-- 좋아요 -->
+	<update id="cLike" parameterType="com.spring.dto.FleaCommDto">
+		update fleacomment set f_like = #{f_like}+1 where f_cno = #{f_cno}
+		<!-- update fleacomment set f_like = if(#{f_like} is 0, #{f_like}+1, #{f_like}-1) 
+			where f_cno = #{f_cno} -->
+		<!-- update fleacomment <trim prefix="SET" suffixOverrides=","> <if test="#{f_like} 
+			== 0"> f_like = #{f_like}+1</if> <if test="#{f_like} == 1"> f_like = #{f_like}-1</if> 
+			</trim> where f_cno = #{f_cno} -->
+	</update>
+
+	<!-- 지도 -->
+	<select id="selectMap" parameterType="int" resultType="String">
+		select f_addr from fleaboard where f_postno = #{f_postno}
+	</select>
+	
+<select id ="selectMaps" resultType="com.spring.dto.FleaDto">
+	select * from fleaboard
+</select>
 </mapper>

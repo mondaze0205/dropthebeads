@@ -1,38 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>login.jsp</title>
-<link rel="stylesheet" type="text/css" href="../resources/css/login.css"> 
+<link rel="stylesheet" type="text/css" href="/css/user/login.css"> 
 </head>
 <body>
+<jsp:include page="../header2.jsp"></jsp:include>
+<div class="container">
+	<div class="login">
+		<form:form action="trylogin" method="post" modelAttribute="login" id="loginform" class="loginform">
+			<div class="id_pw">
+				<form:input type="text" path="userid" name="userid" id="userid" placeholder="아이디" />
+				<input type="password" name="pw" id="pw" placeholder="비밀번호">
+			</div>
+			<div class="msg">
+				<p id="msg">${e}</p>
+			</div>
+			<div class="buttons">
+				<button type="button" id="loginbtn">로그인</button>
+			</div>
+		</form:form>
+		<div class="others">
+			<p id="o_join">회원가입</p>
+			<p id="o_findid">아이디 찾기</p>
+			<p id="o_findpw">비밀번호 찾기</p>
+		</div>
+	</div>
+</div>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="../resources/js/login.js"></script>
-<h1>로그인 폼</h1>
-<form:form action="trylogin" method="post" modelAttribute="welcome">
-<form:errors element="div"/>
-<div>
-<label for="userid">ID</label>
-<input type="text" name="userid" id="userid">
-<form:errors path="userid" delimiter=" "></form:errors>
-</div>
-<div>
-<label for="pw">비밀번호</label>
-<input type="password" name="pw" id="pw">
-<form:errors path="pw" delimiter=" "></form:errors>
-</div>
-<div>
-<input type="submit" value="눌러"></div>
-			<button type="button" onclick="location.href='/join'">회원가입</button>
-			<button type="button" onclick="find()">아이디 찾기</button>
-						
-</form:form>
-
+<script src="/js/user/login.js"></script>
 </body>
 </html>

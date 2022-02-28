@@ -5,23 +5,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>write.jsp</title>
+<title>글 작성</title>
 <link rel="stylesheet" type="text/css" href="/css/header.css">
-<link rel="stylesheet" type="text/css" href="/css/boardwrite.css">
+<link rel="stylesheet" type="text/css" href="/css/board/write.css">
 </head>
 <body>
-<header>
-	<div class="h1">
-		<div class="g1"><a href="#">로그인</a></div>	
-		<div class="g1"><a href="#">마이페이지</a></div>
-		<div class="g1"><a href="#">관리자 메뉴</a></div>
-	</div>
-	<div class="h2">
-		<div class="g2"><a href="#">픽셀아트</a></div>
-		<div class="g2"><a href="#">커뮤니티</a></div>
-		<div class="g2"><a href="#">구매페이지</a></div>
-	</div>
-</header>
+<jsp:include page="../header2.jsp"></jsp:include>
 <div class="container">
 	<div class="side_top">
 		<p>글 작성하기</p>
@@ -52,7 +41,6 @@
 				<table class="pixel-canvas"></table>
 			</div>
 		</div>
-		
 		<div class="c_content">
 			<form action="write" method="post" name="writeform">
 				<textarea id="postcon" name="postcon"></textarea>
@@ -76,6 +64,6 @@
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="/js/boardwrite.js"></script>
+<script src="/js/board/write.js"></script>
 </body>
 </html>

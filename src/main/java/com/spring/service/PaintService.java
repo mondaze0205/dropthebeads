@@ -3,6 +3,7 @@ package com.spring.service;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,9 +95,15 @@ public class PaintService {
 			j.addProperty("code", code);
 			j.addProperty("pictureid", dto.getPictureid());
 			j.addProperty("picname", dto.getPicname());	
-			
+			j.addProperty("userid", dto.getUserid());
 		}
 		
 		return g.toJson(j);
+	}
+	
+	public String mypaints(String userid) {
+		List<PicDto> list = dao.mypaints(userid);
+		Gson g = new Gson();
+		return g.toJson(list);
 	}
 }

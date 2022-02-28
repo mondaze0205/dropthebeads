@@ -16,5 +16,8 @@ public interface UsersDao {
 	 String nickCheck(String nickname);
 	 int checkUser(UsersDto dto);
 	 
+	 public String match(String userid);
 	 
+	 UsersDto userlist(UsersDto dto);
+	 int findpw(String userid, String email, String pw);
 }
