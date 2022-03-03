@@ -30,6 +30,7 @@
 	<div class="main1">
  		<a href="/painter/painter"><img class="mainimage" src="/image/apple.png"></a>
 	  	<a href="/painter/painter"><img class="mainimage" src="/image/rabbit.png"></a>
+	  	
 	 	<div class="login">
 		 	<div class="loginbox">
 		 		<a href="/login">로그인</a>
@@ -57,7 +58,7 @@
 				<div class="card-body">
 			    <h5 class="card-title"> ${bb1.title} 
 			    	<span class="badge rounded-pill bg-danger">조회수 ${bb1.readcount}</span></h5>
-			    
+			    	<span>${bb1.userid }</span>
 			    <p class="card-text"> ${bb1.postcon} </p>
 				</div>
 			</div>
@@ -74,7 +75,7 @@
 				<div class="card-body">
 			    <h5 class="card-title"> ${bb2.title} 
 			    	<span class="badge rounded-pill bg-danger">조회수 ${bb2.readcount}</span></h5>
-			    
+			    	<span>${bb2.userid }</span>
 			    <p class="card-text"> ${bb2.postcon} </p>
 				</div>
 			</div>
@@ -92,18 +93,66 @@
 				<div class="card-body">
 			    <h5 class="card-title"> ${bb3.title} 
 			    	<span class="badge rounded-pill bg-danger">조회수 ${bb3.readcount}</span></h5>
-			    
+			    	<span>${bb3.userid }</span>
 			    <p class="card-text"> ${bb3.postcon} </p>
 				</div>
 			</div>
 			
 	  </div>
 	
-	<!-- 벼룩 급매품 -->
-	<h3>벼룩 급매</h3>
-	<div class="fleabest">
-		
-	</div>
+	<!-- 벼룩 최신글 -->
+	<h3>벼룩 시장</h3>
+		<div class="row row-cols-3 m-1">
+		<!-- 1번 -->
+			<div class="card">
+				<div class="canvas m-3">
+				<!-- 그림가져오기 -->
+				<a href="/flea/fcontent/${ff1.f_postno}">
+ 					<img class="fimg" src="/upload/${fi1.imgpath}" onerror="this.src='/image/noimage.png'" 
+ 						 width="300px" height="auto" />
+				</a>
+				
+				</div>  
+				<div class="card-body">
+			    <h5 class="card-title"> [${ff1.f_category}] ${ff1.f_title} 
+			    	<span class="badge rounded-pill bg-danger">조회수 ${ff1.f_viewcount}</span></h5>
+			    	<span>${ff1.userid}</span>
+			    <p class="card-text"> ${ff1.f_content} </p>
+				</div>
+			</div>
+		<!-- 2번 -->
+			<div class="card">
+				<div class="canvas m-3">
+				<!-- 그림가져오기 -->
+				<a href="/flea/fcontent/${ff2.f_postno}">
+ 					<img class="fimg" src="/upload/${fi2.imgpath}" onerror="this.src='/image/noimage.png'"   width="300px" height="auto" />
+				</a>
+				
+				</div>  
+				<div class="card-body">
+			    <h5 class="card-title"> [${ff2.f_category}] ${ff2.f_title} 
+			    	<span class="badge rounded-pill bg-danger">조회수 ${ff2.f_viewcount}</span></h5>
+			    	<span>${ff2.userid}</span>
+			    <p class="card-text"> ${ff2.f_content} </p>
+				</div>
+			</div>
+		<!-- 3번 -->
+			<div class="card">
+				<div class="canvas m-3">
+				<!-- 그림가져오기 -->
+				<a href="/flea/fcontent/${ff3.f_postno}">
+ 					<img class="fimg" src="/upload/${fi3.imgpath}" onerror="this.src='/image/noimage.png'"   width="300px" height="auto" />
+				</a>
+				
+				</div>  
+				<div class="card-body">
+			    <h5 class="card-title"> [${ff3.f_category}] ${ff3.f_title} 
+			    	<span class="badge rounded-pill bg-danger">조회수 ${ff3.f_viewcount}</span></h5>
+			    	<span>${ff3.userid}</span>
+			    <p class="card-text"> ${ff3.f_content} </p>
+				</div>
+			</div>
+		</div>
 	
 </div>
 <!-- footer -->

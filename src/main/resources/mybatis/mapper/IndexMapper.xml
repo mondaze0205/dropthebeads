@@ -6,4 +6,10 @@
 <select id="boardbest" resultType="com.spring.dto.BoardDto">
 	select * from (select * from board where readcount &gt;= 1 order by readcount desc) where rownum &gt;= 1 and rownum &lt;= 6
 </select>
+<select id="fleabest" resultType="com.spring.dto.FleaDto">
+	select * from (select * from fleaboard order by f_postno desc) where rownum &gt;= 1 and rownum &lt;= 6 
+</select>
+<select id="getImg" parameterType="int" resultType="com.spring.dto.ImgDto">
+	select * from fimg where imgid = #{imgid}
+</select>
 </mapper>
