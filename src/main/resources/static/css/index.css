@@ -44,3 +44,6 @@ h3{
 .clear{
 	clear:both;
 }
+.boardc1, .boardc2, .boardc3, .boardf1, .boardf2 , .boardf3{
+	display: none;
+}
