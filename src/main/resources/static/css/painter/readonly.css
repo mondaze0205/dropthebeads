@@ -1,0 +1,24 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.readonlypage {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.readonlypage h1 {
+	margin: 20px;
+	font-size: 25px;
+}
+
+.report {
+	color: red;
+}
+
+.canvas {
+	margin-top: 20px;
+}

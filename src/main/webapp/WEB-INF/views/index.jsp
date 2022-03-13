@@ -9,6 +9,7 @@
 <title>index</title>
 <!-- 부트스트랩 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 <link rel="stylesheet" type="text/css" href="/css/index.css">
 
 </head>
@@ -30,6 +31,7 @@
 	<div class="main1">
  		<a href="/painter/painter"><img class="mainimage" src="/image/apple.png"></a>
 	  	<a href="/painter/painter"><img class="mainimage" src="/image/rabbit.png"></a>
+	  	
 	 	<div class="login">
 		 	<div class="loginbox">
 		 		<a href="/login">로그인</a>
@@ -45,6 +47,7 @@
 	<h3>게시판 인기글</h3>
 	  <div class="row row-cols-3 m-1">
 	  <!-- 1번 -->
+	  	<div class="boardc1">
 			<div class="card">
 				<div class="canvas m-3">
 					<a href="/board/content/${bb1.postid}">
@@ -57,11 +60,13 @@
 				<div class="card-body">
 			    <h5 class="card-title"> ${bb1.title} 
 			    	<span class="badge rounded-pill bg-danger">조회수 ${bb1.readcount}</span></h5>
-			    
+			    	<span>${bb1.userid }</span>
 			    <p class="card-text"> ${bb1.postcon} </p>
 				</div>
 			</div>
+		</div>
 	  <!-- 2번 -->
+	  	  <div class="boardc2">
 			<div class="card">
 				<div class="canvas m-3">
 				<a href="/board/content/${bb2.postid}">
@@ -74,11 +79,13 @@
 				<div class="card-body">
 			    <h5 class="card-title"> ${bb2.title} 
 			    	<span class="badge rounded-pill bg-danger">조회수 ${bb2.readcount}</span></h5>
-			    
+			    	<span>${bb2.userid }</span>
 			    <p class="card-text"> ${bb2.postcon} </p>
 				</div>
 			</div>
+		</div>
 	  <!-- 3번 -->
+	  	<div class="boardc3">
 			<div class="card">
 				<div class="canvas m-3">
 				<!-- 그림가져오기 -->
@@ -92,19 +99,74 @@
 				<div class="card-body">
 			    <h5 class="card-title"> ${bb3.title} 
 			    	<span class="badge rounded-pill bg-danger">조회수 ${bb3.readcount}</span></h5>
-			    
+			    	<span>${bb3.userid }</span>
 			    <p class="card-text"> ${bb3.postcon} </p>
 				</div>
 			</div>
-			
+		</div>
 	  </div>
 	
-	<!-- 벼룩 급매품 -->
-	<h3>벼룩 급매</h3>
-	<div class="fleabest">
-		
+	<!-- 벼룩 최신글 -->
+	<h3>벼룩 시장</h3>
+		<div class="row row-cols-3 m-1">
+		<!-- 1번 -->
+		<div class="boardf1">
+			<div class="card">
+				<div class="canvas m-3">
+				<!-- 그림가져오기 -->
+				<a id="fpicadd1" href="/flea/fcontent/${ff1.f_postno}">
+				<input type="hidden" id="fpic1" value="${fi1.imgpath}">
+				</a>
+				
+				</div>  
+				<div class="card-body">
+			    <h5 class="card-title"> [${ff1.f_category}] ${ff1.f_title} 
+			    	<span class="badge rounded-pill bg-danger">조회수 ${ff1.f_viewcount}</span></h5>
+			    	<input type="hidden" id="boardf1" value="${ff1.userid}">
+			    	<p>${ff1.userid}</p>
+			    <p class="card-text"> ${ff1.f_content} </p>
+				</div>
+			</div>
+		</div>
+		<!-- 2번 -->
+		<div class="boardf2">
+			<div class="card">
+				<div class="canvas m-3">
+				<!-- 그림가져오기 -->
+				<a id="fpicadd2" href="/flea/fcontent/${ff2.f_postno}">
+				<input type="hidden" id="fpic2" value="${fi2.imgpath}">
+				</a>
+				
+				</div>  
+				<div class="card-body">
+			    <h5 class="card-title"> [${ff2.f_category}] ${ff2.f_title} 
+			    	<span class="badge rounded-pill bg-danger">조회수 ${ff2.f_viewcount}</span></h5>
+			    	<input type="hidden" id="boardf2" value="${ff2.userid}">
+			    	<p>${ff2.userid}</p>
+			    <p class="card-text"> ${ff2.f_content} </p>
+				</div>
+			</div>
+		</div>
+		<!-- 3번 -->
+		<div class="boardf3">
+			<div class="card">
+				<div class="canvas m-3">
+				<!-- 그림가져오기 -->
+				<a id="fpicadd3" href="/flea/fcontent/${ff3.f_postno}">
+				<input type="hidden" id="fpic3" value="${fi3.imgpath}">
+				</a>
+				
+				</div>  
+				<div class="card-body">
+			    <h5 class="card-title"> [${ff3.f_category}] ${ff3.f_title} 
+			    	<span class="badge rounded-pill bg-danger">조회수 ${ff3.f_viewcount}</span></h5>
+			    	<input type="hidden" id="boardf3" value="${ff3.userid}">
+			    	<p>${ff3.userid}</p>
+			    <p class="card-text"> ${ff3.f_content} </p>
+				</div>
+			</div>
+		</div>
 	</div>
-	
 </div>
 <!-- footer -->
 <jsp:include page="footer.jsp"></jsp:include>

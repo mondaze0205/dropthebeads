@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.dao.AdminDao">
+<select id="checkReports" parameterType="com.spring.dto.ReportDto" resultType="int">
+	select count(*) from report where (postid = #{postid} and postid != 0) or (f_postno = #{f_postno} and f_postno != 0) or (pictureid = #{pictureid} and pictureid != 0) or (replyid = #{replyid} and replyid != 0)
+</select>
+<select id="checkReportid" parameterType="com.spring.dto.ReportDto" resultType="int">
+	select reportid from report where (postid = #{postid} and postid != 0) or (f_postno = #{f_postno} and f_postno != 0) or (pictureid = #{pictureid} and pictureid != 0) or (replyid = #{replyid} and replyid != 0)
+</select>
+<select id="checkReporters" parameterType="int" resultType="String">
+	select reporters from report where reportid = #{reportid}
+</select>
+<insert id="report" parameterType="com.spring.dto.ReportDto">
+	insert into report (reportid, postid, f_postno, pictureid, replyid, reporters) values (report_seq.nextval, #{postid}, #{f_postno}, #{pictureid}, #{replyid}, #{reporters})
+</insert>
+<update id="stack" parameterType="int">
+	update report set stack = stack + 1 where reportid = #{reportid}
+</update>
+<select id="c_board" resultType="int">
+	select count(*) from report a, board b where a.postid = b.postid
+</select>
+<select id="r_board" resultType="Map">
+	select * from (select a.reportid, a.postid, a.stack, a.reporters, b.userid, b.title from report a, board b where a.postid = b.postid) where rownum &lt;= 5
+</select>
+<select id="c_fboard" resultType="int">
+	select count(*) from report a, fleaboard b where a.f_postno = b.f_postno
+</select>
+<select id="r_fboard" resultType="Map">
+	select * from (select a.reportid, a.f_postno, a.stack, a.reporters, b.userid, b.f_title from report a, fleaboard b where a.f_postno = b.f_postno) where rownum &lt;= 5
+</select>
+<select id="c_pic" resultType="int">
+	select count(*) from report a, picture b where a.pictureid = b.pictureid
+</select>
+<select id="r_pic" resultType="Map">
+	select * from (select a.reportid, a.pictureid, a.stack, a.reporters, b.userid, b.picpath from report a, picture b where a.pictureid = b.pictureid) where rownum &lt; 5
+</select>
+<select id="c_reply" resultType="int">
+	select count(*) from report a, reply b where a.replyid = b.replyid
+</select>
+<select id="r_reply" resultType="Map">
+	select * from (select a.reportid, a.replyid, a.stack, a.reporters, b.userid, b.postid, b.repcon from report a, reply b where a.replyid = b.replyid) where rownum &lt; 5
+</select>
+<select id="findCon" parameterType="int" resultType="int">
+	select postid from reply where replyid = #{replyid}
+</select>
+<select id="findDir" parameterType="int" resultType="String">
+	select reporters from report where reportid = #{reportid}
+</select>
+<delete id="innocence" parameterType="int">
+	delete from report where reportid = #{reportid}
+</delete>
+<delete id="erase" parameterType="map">
+	delete from 
+	<if test="type == 0">
+		board where postid
+	</if>
+	<if test="type == 1">
+		fleaboard where f_postno
+	</if>
+	<if test="type == 2">
+		picture where pictureid
+	</if>
+	<if test="type == 3">
+		reply where replyid
+	</if>
+	= #{typeid}
+</delete>
+<update id="warn" parameterType="String">
+	update users set warning = warning + 1 where userid = #{userid}
+</update>
+<delete id="purge" parameterType="String">
+	delete from users where userid = #{userid}
+</delete>
+<select id="count" resultType="int">
+	select count(*) from users
+</select>
+<select id="members" parameterType="Map" resultType="com.spring.dto.UsersDto">
+	select * from (select userid, nickname, address, email, warning, rownum r from (select * from users order by
+	<if test="order == 0">
+		userid) order by userid) 
+	</if>
+	<if test="order == 1">
+		warning desc) order by warning desc) 
+	</if>
+	where r &gt;= #{start} and r &lt;= #{end}
+</select>
+</mapper>

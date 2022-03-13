@@ -65,11 +65,13 @@
 				<div class="r">
 					<div class="r_id">
 						<h5>${r.nickname}</h5>
-						<input type="hidden" id="${status.index}" value="${r.userid}">
+						<input type="hidden" id="uid_${status.index}" value="${r.userid}">
+						<input type="hidden" id="rid_${status.index}" value="${r.replyid}">
 					</div>
 					<div><h5>${r.repcon}</h5></div>
 					<div class="makespace"></div>
-					<div class="r_del" id="${r.replyid}"><h6 id="${status.index}">삭제</h6></div>
+					<div class="r_report" id="report_${status.index}"><h6>신고</h6></div>
+					<div class="r_del" id="del_${status.index}"><h6>삭제</h6></div>
 					<div class="r_date">
 						<h6><fmt:formatDate value="${r.replydate}" pattern="yy.MM.dd HH:mm:ss"/></h6>
 					</div>					
@@ -92,6 +94,7 @@
 				<button type="button" id="submit">댓글 남기기</button>
 				<button type="button" id="recommend">추천 남기기</button>
 				<button type="button" id="withrec">댓글 + 추천</button>
+				<button type="button" id="report">신고하기</button>
 			</div>
 		</div>
 	</div>

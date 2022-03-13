@@ -89,6 +89,7 @@ public class PaintCtrl {
 	@GetMapping("/painter/readonly/{pictureid}")
 	public String readonly(@PathVariable int pictureid, Model m) {
 		String s = service.paintLoad(pictureid);
+		
 		m.addAttribute("s", s);
 		return "painter/readonly";
 	}

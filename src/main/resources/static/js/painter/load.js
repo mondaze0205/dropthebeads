@@ -36,31 +36,35 @@ $("#pickbtn").click(function(){
 	
 	var pictureid = document.getElementById("picid").value;
 	
-	$.getJSON("/painter/paintLoad2",{"pictureid":pictureid},function(data){
-		var code = data.code;
-		var picid = data.pictureid;
-		var picname = data.picname;
-		var id = data.userid;
-		let nickname = "";
+	if(pictureid) {
+		$.getJSON("/painter/paintLoad2",{"pictureid":pictureid},function(data){
+			var code = data.code;
+			var picid = data.pictureid;
+			var picname = data.picname;
+			var id = data.userid;
+			let nickname = "";
 		
-		$.getJSON("/user/match",{"userid":id},function(data2){
-			nickname = data2.nickname;
-			if (code == "none") {
-				alert('없는 번호입니다.')
-			} else {
-				document.getElementById("h_code").value = code;
-				document.getElementById("h_name").value = picname;
-				document.getElementById("h_picid").value = picid;
-				document.getElementById("h_userid").value = id;
+			$.getJSON("/user/match",{"userid":id},function(data2){
+				nickname = data2.nickname;
+				if (code == "none") {
+					alert('없는 번호입니다.')
+				} else {
+					document.getElementById("h_code").value = code;
+					document.getElementById("h_name").value = picname;
+					document.getElementById("h_picid").value = picid;
+					document.getElementById("h_userid").value = id;
 				
-				$(".picinfo").empty();
-				$(".picinfo").append('<h5>번호 : ' + picid + '</h5>');
-				$(".picinfo").append('<h5>작가 : ' + nickname + '</h5>');
-				$(".picinfo").append('<h5>제목 : ' + picname + '</h5>');
-				$("#h_copy").trigger('click');
-			}
+					$(".picinfo").empty();
+					$(".picinfo").append('<h5>번호 : ' + picid + '</h5>');
+					$(".picinfo").append('<h5>작가 : ' + nickname + '</h5>');
+					$(".picinfo").append('<h5>제목 : ' + picname + '</h5>');
+					$("#h_copy").trigger('click');
+				}
+			});
 		});
-	});
+	}
+	
+	
 })
 
 
@@ -113,25 +117,22 @@ $("#loadbtn").click(function(){
 	var id = document.getElementById("h_userid").value;
 	
 	var login = opener.document.getElementById("login_userid").value;
-	alert(login);
+
 	if(code == "") {
 		alert('선택된 그림이 없습니다.')
 		return false;
 	}
 	
-	
 	if (id != login) {
-		alert("dulgi")
+	
+		window.opener.location.href = '/painter/readonly/' + pictureid 
 	} else {
-		alert("ss")
+		opener.document.getElementById("code").value = code;
+		opener.document.getElementById("pic_id").value = picid;
+		opener.document.getElementById("pic_name").value = picname;	
+		window.opener.$("#copypic").trigger('click');
 	}
 	
-	
-	opener.document.getElementById("code").value = code;
-	opener.document.getElementById("pic_id").value = picid;
-	opener.document.getElementById("pic_name").value = picname;	
-	
-	window.opener.$("#copypic").trigger('click');
 	window.close();
 		
 });

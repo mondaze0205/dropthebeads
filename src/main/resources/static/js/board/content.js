@@ -12,6 +12,7 @@ $(function(){
 		document.getElementById("submit").disabled = true;
 		document.getElementById("recommend").disabled = true;
 		document.getElementById("withrec").disabled = true;
+		document.getElementById("report").disabled = true;
 	}
 	
 	if(!compare) {
@@ -74,10 +75,11 @@ $("#replyRefresh").click(function(){
 			let r = data[i];
 			var d = changeDate(r["replydate"]);
 			$(".rs").append("<div class='r'></div>");
-			$(".r:last-child").append('<div class="r_id"><h5>' + r["nickname"] + '</h5><input type="hidden" id="' + i + '" value="' + r["userid"] + '"></div>');
+			$(".r:last-child").append('<div class="r_id"><h5>' + r["nickname"] + '</h5><input type="hidden" id="uid_' + i + '" value="' + r["userid"] + '"><input type="hidden" id="rid_' + i + '" value="' + r["replyid"] + '"</div>');
 			$(".r:last-child").append('<div><h5>' + r["repcon"] + '</h5></div>');
 			$(".r:last-child").append('<div class="makespace"></div>');
-			$(".r:last-child").append('<div class="r_del" id="' + r["replyid"] + '"><h6 id="' + i + '">삭제</h6></div>');
+			$(".r:last-child").append('<div class="r_report" id="report_' + i + '"><h6>신고</h6></div>');
+			$(".r:last-child").append('<div class="r_del" id="del_' + i + '"><h6>삭제</h6></div>');
 			$(".r:last-child").append('<div class="r_date"><h6>' + d + '</h6></div>');
 		}
 		
@@ -86,61 +88,7 @@ $("#replyRefresh").click(function(){
 	
 });
 
-function changeDate(date) {
-	d = date.split(" ");
-	s = d[2].substr(2, 2) + ".";
-	if(d[0] == "Jan") {
-		s = s + "01.";
-	} else if(d[0] == "Feb") {
-		s = s + "02.";
-	} else if(d[0] == "Mar") {
-		s = s + "03.";
-	} else if(d[0] == "Apr") {
-		s = s + "04.";
-	} else if(d[0] == "May") {
-		s = s + "05.";
-	} else if(d[0] == "Jun") {
-		s = s + "06.";
-	} else if(d[0] == "Jul") {
-		s = s + "07.";
-	} else if(d[0] == "Aug") {
-		s = s + "08.";
-	} else if(d[0] == "Sep") {
-		s = s + "09.";
-	} else if(d[0] == "Oct") {
-		s = s + "10.";
-	} else if(d[0] == "Nov") {
-		s = s + "11.";
-	} else {
-		s = s + "12.";
-	}
-	
-	s = s + d[1].substr(0, 2) + " ";
-	
-	hms = d[3].split(":");
-	hour = hms[0];
-	min = hms[1];
-	sec = hms[2];
-	
-	if(d[4] == "AM") {
-		if(hour == 12) {
-			s = s + "00:" + min + ":" + sec;
-		} else if(parseInt(hour) <= 9) {
-			s = s + "0" + hour + ":" + min + ":" + sec;
-		} else {
-			s = s + d[3];
-		}
-	} else {
-		if(hour == 12) {
-			s = s + d[3];
-		} else {
-			s = s + (parseInt(hour) + 12) + ":" + min + ":" + sec;
-		}
-	}
-	
-	return s;
-	
-}
+
 
 $("#editbtn").click(function(){
 	if(!compare) {
@@ -201,12 +149,32 @@ $("#withrec").click(function(){
 
 })
 
+$("#report").click(function(){
+		
+	var postid = document.getElementById("postid").value;
+	var userid = document.getElementById("login_userid").value;
+	
+	$.ajax({
+		url:"/admin/report", 
+		type:"post",
+		data: {
+			postid:postid,
+			userid:userid
+		},
+		datatype: "text",	
+		success : function(data){alert(data);},
+		error : function(){alert('error');}		
+	});
+})
+
 
 $(document).on("click", ".r_del", function() {
 	
-	var replyid = this.id;
+	var status = this.id.split("_")[1];
+	var userid = document.getElementById("uid_" + status).value;
+	var replyid = document.getElementById("rid_" + status).value;
 	
-	if(document.getElementById("login_userid").value != document.getElementById($(this).find("h6").attr("id")).value) {
+	if(document.getElementById("login_userid").value != userid) {
 		alert('권한이 없습니다')
 		return false;
 	}
@@ -218,12 +186,98 @@ $(document).on("click", ".r_del", function() {
 			replyid:replyid,
 		},	
 		success : function(){$("#replyRefresh").trigger('click');},
-		error : function(){alert('error');}		
+		error : function(){alert('del error js');}		
 	});
 	
 })
 
+$(document).on("click", ".r_report", function() {
+	
+	var status = this.id.split("_")[1];
+	var replyid = document.getElementById("rid_" + status).value;
+	
+	if(document.getElementById("login_userid").value == "") {
+		return false;
+	}
+	
+	var userid = document.getElementById("login_userid").value;
 
+	$.ajax({
+		url:"/admin/report", 
+		type:"post",
+		data: {
+			replyid:replyid,
+			userid:userid
+		},
+		datatype: "text",	
+		success : function(data){alert(data);},
+		error : function(){alert('report error js');}		
+	});
+	
+})
+
+function changeDate(date) {
+	d = date.split(" ");
+	s = d[2].substr(2, 2) + ".";
+	
+	if(d[0] == "Jan") {
+		s = s + "01.";
+	} else if(d[0] == "Feb") {
+		s = s + "02.";
+	} else if(d[0] == "Mar") {
+		s = s + "03.";
+	} else if(d[0] == "Apr") {
+		s = s + "04.";
+	} else if(d[0] == "May") {
+		s = s + "05.";
+	} else if(d[0] == "Jun") {
+		s = s + "06.";
+	} else if(d[0] == "Jul") {
+		s = s + "07.";
+	} else if(d[0] == "Aug") {
+		s = s + "08.";
+	} else if(d[0] == "Sep") {
+		s = s + "09.";
+	} else if(d[0] == "Oct") {
+		s = s + "10.";
+	} else if(d[0] == "Nov") {
+		s = s + "11.";
+	} else {
+		s = s + "12.";
+	}
+	
+	var day = d[1].replace(',', "")
+	
+	if (day.length == 1) {
+		s = s + "0" + day + " ";
+	} else {
+		s = s + day + " ";
+	}
+
+	hms = d[3].split(":");
+	hour = hms[0];
+	min = hms[1];
+	sec = hms[2];
+	
+	if(d[4] == "AM") {
+		if(hour == 12) {
+			s = s + "00:" + min + ":" + sec;
+		} else if(parseInt(hour) <= 9) {
+			s = s + "0" + hour + ":" + min + ":" + sec;
+		} else {
+			s = s + d[3];
+		}
+	} else {
+		if(hour == 12) {
+			s = s + d[3];
+		} else {
+			s = s + (parseInt(hour) + 12) + ":" + min + ":" + sec;
+		}
+	}
+	
+	return s;
+	
+}
 
 
 

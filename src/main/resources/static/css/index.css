@@ -44,3 +44,8 @@ h3{
 .clear{
 	clear:both;
 }
+
+#pixel-canvas1, #pixel-canvas2, #pixel-canvas3{
+   width: 300px;
+   height: 300px;
+}

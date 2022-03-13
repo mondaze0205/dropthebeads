@@ -9,16 +9,22 @@
 </head>
 <body>
 <jsp:include page="../header2.jsp"></jsp:include>
-<div class="">
+<div class="hidearea">
 	<textarea id='s'>${s}</textarea>
-	<textarea id="code" readonly>123123</textarea>
-	<input type="text" id="pictureid" value="" readonly>
-	<input type="text" id="nickname" value="" readonly>
+	<textarea id="code" readonly></textarea>
+	<input type="hidden" id="picname" value="" readonly>
+	<input type="hidden" id="pictureid" value="" readonly>
 </div>
+<div class="container">
+	<div class="readonlypage">
+		<h1>읽기 전용 페이지입니다.</h1>
+		<h1 id="report" class="report">신고하기</h1>
+	</div>
 	<div class="canvas">
 		<table class="pixel-canvas"></table>
 		<br>
 	</div>
+</div>
 </body>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/js/painter/readonly.js"></script>

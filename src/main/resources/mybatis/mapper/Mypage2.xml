@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.dao.Mypage2D">
+<select id="count_b" parameterType="String" resultType="int">
+	select count(*) from board where userid = #{userid}
+</select>
+<select id="mine_b" parameterType="String" resultType="com.spring.dto.BoardDto">
+	select * from board where userid = #{userid}
+</select>
+<select id="count_r" parameterType="String" resultType="int">
+	select count(*) from reply where userid = #{userid}
+</select>
+<select id="mine_r" parameterType="String" resultType="com.spring.dto.ReplyDto">
+	select * from reply where userid = #{userid}
+</select>
+<select id="count_p" parameterType="String" resultType="int">
+	select count(*) from picture where userid = #{userid}
+</select>
+<select id="mine_p" parameterType="String" resultType="com.spring.dto.PicDto">
+	select * from picture where userid = #{userid}
+</select>
+<select id="count_fb" parameterType="String" resultType="int">
+	select count(*) from fleaboard where userid = #{userid}
+</select>
+<select id="mine_fb" parameterType="String" resultType="com.spring.dto.FleaDto">
+	select * from fleaboard where userid = #{userid}
+</select>
+<select id="count_fr" parameterType="String" resultType="int">
+	select count(*) from fleacomment where userid = #{userid}
+</select>
+<select id="mine_fr" parameterType="String" resultType="com.spring.dto.FleaCommDto">
+	select * from fleacomment where userid = #{userid}
+</select>
+</mapper>

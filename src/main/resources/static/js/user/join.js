@@ -138,7 +138,7 @@ $(function(){
 		if(ck_num == num){
 			$("#email_msg").html("인증되었습니다.");
 			$("#mail_check").attr('value', '1');
-			$("#email").attr('disabled', 'true');
+			$("#email").attr('readonly', 'true');
 			$("#mail_ck").attr('disabled', 'true');
 			$("#ck_num").attr('disabled', 'true');
 			$("#ck_b").attr('disabled', 'true');
