@@ -1,0 +1,139 @@
+a, p {
+	color: black;
+	text-decoration: none;
+	outline: none;
+	cursor: default;
+	margin: 0px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+a:visited {
+	color: black;
+	cursor: default;
+}
+
+.container {
+	display: grid;
+	grid-template-areas:
+	"left center right";
+	grid-template-columns: auto 1280px auto;
+}
+
+.size_left {
+	grid-area: left;
+}
+
+.size_right {
+	grid-area: right;
+}
+
+.center {
+	grid-area: center;
+}
+
+.member_roof {
+	display: flex;
+	height: 50px;
+	margin: 20px 0px;
+	align-items: center;
+}
+
+.member_roof p {
+	font-size: 33px;
+	font-weight: bold;
+	cursor: default;
+}
+
+.member_roof button {
+	background-color: aliceblue;
+	border-radius: 2px;
+	width: 85px;
+	height: 40px;
+	padding: 0px;
+	margin-left: 10px;
+	margin-right: 5px;
+	margin-bottom: 0px;
+  	font-size: 14px;
+  	box-shadow: 2px 2px gainsboro;
+}
+
+.member_top {
+	display: flex;
+	width: 100%;
+	font-size: 12pt;
+	border-top: 2px solid aquamarine;
+	border-bottom: 2px solid aquamarine;
+}
+
+.member_top > * {
+	text-align: center;
+	min-height: 50px;
+	line-height: 50px;
+}
+
+.userid {
+	width: 150px;
+}
+
+.nickname {
+	width: 150px;
+}
+
+.address {
+	width: 400px;
+}
+
+.email {
+	width: 300px;
+}
+
+.warning {
+	width: 100px;
+}
+
+.set {
+	width: 180px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.member {
+	display: flex;
+	width: 100%;
+	font-size: 12pt;
+	border-bottom: 1px solid skyblue;
+}
+
+.member > * {
+	text-align: center;
+	min-height: 30px;
+	line-height: 30px;
+}
+
+.set button {
+	margin: 0px 4px;
+	padding: 0px;
+	width: 40px;
+	height: 25px;
+	background-color: aliceblue;
+	border-radius: 2px;
+}
+
+.page {
+	margin-top: 7px;
+	margin-bottom: 7px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 25px;
+}
+
+.page div {
+	margin: 0px 3px;
+}
+
+.makespace {
+	margin: 0px auto;
+}

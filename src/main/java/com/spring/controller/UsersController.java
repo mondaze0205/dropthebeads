@@ -48,6 +48,7 @@ public class UsersController {
 			  }
 			  return "user/join";
 		  }
+		  System.out.println(dto.getEmail());
 		  service.insertUsers(dto);
 		  return "redirect:/ ";
 	}

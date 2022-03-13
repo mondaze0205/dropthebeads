@@ -1,4 +1,3 @@
-
 $(function(){
    for(let a=1; a <= 3; a++){
    let pictureid = document.getElementById('pictureid'+a).value;
@@ -47,7 +46,7 @@ $(function(){
                newgridCell.style.backgroundColor = color;         
            }
         }
-
+/*
    if(newHeight >= 48 || newWidth >= 48) {
          $(".canvas td").css("height", "5px");
          $(".canvas td").css("min-width", "5px");
@@ -58,7 +57,7 @@ $(function(){
          $(".canvas td").css("height", "20px");
          $(".canvas td").css("min-width", "20px");
       }
-                     
+  */                   
    }); //getJSON
 	}//if
    }//for

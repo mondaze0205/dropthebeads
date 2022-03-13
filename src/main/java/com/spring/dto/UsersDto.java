@@ -34,6 +34,6 @@ public class UsersDto {
 	
 	@DateTimeFormat(pattern= "yyyyMMdd")
 	private Date birth;
-
 	
+	private int warning;
 }
