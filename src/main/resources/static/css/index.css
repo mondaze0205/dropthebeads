@@ -45,7 +45,7 @@ h3{
 	clear:both;
 }
 
-#pixel-canvas1, #pixel-canvas2, #pixel-canvas3{
-   width: 300px;
-   height: 300px;
+.boardc1, .boardc2, .boardc3, .boardf1, .boardf2 , .boardf3{
+	display: none;
+
 }
