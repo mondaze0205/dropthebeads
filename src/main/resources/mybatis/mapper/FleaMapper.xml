@@ -49,6 +49,11 @@
 		f_title=#{f_title} , f_content=#{f_content} where f_postno=#{f_postno}
 	</update>
 
+	<update id="updateImg" parameterType="com.spring.dto.ImgDto">
+		update fimg set
+		imgname=#{imgname}, imgpath=#{imgpath}, imgsize=#{imgsize} where imgid=#{imgid}	
+	</update>
+
 	<delete id="deleteFboard" parameterType="int">
 		delete from fleaboard
 		where f_postno = #{f_postno}

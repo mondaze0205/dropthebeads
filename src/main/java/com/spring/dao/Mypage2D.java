@@ -8,6 +8,7 @@ import com.spring.dto.*;
 
 @Mapper
 public interface Mypage2D {
+	int beforecheck(String userid);
 	int count_b(String userid);
 	List<BoardDto> mine_b(String userid);
 	int count_r(String userid);

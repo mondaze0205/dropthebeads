@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.spring.dto.FleaCommDto;
 import com.spring.dto.FleaDto;
 import com.spring.dto.ImgDto;
@@ -34,18 +35,19 @@ public class FleaController {
 	FleaService service;
 
 	@GetMapping("/flea/flist")
-	public String list (@RequestParam(name = "p", defaultValue = "1") int page, Model m, @RequestParam(name="c", defaultValue = "1") int f_category) {
-		
+	public String list(@RequestParam(name = "p", defaultValue = "1") int page, Model m,
+			@RequestParam(name = "c", defaultValue = "1") int f_category) {
+
 		int count = service.count();
 		if (count > 0) {
 
 			int perPage = 10;
 			int startRow = (page - 1) * perPage + 1;
 			int endRow = page * perPage;
-			
+
 			List<FleaDto> fList = service.fList(startRow, endRow, f_category);
 			m.addAttribute("fList", fList);
-			
+
 			int pageNum = 5;
 			int totalPages = count / perPage + (count % perPage > 0 ? 1 : 0);
 			int begin = (page - 1) / pageNum * pageNum + 1;
@@ -63,9 +65,8 @@ public class FleaController {
 		return "flea/flist";
 	}
 
-
 	@GetMapping("/flea/fwrite")
-	public String writeFleaForm(@ModelAttribute("user")UsersDto dto) {
+	public String writeFleaForm(@ModelAttribute("user") UsersDto dto) {
 		return "flea/fwrite";
 	}
 
@@ -105,23 +106,23 @@ public class FleaController {
 	}
 
 	@GetMapping("/flea/fcontent/{f_postno}")
-	public String content(@ModelAttribute("user")UsersDto user, @PathVariable int f_postno, Model m) {
+	public String content(@ModelAttribute("user") UsersDto user, @PathVariable int f_postno, Model m) {
 		FleaDto dto = service.fBoard(f_postno);
 		ImgDto dto2 = service.iBoard(dto.getImgid());
 		m.addAttribute("dto", dto);
 		m.addAttribute("dto2", dto2);
-		
+
 		List<FleaCommDto> cList = service.selectComm(f_postno);
 		m.addAttribute("cList", cList);
 		int commCnt = service.commCount(f_postno);
 		m.addAttribute("commCnt", commCnt);
-				
+
 		String fleaMap = service.selectMap(f_postno);
-	    m.addAttribute("fleaMap", fleaMap);
-	    
-	    return "flea/fcontent";
+		m.addAttribute("fleaMap", fleaMap);
+
+		return "flea/fcontent";
 	}
-	
+
 	@GetMapping("flea/fupdate/{f_postno}")
 	public String updateForm(@PathVariable int f_postno, Model m) {
 		FleaDto dto = service.fBoard(f_postno);
@@ -129,10 +130,45 @@ public class FleaController {
 		return "flea/fupdate";
 	}
 
-	@PutMapping("/flea/fupdate")
-	public String update(FleaDto dto) {
+	@PostMapping("/flea/fupdate")
+	public String update(FleaDto dto, MultipartFile f_img, Model m) {
+		String fileName = updateimg(f_img);
+		// System.out.println(dto);
+
+		ImgDto dto2 = new ImgDto();
+		dto2.setImgid(dto.getImgid());
+		dto2.setImgname(f_img.getOriginalFilename());
+		dto2.setImgpath(fileName);
+		dto2.setImgsize(f_img.getSize());
+
+		if (dto2.getImgsize() != 0) {
+			// int i = 141;
+			service.updateImg(dto2);
+		}
+		m.addAttribute("fileName", dto2);
+		// dto.setImgid(i);
 		service.updateFboard(dto);
+		// System.out.println(dto);
+		// System.out.println(dto2);
 		return "redirect:flist";
+	}
+
+	private String updateimg(MultipartFile f_img) {
+		String origName = f_img.getOriginalFilename();
+		int index = origName.lastIndexOf(".");
+		String ext = origName.substring(index + 1);
+
+		Random r = new Random();
+		String fileName = System.currentTimeMillis() + "_" + r.nextInt(50) + "." + ext;
+
+		try {
+			String path = ResourceUtils.getFile("classpath:static/upload/").toPath().toString();
+			File f = new File(path, fileName);
+			f_img.transferTo(f);
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
+		return fileName;
 	}
 
 	@DeleteMapping("/flea/delete")
@@ -187,7 +223,7 @@ public class FleaController {
 
 	@GetMapping("/flea/insert")
 	@ResponseBody
-	public String fleainsert(@ModelAttribute("user")UsersDto user, FleaCommDto dto) {	
+	public String fleainsert(@ModelAttribute("user") UsersDto user, FleaCommDto dto) {
 		int i = service.insertComm(dto);
 		return i + "";
 	}
@@ -212,17 +248,28 @@ public class FleaController {
 		int i = service.cLike(dto);
 		return i + "";
 	}
-	
+
 	@GetMapping("flea/fleamap")
 	public String fleamap(Model m) {
-		List<FleaDto> MapMarkers =  service.selectMaps();
+		List<FleaDto> MapMarkers = service.selectMaps();
 		m.addAttribute("MapMarkers", MapMarkers);
 		return "flea/fleamap";
 	}
-	
+
+	@PostMapping("flea/mimg/{id}") // ╧наж
+	@ResponseBody
+	public String mimg(@PathVariable int id, Model m) {
+
+		ImgDto dto2 = service.iBoard(id);
+		Gson g = new Gson();
+		String s = g.toJson(dto2);
+
+		return s;
+	}
+
 	@GetMapping("game/minigame")
 	public String game() {
 		return "game/minigame";
 	}
-	
+
 }

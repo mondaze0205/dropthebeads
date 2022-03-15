@@ -135,10 +135,10 @@ nav a:visited {
 			<a href="/logout">로그아웃</a>
 		</div>
 		<div class="head_item when_logon">
-			<a href="#">마이페이지</a>
+			<a href="/mypage/temp2">마이페이지</a>
 		</div>
 		<div class="head_item">
-			<a href="#">관리자 메뉴</a>
+			<a href="/admin/office">관리자 메뉴</a>
 		</div>
 	</div>
 </header>

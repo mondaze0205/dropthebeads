@@ -1,66 +1,82 @@
 @charset "UTF-8";
 
-header {
-	height: 330px;
-	width: 100%;
-	display: flex;
-	overflow: hidden;
-	position: relative;
-	background-image: url("../image/title3.png");
-	margin: 0;
-	padding: 0;
-	
+body{
+	margin:0;
 }
 
-header a {
+.navbar-01{
+	display:flex;
+	justify-content:flex-end;
+	align-items: center;
+	background-color: #00af79;
+	height: 40px;
+ 	padding: 0px 45px;
+}
+
+.navbar-01 a{
 	text-decoration: none;
-	outline: none;
+	color: #ffffff;
+}
+.navbar-01 a:hover{
+	color: #Fed354;
 }
 
-.h1 {
-	position: absolute;
-	top : 5%;
-	right : 1%;
-	z-index: 1;
+.navbar_menu{
 	display: flex;
-	justify-content: center;
+	list-style: none;
+	margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.navbar_menu li{
+	padding: 8px 12px;
+}
+
+.navbar-02{
+	display:flex;
+	justify-content:space-between;
 	align-items: center;
-	flex-flow: row nowrap;
-	white-space: nowrap;
-	overflow: hidden;
+	padding : 35px 45px;
 }
 
-.g1 {
-	margin: 15px;
-	font-family: arial;
-	font-weight: bold;
-	font-size: 17pt;
-	text-shadow: 0 0 3px red;
+.navbar-02 a{
+	font-family: 'Raleway', sans-serif;
+	font-size: 20px;
+    font-weight: 400;	
+  	text-decoration: none;
+	color: black;
 }
-
-.h2 {
-	position: absolute;
-	bottom : 0%;
-	left : 0%;
-	z-index: 1;
+.navbar_menu02{
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-flow: row nowrap;
-	white-space: nowrap;
-	overflow: hidden;
+	list-style: none;
+}
+.navbar_menu02 li{
+	padding: 8px 12px;
 }
 
-.g2 {
-	margin: 30px;
-	font-family: arial;
-	font-weight: bold;
-	font-size: 40pt;
-	text-shadow: 0 0 4px blue;
+.navbar_menu02 a:hover {
+  	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg id='squiggle-link' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'%3E%3Cstyle type='text/css'%3E.squiggle{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style%3E%3Cpath fill='none' stroke='%2300af79' stroke-width='2' class='squiggle' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/%3E%3C/svg%3E");
+  	background-position: 0 100%;
+ 	background-size: auto 8px;
+  	background-repeat: repeat-x;
+  	text-decoration: none;
 }
 
-.g2:hover {
-	text-shadow: 0 0 6px violet;
+@media screen and (max-width:760px) {
+	.navbar-02{
+		flex-direction: column;
+		align-items:flex-start;
+		padding: 8px 24px;
+	}
+	.navbar_menu02{
+		flex-direction: column;
+		align-items: flex-end;
+		width:100%;
+	}
+	.navbar_menu02 li {
+		width: 100%;
+		text-align: right;
+		padding: 8px 70px;
+		
+	}
 }
-
-

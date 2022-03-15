@@ -1,0 +1,125 @@
+.container {
+	display: grid;
+	grid-template-areas:
+	"left center right";
+	grid-template-columns: auto 1280px auto;
+}
+
+.size_left {
+	grid-area: left;
+}
+
+.size_right {
+	grid-area: right;
+}
+
+.center {
+	grid-area: center;
+	display: grid;
+	grid-template-areas:
+	"top top"
+	"menu con";
+	grid-template-columns: 280px 1000px;
+}
+
+.top {
+	grid-area: top;
+	height: 55px;
+	margin: 10px 0px;
+}
+
+.top p {
+	margin: 0px;
+	font-size: 33px;
+	font-weight: bold;
+}
+
+.menubar {
+	grid-area: menu;
+	display: flex;
+	flex-direction: column;
+}
+
+.menu {
+	border: 1px solid black;
+	margin: 5px 0px;
+	width: 215px;
+	padding: 8px 5px;
+}
+
+.menu p {
+	margin: 0px;
+	cursor: default;
+}
+
+.selected {
+	background-color: palegoldenrod;
+}
+
+.con {
+	grid-area: con;
+	padding-top: 5px;
+}
+/*
+.search {
+	height: 30px;
+	margin-bottom: 10px;
+}
+*/
+.trace {
+	display: flex;
+	border-top: 1px solid black;
+	height: 75px;
+}
+
+.trace:last-child {
+	border-bottom: 1px solid black;
+}
+
+.trace h4 {
+	margin: 0px;
+	font-size: 12pt;
+	font-weight: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.trace h5 {
+	margin: 0px;
+	font-size: 13pt;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.trace h6 {
+	margin: 0px;
+	font-size: 11pt;
+	font-weight: normal;
+	color : dimgray;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.t1 {
+	width: 600px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

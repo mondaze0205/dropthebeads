@@ -45,6 +45,10 @@ public class FleaService {
 		return dao.updateFboard(dto);
 	}
 
+	public int updateImg(ImgDto dto) {
+		return dao.updateImg(dto);
+	}
+	
 	public int deleteFboard(int f_postno) {
 		return dao.deleteFboard(f_postno);
 	}

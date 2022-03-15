@@ -7,20 +7,33 @@
 <head>
 <title>검색 글 목록</title>
 <link rel="stylesheet" type="text/css" href="/css/flea/flea.css">
+<!-- 글꼴 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100&family=Roboto:wght@300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Press+Start+2P&family=Raleway:wght@300&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- 아이콘  -->
+<script src="https://kit.fontawesome.com/2e7159d3c5.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-<a href="http://localhost:8087/" class="button3">MAIN</a>   <a href="fwrite" class="button3">WRITE</a>   <a href="flist" class="button3">LIST</a>
-<h2 class="mb-2">${search}로 검색한 결과입니다.</h2>
+
+<!-- 헤더 -->
+<jsp:include page="../header.jsp"></jsp:include>
+<hr color="#00af79" size="2px">
+
+<div class="title_flea">
+	<h2 class="mb-1">[${search}]로 검색한 결과입니다. <i class="fa-regular fa-face-smile"></i></h2>
+	<hr class="dots">
+</div>
+
+
 <c:if test="${count != 0 }">
 <table class="type01">
   <thead>
   <tr>
     <th scope="col">NO</th>
     <th scope="col">CATEGORY</th>
-    <th scope="col">TITLE</th>
+    <th scope="col">SUBJECT</th>
     <th scope="col">ID</th>
     <th scope="col">DATE</th>
     <th scope="col">VIEW</th>
@@ -34,7 +47,7 @@
 		<td>${fboard.f_category }</td>
 		<td><a href="fcontent/${fboard.f_postno}">${fboard.f_title}
 			<c:if test="${fboard.commcnt ne 0}">
-				<small style="color:#44426e;"><b>[&nbsp;<c:out value="${fboard.commcnt}"/>&nbsp;]</b></small>
+				<small style="color:#f05542;"><b>[&nbsp;<c:out value="${fboard.commcnt}"/>&nbsp;]</b></small>
 			</c:if></a></td>
 		<td>${fboard.userid}</td>
 		<td><fmt:formatDate value="${fboard.f_date}" dateStyle="short"/></td>
@@ -57,18 +70,20 @@
 
 		</c:if>
 		<c:if test="${count == 0 }">
-	<h4 class="mb-1">검색 조건에 맞는 글이 없습니다.<br>다시 검색하세요 :)</h4>
+	<h4 class="mb-1">검색 조건에 맞는 글이 없습니다.<br>다시 검색하세요 <i class="fa-regular fa-face-grin-beam-sweat"></i></h4>
 </c:if>
-<div id="search" align="center">
+<div id="search" align="center" class="fsearch">
 <form action="fsearch">
-<select name="searchn">
+<select name="searchn" class="select01">
 <option value="0">제목</option>
 <option value="1">내용</option>
-<option value="2">작성자</option>
+<option value="2">아이디</option>
 </select>
-<input type="text" name="search" size="15" maxlength="50" /> 
-<input type="submit" value="검색" />
+<input type="text" class="searchbox" name="search" placeholder="검색어를 입력해주세요" maxlength="50" /> 
+<input type="submit" class="btn02" value="SEARCH" />
 </form>	
 	</div>
+<!-- footer -->
+<jsp:include page="../footer.jsp"></jsp:include>	
 </body>
 </html>

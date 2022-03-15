@@ -18,6 +18,7 @@
 	</div>
 
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=75a521ee3f22167093ecd39350fa50b1&libraries=services"></script>
+	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script>
 		var container = document.getElementById('map'); //지도를 표시할 div
 		var options = {
@@ -46,12 +47,15 @@
 				category:"${MMs.f_category}",
 				//iwContent: '<div style="padding:5px;">${MMs.f_title}<br><a href="fcontent/${MMs.f_postno}" style="color:blue" target="_blank">게시물이동</a> <a href="" style="color:blue" target="_blank">채팅</a></div>',
 				title: "${MMs.f_title}",
-				price: "${MMs.f_price}"		
+				price: "${MMs.f_price}",
+				imgid: "${MMs.imgid}"
 			});
 		</c:forEach> 
-		 
+
+
+		var num = 1;
  		positions.forEach(function(el, i){
- 			
+	 			
 			// 주소-좌표 변환 객체를 생성합니다
 			var geocoder = new kakao.maps.services.Geocoder();
 			
@@ -65,7 +69,6 @@
 		       	 	var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 												//좌표정보를 가지고있는 객체 생성()
 
-				
  				//커스텀오버레이 DOM
 					var Customcontent = document.createElement('div');
 					Customcontent.className = "wrap";
@@ -99,7 +102,25 @@
 					//커스텀오버레이 이미지
 					//게시물에 사진이 첨부되어있으면 해당사진으로, 첨부되어있지않으면 사과사진
 					var imgContent = document.createElement("img");
-					imgContent.setAttribute("src", "/image/apple.png");
+
+ 					var id = positions[i].imgid;
+					
+ 					$(function(){
+						$.ajax({
+							url: "/flea/mimg/"+id,
+							method:"post",
+							datatype:"text"
+						}).done(function(data){
+							var vv = JSON.parse(data);
+							if(vv.imgsize == 0){
+								imgContent.setAttribute("src", "/image/apple.png");
+							}else{
+								imgContent.setAttribute("src", "/upload/"+vv.imgpath);
+							}  
+							
+						});
+					 }); //readyfunction
+					
 					imgContent.setAttribute("width", "73");
 					imgContent.setAttribute("heigth", "70");
 					imgDiv.appendChild(imgContent);
@@ -156,15 +177,14 @@
    	   					
    	   					marker.setImage(markerImage); 
    					}
-
+   					
         			// 마커 위에 커스텀오버레이를 표시합니다
         			// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정
         			var overlay = new kakao.maps.CustomOverlay({
         		    	map: map,
         			    position: marker.getPosition(),
-        			    zIndex: 999 //맨 위로
+        			    zIndex: 999//맨 위로
         			});
-
 
    					// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
    	        			kakao.maps.event.addListener(marker, 'click', function() {
@@ -175,14 +195,6 @@
 		    	} //if
 			});    		
 		}) //foreach
-		
-/*          		var imageSrc = '../image/red.png', // 마커이미지의 주소입니다    
-				    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-				    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-				      
-					// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-					var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
-*/        			
 
 	</script>
 </body>

@@ -13,18 +13,19 @@ import com.spring.dto.UsersDto;
 
 @Component
 public class Logininterceptor implements HandlerInterceptor {
-	public List<String> loginEssential = Arrays.asList("/login");
+	public List<String> loginEssential = Arrays.asList("/mypage/temp2", "/board/writeform");
 	//public List<String> loginInessential= Arrays.asList("/**");
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		UsersDto dto = (UsersDto) request.getSession().getAttribute("user");
 
-		if (dto != null  && dto.getUserid() != null) {
-			response.sendRedirect(" ");
+		if (dto == null || dto.getUserid() == null) {
+			//System.out.println("1");
+			response.sendRedirect("/login");
 			return false;
 		} else {
-
+			//System.out.println("2");
 			return true;	
 		}
 	}

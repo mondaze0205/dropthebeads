@@ -45,6 +45,7 @@ $(function(){
 $("#report").click(function(){
 	
 	if(document.getElementById("login_userid").value == "") {
+		alert("로그인 해주세요.")
 		return false;
 	}
 	

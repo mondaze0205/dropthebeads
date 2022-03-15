@@ -4,35 +4,29 @@
 <html>
 <head>
 <title>footer</title>
-<!-- 부트스트랩 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/css/footer.css">
+<!-- 아이콘  -->
+<script src="https://kit.fontawesome.com/2e7159d3c5.js" crossorigin="anonymous"></script>
+
 <!-- 글꼴 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
-<style>
-#footer{font-family: 'Dongle', sans-serif;}
-#ftitle{font-size: 24px;}
-#fcon{font-size: 16px;}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-<!-- 부트스트랩 -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<!-- 컨테이너 -->
-<div id="footer" style="text-align: center" class="container-xxl">
-<hr>
-<div id="ftitle">
-	<h4>Project5031</h4>
-</div>
-<div id="fcon">
-	010-1234-1234 
-	test@test.test<br>
-	고객센터 없음
-</div>
-</div>
+<!-- 푸터 1 -->
 
+<footer class="footer-01">
+	<div class="footer-logo">
+    	<a href="http://localhost:8087/"><img class="logo" src="/image/flogo.png" width="90px" height="auto"/></a>
+		<p class=“footer-text”><i class="fa-regular fa-copyright"></i> 2022 DROP THE BEADS. All rights reserved. | Project 503-1 <i class="fa-regular fa-face-smile-wink"></i></p>
+	</div>
+	
+	<div class="footer-img">
+<!-- 		<p>이건 오른쪽으로 갈꺼야<i class="fa-solid fa-face-smile-wink"></i></p> -->	
+		<img src="/image/smile.png" width="90px" height="auto" class="infinite_rotating_logo">
+	</div>
+	
+</footer>
 </body>
 </html>
