@@ -1,51 +1,49 @@
 @charset "UTF-8";
 
-h3{ 
-	padding: 50px 0;
-	text-align: center;
-}
-.main1{
-		text-align: center;
-}
-.mainimage{
-	float: left;
-	padding: 30px;
-	width: 35%;
-	height: 400px;
-}
-.login{
-	margin: 100px 0;
-	padding: 30px;
-	border: 1px solid #fbfabb;
-	float: right;
-	background-color: #fffff0;
-	width: 30%;
-	height: 200px;
-}
-.login a:link, a:visited{
-	color: gray;
-	text-decoration: none;
-}
-.login a:hover, a:active{
-	color: black;
-}
-.loginbox a:link, a:visited{
-	margin: 3px;
-	padding: 10px;
-	border: 1px solid #F6DD00;
-	background-color: #FEE500;
-	display: block;
-}
-.loginbox a:hover, a:active{
-	background-color: orange;
-	color: black;
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+.marquee{
+  -webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+  position: relative;
+  overflow: hidden;
+  --offset: 20vw;
+  --item-font-size: 10vw;
+  --move-initial: calc(-25% + var(--offset));
+  --move-final: calc(-50% + var(--offset));
 }
 
-.clear{
-	clear:both;
+.marquee__inner{
+  width: fit-content;
+  display: flex;
+  position: relative;
+  transform: translate3d(var(--move-initial),0,0);
+  animation: marquee 5s linear infinite;
+/*   animation-play-state: paused;
+ */}
+
+.marquee span{
+  white-space: nowrap;
+  font-size: 90px;
+  color: #00af79;
+  padding: 0 2vw;
 }
 
-.boardc1, .boardc2, .boardc3, .boardf1, .boardf2 , .boardf3{
-	display: none;
+/* .marquee:hover .marquee__inner{
+  // animation-play-state: running;
+	// opacity: 1;
+	// transition-duration: 0.4s;
+} */
 
+@keyframes marquee {
+  0% {
+  transform: translate3d(var(--move-initial), 0, 0);
+  }
+
+  100% {
+   transform: translate3d(var(--move-final), 0, 0);
+  }
 }

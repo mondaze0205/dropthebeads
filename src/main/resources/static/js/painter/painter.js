@@ -282,31 +282,13 @@ $("#copypic").click(function(){
 	}
 	
 });
-/*
-$("#btn001").click(function(){
-	alert('버튼 클릭')
-	
-	var rows = $(".pixel-canvas tr");
-	var code = "";
-	
-	for(var i = 0; i < rows.length; i++) {
-		var cells = rows[i].getElementsByTagName("td")
-		
-		for(var j = 0; j < cells.length; j++) {
-			code = code + rgbTohex($(cells[j]).css("background-color"));
-			//$(cells[j]).css("background-color");
-			code = code + " ";
-		}
-		code = code + "\n"
-	}
-	
-	
-	alert(code);
-});
-*/
+
 $(function(){
 	
 	makeGrid();
 	
+	if(document.getElementById("login_userid").value == "") {
+		document.getElementById("dummy2").disabled = true;
+	}
 	
 });

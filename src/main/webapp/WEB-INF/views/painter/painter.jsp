@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,15 +8,19 @@
 <link rel="stylesheet" type="text/css" href="/css/painter/painter.css">
 </head>
 <body>
-<jsp:include page="../header2.jsp"></jsp:include>
+	<jsp:include page="../header.jsp"></jsp:include>
 
 	<div class="container">
 		<div class="left"></div>
 		<div class="right"></div>
 		<div class="size_side">
-			<div class="size_top"><p>크기 설정</p></div>
+			<div class="size_top">
+				<p>크기 설정</p>
+			</div>
 			<div class="size_c">
-				<div><p>가로</p></div>
+				<div>
+					<p>가로</p>
+				</div>
 				<div class="makespace"></div>
 				<div>
 					<select class="input-width" name="width">
@@ -28,7 +33,9 @@
 				</div>
 			</div>
 			<div class="size_c">
-				<div><p>세로</p></div>
+				<div>
+					<p>세로</p>
+				</div>
 				<div class="makespace"></div>
 				<div>
 					<select class="input-height" name="height">
@@ -40,14 +47,14 @@
 					</select>
 				</div>
 			</div>
-    	</div>
+		</div>
 		<div class="pal_l">
 			<div class="pal_l_1">
-				<p>직접 선택 : </p>
+				<p>직접 선택 :</p>
 				<input type="color" class="color_picker">
 			</div>
 			<div class="pal_l_2">
-				<p>현재 색깔 : </p>
+				<p>현재 색깔 :</p>
 				<table>
 					<tr>
 						<td id="prePal"></td>
@@ -65,8 +72,8 @@
 					<td id="화이트" style="background-color: #ffffff"></td>
 					<td id="스노우" style="background-color: #fffafa"></td>
 					<td id="허니듀" style="background-color: #f0fff0"></td>
-					<td id="민트크림" style="background-color: #f5fffa"></td>	
-					<td id="아주르" style="background-color: #f0ffff"></td>	
+					<td id="민트크림" style="background-color: #f5fffa"></td>
+					<td id="아주르" style="background-color: #f0ffff"></td>
 					<td id="앨리스블루" style="background-color: #f0f8ff"></td>
 					<td id="고스트화이트" style="background-color: #f8f8ff"></td>
 					<td id="화이트스모크" style="background-color: #f5f5f5"></td>
@@ -86,7 +93,7 @@
 					<td id="그레이" style="background-color: #bebebe"></td>
 					<td id="딤그레이" style="background-color: #696969"></td>
 					<td id="라이트슬레이트그레이" style="background-color: #778899"></td>
-					<td id="슬레이트그레이" style="background-color: #708090"></td>	
+					<td id="슬레이트그레이" style="background-color: #708090"></td>
 					<td id="다크슬레이트그레이" style="background-color: #2f4f4f"></td>
 					<td id="블랙" style="background-color: #000000"></td>
 				</tr>
@@ -115,7 +122,7 @@
 					<td id="파파야휘프" style="background-color: #ffefd5"></td>
 					<td id="모카신" style="background-color: #ffe4b5"></td>
 					<td id="피치퍼프" style="background-color: #ffdab9"></td>
-					<td id="페일골든로드" style="background-color: #eee8aa"></td>	
+					<td id="페일골든로드" style="background-color: #eee8aa"></td>
 					<td id="카키" style="background-color: #fff68f"></td>
 					<td id="다크카키" style="background-color: #bdb76b"></td>
 					<td id="골드" style="background-color: #ffd700"></td>
@@ -150,7 +157,7 @@
 					<td id="론그린" style="background-color: #7cfc00"></td>
 					<td id="샤르트뢰즈" style="background-color: #7fff00"></td>
 				</tr>
-				<tr>	
+				<tr>
 					<td id="그린옐로우" style="background-color: #adff2f"></td>
 					<td id="스프링그린" style="background-color: #00ff7f"></td>
 					<td id="미디엄스프링그린" style="background-color: #00fa9a"></td>
@@ -178,7 +185,7 @@
 					<td id="인디고" style="background-color: #4b0082"></td>
 					<td id="다크슬레이트블루" style="background-color: #483d88"></td>
 					<td id="슬레이트블루" style="background-color: #6a5acd"></td>
-					<td id="미디엄슬레이트블루" style="background-color: #7b68ee"></td>		
+					<td id="미디엄슬레이트블루" style="background-color: #7b68ee"></td>
 				</tr>
 				<tr>
 					<td id="라이트슬레이트블루" style="background-color: #8470ff"></td>
@@ -205,9 +212,9 @@
 					<td id="스틸블루" style="background-color: #4682b4"></td>
 					<td id="로얄블루" style="background-color: #4169e1"></td>
 					<td id="블루" style="background-color: #0000ff"></td>
-					<td id="미디엄블루" style="background-color: #0000cd"></td>	
+					<td id="미디엄블루" style="background-color: #0000cd"></td>
 					<td id="다크블루" style="background-color: #00008b"></td>
-					<td id="네이비블루" style="background-color: #000080"></td>	
+					<td id="네이비블루" style="background-color: #000080"></td>
 					<td id="미드나이트블루" style="background-color: #191970"></td>
 				</tr>
 			</table>
@@ -220,7 +227,7 @@
 			<button type="button" id="erase" class="btn1">지우기</button>
 			<button type="button" id="dummy2" class="btn2">저장</button>
 			<button type="button" id="load" class="btn2">불러오기</button>
-			<p> 더블클릭하셔도 지워집니다.</p>
+			<p>더블클릭하셔도 지워집니다.</p>
 		</div>
 		<div class="canvas">
 			<table class="pixel-canvas"></table>
@@ -228,16 +235,18 @@
 		</div>
 	</div>
 	<div class="slzone">
-	<form method='post' action='paintSave' name="paintSave">
-		<textarea id="code" name="code" readonly></textarea>
-		<input type="text" id="pic_id" name="pic_id" value="새 그림" readonly>
-		<input type="text" id="pic_name" name="pic_name" value="새 그림" readonly>
-		<input type="text" id="pic_user" name="pic_user" value="${user.userid}" readonly>
-		<button type="button" id="save" name="save" value="save">저장</button>
-	</form>
-	<button type="button" id="copypic">복사</button>
+		<form method='post' action='paintSave' name="paintSave">
+			<textarea id="code" name="code" readonly></textarea>
+			<input type="text" id="pic_id" name="pic_id" value="새 그림" readonly>
+			<input type="text" id="pic_name" name="pic_name" value="새 그림"
+				readonly> <input type="text" id="pic_user" name="pic_user"
+				value="${user.userid}" readonly>
+			<button type="button" id="save" name="save" value="save">저장</button>
+		</form>
+		<button type="button" id="copypic">복사</button>
 	</div>
 	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="/js/painter/painter.js"></script>
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

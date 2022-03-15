@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/css/board/list.css">
 </head>
 <body>
-<jsp:include page="../header2.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <div class="container">
 <div class="side_top">
 	<button type="button" onclick="location.href='list?h=0'">새로고침</button>
@@ -79,6 +79,7 @@
 	<div class="side_right">
 	</div>
 </div>
+<jsp:include page="../footer.jsp"></jsp:include>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/js/board/list.js"></script>
 </body>

@@ -18,6 +18,7 @@ public interface FleaDao {
 	FleaDto fBoard(int f_postno); 
 	ImgDto iBoard(int imgid);
 	int updateFboard(FleaDto dto);
+	int updateImg(ImgDto dto);
 	int deleteFboard(int f_postno);
 	List<FleaDto> boardListSearch(Map<String, Object> m);
 	int countSearch(Map<String, Object> m);

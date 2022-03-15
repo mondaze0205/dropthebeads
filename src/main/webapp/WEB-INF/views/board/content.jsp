@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/css/board/content.css">
 </head>
 <body>
-<jsp:include page="../header2.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <div>
 	<input type="hidden" id="post_userid" value="${dto.userid}">
 	<input type="hidden" id="postid" value="${dto.postid}">
@@ -99,7 +99,8 @@
 		</div>
 	</div>
 </div>
+<jsp:include page="../footer.jsp"></jsp:include>
+</body>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/js/board/content.js"></script>
-</body>
 </html>

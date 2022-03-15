@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/css/painter/readonly.css">
 </head>
 <body>
-<jsp:include page="../header2.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <div class="hidearea">
 	<textarea id='s'>${s}</textarea>
 	<textarea id="code" readonly></textarea>
@@ -25,6 +25,7 @@
 		<br>
 	</div>
 </div>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/js/painter/readonly.js"></script>

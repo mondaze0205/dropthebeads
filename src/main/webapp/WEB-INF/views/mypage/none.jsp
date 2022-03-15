@@ -1,15 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 테스트 페이지</title>
+<title>Insert title here</title>
+<style>
+	.container {
+		width: 1280px;
+		margin: 0px auto;
+	}
+</style>
 </head>
 <body>
-<h1>test2</h1>
-<h1>${user.nickname}</h1>
-<a href="board/list">게시판으로</a>
+<jsp:include page="../header2.jsp"></jsp:include>
+<div class="container">
+<h1>존재하지 않는 id입니다.</h1>
+</div>
 </body>
 </html>

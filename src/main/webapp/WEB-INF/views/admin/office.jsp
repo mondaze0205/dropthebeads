@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/css/admin/office.css">
 </head>
 <body>
-<jsp:include page="../header2.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <div class="container">
 <div class="side_left"></div>
 
@@ -179,6 +179,7 @@
 	
 <div class="side_right"></div>
 </div>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/js/admin/office.js"></script>

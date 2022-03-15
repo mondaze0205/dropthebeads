@@ -18,6 +18,10 @@ public class Mypage2S {
 	@Autowired
 	Mypage2D dao;
 	
+	public int beforecheck(String userid) {
+		return dao.beforecheck(userid);
+	}
+	
 	public int count_b(String userid) {
 		return dao.count_b(userid);
 	}

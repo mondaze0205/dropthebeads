@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="/css/user/join.css">
 </head>
 <body>
-<jsp:include page="../header2.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <div class="container">
 <form:form action="insert" method="post" class="join_form" id="join_form" modelAttribute="insertDto">
 	<div class="join_text">아이디</div>
@@ -145,6 +145,7 @@
 	<input type="text" id="nick_check" value="0" readonly>
 	<input type="text" id="mail_check" value="0" readonly>
 </div>
+<jsp:include page="../footer.jsp"></jsp:include>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/user/join.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

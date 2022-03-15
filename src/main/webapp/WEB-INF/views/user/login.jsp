@@ -9,9 +9,10 @@
 <link rel="stylesheet" type="text/css" href="/css/user/login.css"> 
 </head>
 <body>
-<jsp:include page="../header2.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <div class="container">
 	<div class="login">
+	<h1>로그인</h1>
 		<form:form action="trylogin" method="post" modelAttribute="login" id="loginform" class="loginform">
 			<div class="id_pw">
 				<form:input type="text" path="userid" name="userid" id="userid" placeholder="아이디" />
@@ -31,6 +32,7 @@
 		</div>
 	</div>
 </div>
+<jsp:include page="../footer.jsp"></jsp:include>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/js/user/login.js"></script>
 </body>

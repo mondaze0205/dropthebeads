@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/css/board/write.css">
 </head>
 <body>
-<jsp:include page="../header2.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <div class="container">
 	<div class="side_top">
 		<p>글 작성하기</p>
@@ -62,7 +62,7 @@
 		<button type="button" id="h_copy">복사</button>
 	</div>
 </div>
-
+<jsp:include page="../footer.jsp"></jsp:include>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/js/board/write.js"></script>
 </body>

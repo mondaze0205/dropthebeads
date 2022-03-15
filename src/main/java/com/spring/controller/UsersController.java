@@ -2,6 +2,7 @@ package com.spring.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class UsersController {
 		  service.insertUsers(dto);
 		  return "redirect:/ ";
 	}
-	
+	/*
 	@GetMapping("/login")
 	public String logincheck(Model m) {
 		UsersDto dto = new UsersDto();
@@ -71,6 +72,34 @@ public class UsersController {
 			m.addAttribute("user", resultDto);
 		}			
 		return "redirect:/"; 
+	}
+	*/
+	@GetMapping("/login")
+	public String logincheck(Model m, HttpServletRequest request) {
+		UsersDto dto = new UsersDto();
+		m.addAttribute("login", dto);
+		//수정코드
+		String referer = request.getHeader("Referer");//이전 url 받아오는 코드
+		request.getSession().setAttribute("redirectURI", referer);//url 세션 저장
+		//
+		return "user/login";
+	}
+	
+	@PostMapping("/trylogin")
+	public String login(@ModelAttribute("login") UsersDto dto, Model m, HttpServletRequest request) {
+		UsersDto resultDto = service.login(dto);
+		if(resultDto == null) {
+			String e = "아이디나 비밀번호가 틀립니다.";
+			m.addAttribute("e", e);
+			return "user/login";
+		} else {
+			m.addAttribute("user", resultDto);
+			
+		}		
+		//이전 url을  세션으로 받고 받고 경로 지정 (수정코드)
+		HttpSession session = request.getSession();
+		String redirectUrl = (String) session.getAttribute("redirectURI");
+		return "redirect:"+redirectUrl;
 	}
 	
 	@GetMapping("/idCheck")
