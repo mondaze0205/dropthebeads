@@ -13,10 +13,10 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.dto.UsersDto;
 import com.spring.service.UsersService;
@@ -53,53 +53,40 @@ public class UsersController {
 		  service.insertUsers(dto);
 		  return "redirect:/ ";
 	}
-	/*
-	@GetMapping("/login")
-	public String logincheck(Model m) {
-		UsersDto dto = new UsersDto();
-		m.addAttribute("login", dto);
-		return "user/login";
-	}
 	
-	@PostMapping("/trylogin")
-	public String login(@ModelAttribute("login") UsersDto dto, Model m) {
-		UsersDto resultDto = service.login(dto);
-		if(resultDto == null) {
-			String e = "아이디나 비밀번호가 틀립니다.";
-			m.addAttribute("e", e);
-			return "user/login";
-		} else {
-			m.addAttribute("user", resultDto);
-		}			
-		return "redirect:/"; 
-	}
-	*/
 	@GetMapping("/login")
 	public String logincheck(Model m, HttpServletRequest request) {
 		UsersDto dto = new UsersDto();
 		m.addAttribute("login", dto);
-		//수정코드
 		String referer = request.getHeader("Referer");//이전 url 받아오는 코드
-		request.getSession().setAttribute("redirectURI", referer);//url 세션 저장
-		//
+		if(referer == null) {
+			request.getSession().setAttribute("redirectURI", "/");
+		}
+		else if(!referer.equals("http://localhost:8087/login")) {
+			request.getSession().setAttribute("redirectURI", referer);//url 세션 저장							
+		}
+		/*
+		System.out.println(referer);
+		System.out.println(request.getSession().getAttribute("redirectURI"));
+		*/
 		return "user/login";
 	}
 	
 	@PostMapping("/trylogin")
-	public String login(@ModelAttribute("login") UsersDto dto, Model m, HttpServletRequest request) {
+	public String login(@ModelAttribute("login") UsersDto dto, Model m, RedirectAttributes ra, HttpServletRequest request) {
 		UsersDto resultDto = service.login(dto);
+		HttpSession session = request.getSession();
+		String redirectURI = (String) session.getAttribute("redirectURI");
 		if(resultDto == null) {
 			String e = "아이디나 비밀번호가 틀립니다.";
-			m.addAttribute("e", e);
-			return "user/login";
+			ra.addFlashAttribute("e", e);
+			return "redirect:/login";
 		} else {
 			m.addAttribute("user", resultDto);
-			
+			session.removeAttribute("redirectURI");
 		}		
 		//이전 url을  세션으로 받고 받고 경로 지정 (수정코드)
-		HttpSession session = request.getSession();
-		String redirectUrl = (String) session.getAttribute("redirectURI");
-		return "redirect:"+redirectUrl;
+		return "redirect:"+redirectURI;
 	}
 	
 	@GetMapping("/idCheck")

@@ -97,40 +97,32 @@
    <div>
       <c:forEach items = "${cList}" var="comm" varStatus="s">
       <div class="comm-03">
-      	<span>ID : ${dto.userid}&nbsp;&nbsp;|</span>&nbsp;&nbsp;<fmt:formatDate value ="${comm.f_cdate}" dateStyle="short"/>
-      </div>
+      	<span>아이디 : ${comm.userid}  /</span>  <fmt:formatDate value ="${comm.f_cdate}" dateStyle="short"/>
+      </div>		<!-- 민주 -->
          
          <div class="comm-02"> 
             <textarea class="cc01" name="up" id="${s.index}" value="${comm.f_comment}" cols="125" rows="2" style="overflow: hidden;">${comm.f_comment}</textarea>
-            <div>
-               <%-- <input name = "up" id = "${s.index}" value="${comm.f_comment}" style="width : 400px;"> --%>
-               <button class="upbtn" name="${s.index}" id="${comm.f_cno}">수정</button>
-               <button class="delbtn" id="${comm.f_cno}">삭제</button>
-
-               <c:choose>
-                  <c:when test="${comm.f_like < 0}">
-                     <button class="likebtn" id="${comm.f_cno}" value =-1> ♡  ${comm.f_like} </button>
-                  </c:when>
-                  
-                  <c:when test="${comm.f_like eq 0}">
-                     <button class="likebtn" id="${comm.f_cno}" value ="${comm.f_like}"> ♡  ${comm.f_like} </button>
-                  </c:when>
-                  
-                  <c:when test="${comm.f_like eq 1}">
-                     <button class="likebtn" id="${comm.f_cno}" value ="${comm.f_like}"> ♥  ${comm.f_like} </button>
-                  </c:when>
-                  
-                  <c:when test="${comm.f_like > 1}">
-                     <button class="likebtn" id="${comm.f_cno}" value ="${comm.f_like}"> ♥  ${comm.f_like} </button>
-                  </c:when>
-               </c:choose>
+            <div> <!-- 민주 -->
+	          <c:if test="${comm.userid == user.userid}"> 
+	             <button class="upbtn" name="${s.index}" id="${comm.f_cno}">수정</button>
+	             <button class="delbtn" id="${comm.f_cno}">삭제</button>
+	          </c:if>
+              <c:choose>
+                 <c:when test="${comm.f_like <= 0}">
+                    <button class="likebtn" id="${comm.f_cno}" value ="${comm.f_like}"> ♡  ${comm.f_like} </button>
+                 </c:when>
+                 
+                 <c:when test="${comm.f_like >= 1}">
+                    <button class="likebtn" id="${comm.f_cno}" value ="${comm.f_like}"> ♥  ${comm.f_like} </button>
+                 </c:when>
+              </c:choose>
             </div>
          </div>
        </c:forEach>
    </div>    
    </div>
    <div>
-   	<input type="hidden" id="h_userid" value="${users.userid}">
+   	<input type="hidden" id="h_userid" value="${user.userid}"> <!-- 민주 -->
    	<input type="hidden" id="h_f_postno" value="${dto.f_postno}">
    </div>
 

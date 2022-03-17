@@ -51,7 +51,7 @@
 			<table class="pixel-canvas"></table>
 		</div>
 		<div class="content">
-		${dto.postcon}
+			<textarea class="content_text" readonly>${dto.postcon}</textarea>
 		</div>
 		<div class="reply">
 			<div class="replytop">
@@ -68,7 +68,7 @@
 						<input type="hidden" id="uid_${status.index}" value="${r.userid}">
 						<input type="hidden" id="rid_${status.index}" value="${r.replyid}">
 					</div>
-					<div><h5>${r.repcon}</h5></div>
+					<div class="repcon"><p>${r.repcon}</p></div>
 					<div class="makespace"></div>
 					<div class="r_report" id="report_${status.index}"><h6>신고</h6></div>
 					<div class="r_del" id="del_${status.index}"><h6>삭제</h6></div>
@@ -102,5 +102,6 @@
 <jsp:include page="../footer.jsp"></jsp:include>
 </body>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
 <script src="/js/board/content.js"></script>
 </html>

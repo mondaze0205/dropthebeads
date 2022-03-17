@@ -47,6 +47,14 @@
 	padding: 8px 5px;
 }
 
+.hr {
+	width: 227px;
+}
+
+.hr hr{
+	width: 100%;
+}
+
 .menu p {
 	margin: 0px;
 	cursor: default;
@@ -56,16 +64,29 @@
 	background-color: palegoldenrod;
 }
 
+.myinfo {
+	background-color: lightcyan;
+}
+
+.withdraw {
+	background-color: red;
+	border: 1px solid black;
+	margin: 5px 0px;
+	width: 215px;
+	padding: 8px 5px;
+}
+
+.withdraw p {
+	margin: 0px;
+	cursor: default;
+	color: white;
+}
+
 .con {
 	grid-area: con;
 	padding-top: 5px;
 }
-/*
-.search {
-	height: 30px;
-	margin-bottom: 10px;
-}
-*/
+
 .trace {
 	display: flex;
 	border-top: 1px solid black;
@@ -107,19 +128,6 @@
 	flex-direction: column;
 	justify-content: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

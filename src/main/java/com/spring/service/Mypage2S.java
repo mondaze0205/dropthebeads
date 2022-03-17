@@ -11,6 +11,7 @@ import com.spring.dto.FleaCommDto;
 import com.spring.dto.FleaDto;
 import com.spring.dto.PicDto;
 import com.spring.dto.ReplyDto;
+import com.spring.dto.UsersDto;
 
 @Service
 public class Mypage2S {
@@ -60,5 +61,37 @@ public class Mypage2S {
 	
 	public List<FleaCommDto> mine_fr(String userid){
 		return dao.mine_fr(userid);
+	}
+	
+	public int checkpost(int postid){
+		return dao.checkpost(postid);
+	}
+	
+	public int checkpost2(int f_postno){
+		return dao.checkpost2(f_postno);
+	}
+	
+	public String pwCheck(String userid) {
+		return dao.pwCheck(userid);
+	}
+	
+	public String nnCheck(String nickname) {
+		return dao.nnCheck(nickname);
+	}
+	
+	public String nnCheck2(String userid) {
+		return dao.nnCheck2(userid);
+	}
+	
+	public String mailCheck(String userid) {
+		return dao.mailCheck(userid);
+	}
+	
+	public int update(UsersDto dto){
+		return dao.update(dto);
+	}
+	
+	public int withdraw(String userid) {
+		return dao.withdraw(userid);
 	}
 }

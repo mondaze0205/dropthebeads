@@ -21,27 +21,26 @@
 </div>	
 <div class="menubar">
 	<div class="menu" id="board"><p>커뮤니티 - 글</p></div>
-	<div class="menu selected" id="reply"><p>커뮤니티 - 댓글</p></div>
-	<div class="menu" id="picture"><p>그림판</p></div>
+	<div class="menu" id="reply"><p>커뮤니티 - 댓글</p></div>
+	<div class="menu selected" id="picture"><p>그림판</p></div>
 	<div class="menu" id="fboard"><p>벼룩시장 - 글</p></div>
-	<div class="menu" id="reply"><p>벼룩시장 - 댓글</p></div>
+	<div class="menu" id="freply"><p>벼룩시장 - 댓글</p></div>
 	<div class="hr"><hr></div>
 	<div class="menu myinfo" id="myinfo"><p>내 정보</p></div>
 	<div class="withdraw" id="withdraw" onclick="location.href='/bye';"><p>회원 탈퇴</p></div>
 </div>
 <div class="con">
 	<c:choose>
-		<c:when test="${rlist == 'none'}">
+		<c:when test="${blist == 'none'}">
 			<div class="none">
 				<p>글이 없대.</p>
 			</div>
 		</c:when>
 		<c:otherwise>
-			<c:forEach items="${rlist}" var="r" varStatus="rs">
+			<c:forEach items="${plist}" var="p" varStatus="ps">
 				<div class="trace">
-					<div class="t1" id="${r.postid}">
-						<h5>${r.repcon}</h5>
-						<h6><fmt:formatDate value="${r.replydate}" pattern="yy.MM.dd" /></h6>
+					<div class="t1" id="${p.pictureid}">
+						<h5>${p.picname}</h5>
 					</div>
 					<div class="t2">
 					</div>
@@ -57,5 +56,5 @@
 <jsp:include page="../footer.jsp"></jsp:include>
 </body>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="/js/mypage/reply.js"></script>
+<script src="/js/mypage/picture.js"></script>
 </html>

@@ -23,11 +23,16 @@ $(function() {
 
 		$.ajax({
 			url: "../insert",
-			data: "f_postno=" + no + "&f_comment=" + comment + "&userid" + userid,
+			data: {
+				f_postno:no,
+				f_comment:comment,
+				userid:userid
+			},	
 			method: "get"
 		}).done(function() {
-			location.reload();
+			alert(userid);
 			alert("댓글을 등록했습니다");
+			location.reload();
 		});
 
 	})//add click

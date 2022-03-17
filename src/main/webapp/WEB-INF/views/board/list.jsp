@@ -72,9 +72,7 @@
 	</c:if>
 </div>
 <div class="noname">
-	<h1>${user.nickname}</h1>
-	<a href="/">홈으로</a>
-	<a href="../logout">로그아웃테스트</a>
+	<img src="/image/advertise.png" style="width:100%">
 </div>
 	<div class="side_right">
 	</div>

@@ -64,5 +64,5 @@ $(".done").click(function(){
 })
 
 $("#users").click(function(){
-	location.href = '/members';
+	location.href = '/admin/members';
 })

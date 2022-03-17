@@ -1,0 +1,105 @@
+
+p {
+	font-size: 13px;
+	margin: 5px 1px;
+}
+
+span {
+	font-size: 13px;
+	margin: 5px 1px;
+	color: red;
+}
+
+.container {
+	display: grid;
+	justify-content: center;
+	margin: 10px;
+}
+
+.update_form {
+	width: 330px;
+	padding: 10px;
+	border: 1px solid green;
+}
+
+.update_text {
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0px 1px 5px 1px;
+}
+
+.update_item {
+	margin: 0px 0px 10px 0px;
+}
+
+.update_item input[type="text"] {
+	width: 100%;
+	height: 30px;
+	box-sizing: border-box;
+	margin: 0px;
+}
+
+.update_birth {
+	margin: 0px 0px 10px 0px;
+	display: flex;
+}
+
+.update_birth input[type="text"] {
+	width: 32%;
+	height: 30px;
+	box-sizing: border-box;
+	margin: 0px;
+}
+
+.update_birth select {
+	width: 32%;
+	height: 30px;
+	box-sizing: border-box;
+	margin: 0px;
+}
+
+.item_line1 {
+	margin: 0px 0px 10px 0px;
+	display: flex;
+}
+
+.item_line1 input[type="text"] {
+	width: 70%;
+	height: 30px;
+	box-sizing: border-box;
+	margin: 0px;
+}
+
+.item_line1 button {
+	width: 25%;
+	height: 30px;
+	box-sizing: border-box;
+	background-color: lawngreen;
+	border-radius: 2px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.up_submit {
+	display: flex;
+	justify-content: center;
+}
+
+.up_submit button {
+	width: 20%;
+	height: 30px;
+	box-sizing: border-box;
+	background-color: lightskyblue;
+	border-radius: 2px;
+	margin: 0px 10px;
+	padding: 0px;
+}
+
+.makespace {
+	margin: 0px auto;
+}
+
+
+.hidearea {
+	display: none;
+}
