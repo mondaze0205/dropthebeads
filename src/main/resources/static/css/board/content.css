@@ -130,6 +130,7 @@ h6:hover {
 	resize: none;
 	border: none;
 	font-size: 11pt;
+	font-family: sans-serif;
 }
 
 .content_text:focus {
