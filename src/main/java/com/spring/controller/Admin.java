@@ -54,6 +54,15 @@ public class Admin {
 			m.addAttribute("r_reply", "none");
 		}
 		
+		int fr = service.c_freply();
+		if(fr != 0) {
+			List<Map<String, Object>> r_freply = service.r_freply();			
+			m.addAttribute("r_freply", r_freply);
+		} else {
+			m.addAttribute("r_freply", "none");
+		}
+		
+		
 		return "admin/office";
 	}
 	
@@ -75,9 +84,12 @@ public class Admin {
 		} else if(dto.getPictureid() != 0) {
 			type = "Picture";
 			no = dto.getPictureid();
-		} else {
+		} else if(dto.getReplyid() != 0) {
 			type = "Reply";
 			no = dto.getReplyid();
+		} else if(dto.getF_cno() != 0) {
+			type = "FReply";
+			no = dto.getF_cno();
 		}
 		
 		return service.report(dto, type, no, userid, reportid);

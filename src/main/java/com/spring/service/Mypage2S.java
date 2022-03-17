@@ -32,7 +32,7 @@ public class Mypage2S {
 	}
 	
 	public int count_r(String userid) {
-		return dao.count_b(userid);
+		return dao.count_r(userid);
 	}
 	
 	public List<ReplyDto> mine_r(String userid){
@@ -40,7 +40,7 @@ public class Mypage2S {
 	}
 	
 	public int count_p(String userid) {
-		return dao.count_b(userid);
+		return dao.count_p(userid);
 	}
 	
 	public List<PicDto> mine_p(String userid){
@@ -48,7 +48,7 @@ public class Mypage2S {
 	}
 	
 	public int count_fb(String userid) {
-		return dao.count_b(userid);
+		return dao.count_fb(userid);
 	}
 	
 	public List<FleaDto> mine_fb(String userid){
@@ -56,7 +56,7 @@ public class Mypage2S {
 	}
 	
 	public int count_fr(String userid) {
-		return dao.count_b(userid);
+		return dao.count_fr(userid);
 	}
 	
 	public List<FleaCommDto> mine_fr(String userid){

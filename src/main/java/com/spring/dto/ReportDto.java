@@ -9,6 +9,7 @@ public class ReportDto {
 	private int f_postno;
 	private int pictureid;
 	private int replyid;
+	private int f_cno;
 	private int stack;
 	private String reporters;
 }

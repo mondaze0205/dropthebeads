@@ -24,6 +24,8 @@ public interface AdminDao {
 	List<Map<String, Object>> r_pic();
 	int c_reply();
 	List<Map<String, Object>> r_reply();
+	int c_freply();
+	List<Map<String, Object>> r_freply();
 	
 	int findCon(int replyid);
 	
