@@ -110,7 +110,7 @@ public class Admin {
 		return "처리 완료";
 	}
 	
-	@GetMapping("/members")
+	@GetMapping("/admin/members")
 	public String members(@RequestParam(name="p", defaultValue="1") int page, 
 						  @RequestParam(name="o", defaultValue="0") int order, Model m) {
 		int count = service.count();

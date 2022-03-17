@@ -1,5 +1,6 @@
 package com.spring.interceptor;
 
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,9 +13,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import com.spring.dto.UsersDto;
 
 @Component
-public class Logininterceptor implements HandlerInterceptor {
-	public List<String> loginEssential = Arrays.asList("/bye", "/board/writeform");
-	//public List<String> loginInessential= Arrays.asList("/**");
+public class Admininterceptor implements HandlerInterceptor {
+	public List<String> adminEssential = Arrays.asList("/admin/**");
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -23,8 +24,17 @@ public class Logininterceptor implements HandlerInterceptor {
 		if (dto == null || dto.getUserid() == null) {
 			response.sendRedirect("/login");
 			return false;
-		} else {
+		} else if(dto.getUserid().equals("dulgi")) {
 			return true;	
+		} else {
+			response.setCharacterEncoding("UTF-8"); 
+			response.setContentType("text/html; charset=UTF-8"); 
+			PrintWriter printwriter = response.getWriter();
+			printwriter.print("<script>alert('권한이 없습니다.');history.back()</script>");
+			printwriter.flush();
+			printwriter.close();
+			//response.sendRedirect("/");
+			return false;
 		}
 	}
 

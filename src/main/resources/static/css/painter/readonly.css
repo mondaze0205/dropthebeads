@@ -22,3 +22,7 @@
 .canvas {
 	margin-top: 20px;
 }
+
+.hidearea {
+	display: none;
+}

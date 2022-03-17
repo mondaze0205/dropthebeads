@@ -54,7 +54,9 @@ $(function(){
 		}
 							
 	}); //getJSON
- 	 
+ 	
+ 	autosize($(".content_text"));
+	
 });
 
 $("#replyRefresh").click(function(){
@@ -76,7 +78,7 @@ $("#replyRefresh").click(function(){
 			var d = changeDate(r["replydate"]);
 			$(".rs").append("<div class='r'></div>");
 			$(".r:last-child").append('<div class="r_id"><h5>' + r["nickname"] + '</h5><input type="hidden" id="uid_' + i + '" value="' + r["userid"] + '"><input type="hidden" id="rid_' + i + '" value="' + r["replyid"] + '"</div>');
-			$(".r:last-child").append('<div><h5>' + r["repcon"] + '</h5></div>');
+			$(".r:last-child").append('<div class="repcon"><p>' + r["repcon"] + '</p></div>');
 			$(".r:last-child").append('<div class="makespace"></div>');
 			$(".r:last-child").append('<div class="r_report" id="report_' + i + '"><h6>신고</h6></div>');
 			$(".r:last-child").append('<div class="r_del" id="del_' + i + '"><h6>삭제</h6></div>');
@@ -278,8 +280,6 @@ function changeDate(date) {
 	return s;
 	
 }
-
-
 
 
 

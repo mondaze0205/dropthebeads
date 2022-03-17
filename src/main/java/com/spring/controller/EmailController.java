@@ -25,7 +25,9 @@ public class EmailController {
 	@RequestMapping("/send")
 	@ResponseBody
 	public String[] sendMail(String emailAddress) throws Exception {
-
+		
+		System.out.println(emailAddress);
+		
 		EmailVo email = new EmailVo();
 		String receiver = emailAddress; // Receiver.
 		String subject = "Email Á¦¸ñ";

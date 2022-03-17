@@ -19,4 +19,12 @@ public interface Mypage2D {
 	List<FleaDto> mine_fb(String userid);
 	int count_fr(String userid);
 	List<FleaCommDto> mine_fr(String userid);
+	int checkpost(int postid);
+	int checkpost2(int f_postno);
+	String pwCheck(String pw);
+	String nnCheck(String nickname);
+	String nnCheck2(String userid);
+	String mailCheck(String userid);
+	int update(UsersDto dto);
+	int withdraw(String userid);
 }

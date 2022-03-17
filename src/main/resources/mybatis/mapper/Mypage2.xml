@@ -10,13 +10,13 @@
 	select count(*) from board where userid = #{userid}
 </select>
 <select id="mine_b" parameterType="String" resultType="com.spring.dto.BoardDto">
-	select * from board where userid = #{userid}
+	select * from board where userid = #{userid} order by postdate desc
 </select>
 <select id="count_r" parameterType="String" resultType="int">
 	select count(*) from reply where userid = #{userid}
 </select>
 <select id="mine_r" parameterType="String" resultType="com.spring.dto.ReplyDto">
-	select * from reply where userid = #{userid}
+	select * from reply where userid = #{userid} order by replydate desc
 </select>
 <select id="count_p" parameterType="String" resultType="int">
 	select count(*) from picture where userid = #{userid}
@@ -36,4 +36,28 @@
 <select id="mine_fr" parameterType="String" resultType="com.spring.dto.FleaCommDto">
 	select * from fleacomment where userid = #{userid}
 </select>
+<select id="checkpost" parameterType="int" resultType="int">
+	select count(*) from board where postid = #{postid}
+</select>
+<select id="checkpost2" parameterType="int" resultType="int">
+	select count(*) from fleaboard where f_postno = #{f_postno}
+</select>
+<select id="pwCheck" parameterType="String" resultType="String">
+	select pw from users where userid=#{userid}
+</select>
+<select id="nnCheck" parameterType="String" resultType="String">
+	select nickname from users where nickname=#{nickname}
+</select>
+<select id="nnCheck2" parameterType="String" resultType="String">
+	select nickname from users where userid=#{userid}
+</select>
+<select id="mailCheck" parameterType="String" resultType="String">
+	select email from users where userid=#{userid}
+</select>
+<update id="update" parameterType="com.spring.dto.UsersDto">
+	update users set pw=#{pw}, nickname=#{nickname}, address=#{address}, email=#{email}, birth=#{birth} where userid=#{userid}
+</update>
+<delete id="withdraw" parameterType="String">
+	delete from users where userid = #{userid}
+</delete>
 </mapper>

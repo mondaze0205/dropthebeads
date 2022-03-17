@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/css/flea/flea.css">
 </head>
 <body>
+<jsp:include page="../header.jsp"></jsp:include>
 	<h2 class="mb-2">FLEA MARKET MAP</h2>
 	<div align="center">
 		<p> 토끼 - 구매  |  당근 - 판매</p>
@@ -197,5 +198,6 @@
 		}) //foreach
 
 	</script>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

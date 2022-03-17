@@ -31,7 +31,7 @@
 		<li class="logon">
 			<a href="/mypage/${user.userid}">마이페이지</a>
 		</li>
-		<li>
+		<li id="admin">
 			<a href="/admin/office">관리자메뉴</a>
 		</li>
 	</ul>
@@ -67,6 +67,11 @@
 		for (var e of es) {
 			e.style.display = "none";
 		}
+	}
+	
+	if (document.getElementById("login_userid").value != "dulgi") {
+		var admin = document.getElementById("admin")
+		admin.style.display = "none"
 	}
 </script>
 </body>
