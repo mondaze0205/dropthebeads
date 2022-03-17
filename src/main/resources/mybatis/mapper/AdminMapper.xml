@@ -4,16 +4,16 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.dao.AdminDao">
 <select id="checkReports" parameterType="com.spring.dto.ReportDto" resultType="int">
-	select count(*) from report where (postid = #{postid} and postid != 0) or (f_postno = #{f_postno} and f_postno != 0) or (pictureid = #{pictureid} and pictureid != 0) or (replyid = #{replyid} and replyid != 0)
+	select count(*) from report where (postid = #{postid} and postid != 0) or (f_postno = #{f_postno} and f_postno != 0) or (pictureid = #{pictureid} and pictureid != 0) or (replyid = #{replyid} and replyid != 0) or (f_cno = #{f_cno} and f_cno != 0)
 </select>
 <select id="checkReportid" parameterType="com.spring.dto.ReportDto" resultType="int">
-	select reportid from report where (postid = #{postid} and postid != 0) or (f_postno = #{f_postno} and f_postno != 0) or (pictureid = #{pictureid} and pictureid != 0) or (replyid = #{replyid} and replyid != 0)
+	select reportid from report where (postid = #{postid} and postid != 0) or (f_postno = #{f_postno} and f_postno != 0) or (pictureid = #{pictureid} and pictureid != 0) or (replyid = #{replyid} and replyid != 0) or (f_cno = #{f_cno} and f_cno != 0)
 </select>
 <select id="checkReporters" parameterType="int" resultType="String">
 	select reporters from report where reportid = #{reportid}
 </select>
 <insert id="report" parameterType="com.spring.dto.ReportDto">
-	insert into report (reportid, postid, f_postno, pictureid, replyid, reporters) values (report_seq.nextval, #{postid}, #{f_postno}, #{pictureid}, #{replyid}, #{reporters})
+	insert into report (reportid, postid, f_postno, pictureid, replyid, f_cno, reporters) values (report_seq.nextval, #{postid}, #{f_postno}, #{pictureid}, #{replyid}, #{f_cno}, #{reporters})
 </insert>
 <update id="stack" parameterType="int">
 	update report set stack = stack + 1 where reportid = #{reportid}
@@ -42,6 +42,12 @@
 <select id="r_reply" resultType="Map">
 	select * from (select a.reportid, a.replyid, a.stack, a.reporters, b.userid, b.postid, b.repcon from report a, reply b where a.replyid = b.replyid) where rownum &lt; 5
 </select>
+<select id="c_freply" resultType="int">
+	select count(*) from report a, fleacomment b where a.f_cno = b.f_cno
+</select>
+<select id="r_freply" resultType="Map">
+	select * from (select a.reportid, a.f_cno, a.stack, a.reporters, b.userid, b.f_postno, b.f_comment from report a, fleacomment b where a.f_cno = b.f_cno) where rownum &lt; 5
+</select>
 <select id="findCon" parameterType="int" resultType="int">
 	select postid from reply where replyid = #{replyid}
 </select>
@@ -64,6 +70,9 @@
 	</if>
 	<if test="type == 3">
 		reply where replyid
+	</if>
+	<if test="type == 4">
+		fleacomment where f_cno
 	</if>
 	= #{typeid}
 </delete>

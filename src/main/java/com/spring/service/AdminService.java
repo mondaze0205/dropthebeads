@@ -168,6 +168,14 @@ public class AdminService {
 		return dao.r_reply();
 	}
 	
+	public int c_freply() {
+		return dao.c_freply();
+	}
+	
+	public List<Map<String, Object>> r_freply() {
+		return dao.r_freply();
+	}
+	
 	public int findCon(int replyid) {
 		return dao.findCon(replyid);
 	}
@@ -200,6 +208,8 @@ public class AdminService {
 			map.put("type", 2);
 		} else if(type.equals("reply")) {
 			map.put("type", 3);
+		} else if(type.equals("freply")) {
+			map.put("type", 4);
 		}
 	
 		map.put("typeid", typeid);
