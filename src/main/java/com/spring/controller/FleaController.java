@@ -105,7 +105,7 @@ public class FleaController {
 	}
 
 	@GetMapping("/flea/fcontent/{f_postno}")
-	public String content(@ModelAttribute("user") UsersDto user, @PathVariable int f_postno, Model m) {
+	public String content(@PathVariable int f_postno, Model m) {
 		FleaDto dto = service.fBoard(f_postno);
 		ImgDto dto2 = service.iBoard(dto.getImgid());
 		m.addAttribute("dto", dto);
