@@ -14,7 +14,7 @@ import com.spring.dto.UsersDto;
 
 @Component
 public class Logininterceptor2 implements HandlerInterceptor {
-	public List<String> loginEssential = Arrays.asList("/login");
+	public List<String> loginEssential = Arrays.asList("/login", "/join");
 	//public List<String> loginInessential= Arrays.asList("/**");
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

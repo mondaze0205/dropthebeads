@@ -1,49 +1,102 @@
-@charset "UTF-8";
-
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-
-.marquee{
-  -webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-  position: relative;
-  overflow: hidden;
-  --offset: 20vw;
-  --item-font-size: 10vw;
-  --move-initial: calc(-25% + var(--offset));
-  --move-final: calc(-50% + var(--offset));
+p {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: default;
+	margin: 0px;
 }
 
-.marquee__inner{
-  width: fit-content;
-  display: flex;
-  position: relative;
-  transform: translate3d(var(--move-initial),0,0);
-  animation: marquee 5s linear infinite;
-/*   animation-play-state: paused;
- */}
-
-.marquee span{
-  white-space: nowrap;
-  font-size: 90px;
-  color: #00af79;
-  padding: 0 2vw;
+.container {
+	display: grid;
+	grid-template-areas:
+	"left center right";
+	grid-template-columns: auto 1280px auto;
 }
 
-/* .marquee:hover .marquee__inner{
-  // animation-play-state: running;
-	// opacity: 1;
-	// transition-duration: 0.4s;
-} */
+.size_left {
+	grid-area: left;
+}
 
-@keyframes marquee {
-  0% {
-  transform: translate3d(var(--move-initial), 0, 0);
-  }
+.size_right {
+	grid-area: right;
+}
 
-  100% {
-   transform: translate3d(var(--move-final), 0, 0);
-  }
+.center {
+	grid-area: center;
+}
+
+.item_box {
+	display: grid;
+	grid-template-areas:
+	"p t"
+	"p c"
+	"p e";
+	grid-template-columns: 300px 700px;
+	border: 1px solid black;
+	margin-bottom: 10px;
+}
+
+.picture {
+	grid-area : p;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.canvas {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.canvas table, .canvas tr, .canvas td {
+  border: silver 1px dotted;
+}
+
+.canvas table {
+  border-collapse: collapse;
+}
+
+.canvas tr {
+  height: 5px;
+}
+
+.canvas td {
+  min-width: 5px;
+  box-sizing: border-box;
+}
+
+.title {
+	grid-area: t;
+	height: 100px;
+	padding-top: 10px;
+	box-sizing: border-box;
+}
+
+.title p {
+	font-weight: bold;
+	font-size: 33px;
+}
+
+.postcon {
+	grid-area : c;
+	height: 150px;
+}
+
+.etc {
+	grid-area: e;
+	height: 50px;
+	display: flex;
+}
+
+.readcount {
+	color: dimgray;
+	margin-right: 10px;
+}
+
+.rec {
+	color: red;
+}
+
+.hidearea {
+	display: none;
 }

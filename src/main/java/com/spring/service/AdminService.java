@@ -24,6 +24,21 @@ public class AdminService {
 	@Autowired
 	AdminDao dao;
 	
+	public List<BoardDto> boardbest(String today, String beforemonth){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("today", today);
+		map.put("beforemonth", beforemonth);
+		return dao.boardbest(map);
+	}
+	
+	public List<FleaDto> fleabest(){
+		return dao.fleabest();
+	}
+	
+	public ImgDto getImg(int imgid) {
+		return dao.getImg(imgid);
+	}
+	
 	public int checkReports(ReportDto dto) {
 		if(dao.checkReports(dto) != 0) {
 			return dao.checkReportid(dto);
