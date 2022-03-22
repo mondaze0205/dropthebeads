@@ -10,6 +10,8 @@
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
+<hr color="#00af79" size="2px">
+
 <div class="container">
 <div class="side_left"></div>
 <div class="center">

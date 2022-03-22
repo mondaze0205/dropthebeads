@@ -3,7 +3,7 @@ div:hover {
 }
 
 a, p {
-	color: black;
+	color: #00af79;
 	text-decoration: none;
 	outline: none;
 	cursor: pointer;

@@ -22,7 +22,7 @@
 <hr color="#00af79" size="2px">
 
 <div class="title_flea">
-	<h2 class="mb-1">[${search}]로 검색한 결과입니다. <i class="fa-regular fa-face-smile"></i></h2>
+	<h2 class="mb-1">[${search}]로 검색한 결과입니다.</h2>
 	<hr class="dots">
 </div>
 

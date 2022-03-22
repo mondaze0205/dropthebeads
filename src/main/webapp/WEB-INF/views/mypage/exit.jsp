@@ -8,6 +8,8 @@
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
+<hr color="#00af79" size="2px">
+
 <div class="container">
 	<form class="withdrawform">
 		<div class="div1">

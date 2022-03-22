@@ -4,17 +4,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 <link rel="stylesheet" type="text/css" href="/css/user/join.css">
+
+<!-- 글꼴 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Press+Start+2P&family=Raleway:wght@300&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<jsp:include page="../header.jsp"></jsp:include>
+
 <div class="container">
+<div class="left">
+	<div class="smile">
+		<img src="/image/smile.png" alt="" class="sm-1" width="70px" height="auto">
+		<img src="/image/smile2.png" alt="" class="sm-2" width="70px" height="auto">
+	</div>
+	<div class="logo">
+<!-- 		<a href="http://localhost:8087/"><img class="logo" src="/image/logow2.png" width="280px" height="auto"/></a> -->
+ 			<h1 class="join_title2">Welcome to our<br>Beads community.</h1>
+	</div>
+</div>
+<div class="right">
+	<p class="signin">이미 가입하셨나요? <a href="login">로그인</a></p>
+	<h1 class="join_title">JOIN DROP THE BEADS</h1>
+
 <form:form action="insert" method="post" class="join_form" id="join_form" modelAttribute="insertDto">
+
 	<div class="join_text">아이디</div>
 	<div class="join_item">
 		<form:input type="text" path="userid" id="userid" name="userid" oninput="this.value = this.value.replace(/[^0-9a-z]/g, '');" />
-		<p id="id_msg">영문 소문자와 숫자만 사용 가능합니다.</p>
+		<p class="msg" id="id_msg">영문 소문자와 숫자만 사용 가능합니다.</p>
 		<form:errors path="userid" delimiter=" "></form:errors>
 	</div>
 	<div class="join_text">비밀번호</div>
@@ -25,14 +46,14 @@
 	<div class="join_text">비밀번호 재확인</div>
 	<div class="join_item">
 		<input type="text" id="pw1" name="pw1" oninput="this.value = this.value.replace(/[^0-9a-zA-Z!?@#$%^&*():;+-=~{}<>\_\[\]\|\\\,\.]/g, '');">
-		<p id="pw_msg">영문자와 숫자, 특수기호가 최소 한 글자씩 필요합니다.</p>
+		<p class="msg" id="pw_msg">영문자와 숫자, 특수기호가 최소 한 글자씩 필요합니다.</p>
 	<form:errors path="pw" delimiter=" "></form:errors>
 	</div>
 	
 	<div class="join_text">닉네임</div>
 	<div class="join_item">
 		<form:input type="text" path="nickname" id="nickname" name="nickname" oninput="this.value = this.value.replace(/[\s]/g, '');"/>
-		<p id="nick_msg">닉네임을 입력하세요. 공백문자는 사용 불가합니다.</p>
+		<p class="msg" id="nick_msg">닉네임을 입력하세요. 공백문자는 사용 불가합니다.</p>
 		<form:errors path="nickname" delimiter=" "></form:errors>
 	</div>
 	
@@ -124,14 +145,14 @@
 			<div class="makespace"></div>
 			<button type="button" id="ck_b">확인</button>
 		</div>
-		<p id="email_msg">이메일 인증이 필요합니다.</p>
+		<p class="msg" id="email_msg">이메일 인증이 필요합니다.</p>
 		<form:errors path="email" delimiter=" "></form:errors>
 	</div>
 	
 	<div class="join_text">자동 가입 방지 테스트</div>
 	<div class="join_item">
 		<div class="g-recaptcha" id="re" data-sitekey="6Lco2XweAAAAAHkp6un9euB-ue4j3_VsqfDlHMEW"></div>
-		<p id="recapcha_msg">테스트를 통과해주세요.</p>
+		<p class="msg" id="recapcha_msg">테스트를 통과해주세요.</p>
 	</div>
 	<div class="submit_btns">
 		<button type="button" id="submit_btn">가입</button>
@@ -139,13 +160,14 @@
 	</div>
 </form:form>
 </div>
+</div>
 <div class="hidearea">
 	<input type="text" id="id_check" value="0" readonly>
 	<input type="text" id="pw_check" value="0" readonly>
 	<input type="text" id="nick_check" value="0" readonly>
 	<input type="text" id="mail_check" value="0" readonly>
 </div>
-<jsp:include page="../footer.jsp"></jsp:include>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/user/join.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
