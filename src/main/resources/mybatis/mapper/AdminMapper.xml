@@ -3,6 +3,19 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.dao.AdminDao">
+<select id="boardbest" parameterType="map" resultType="com.spring.dto.BoardDto">
+	select * from 
+		(select postid, userid, nickname, title, postcon, pictureid, postdate, readcount, rec, head, rownum r from 
+			(select * from board where postdate between to_date (#{beforemonth}, 'YYYY-MM-DD') and to_date (#{today}, 'YYYY-MM-DD') order by rec desc) 
+		order by rec desc) 
+	where r &gt;= 1 and r &lt;= 3
+</select>
+<select id="fleabest" resultType="com.spring.dto.FleaDto">
+	select * from (select * from fleaboard order by f_postno desc) where rownum &gt;= 1 and rownum &lt;= 6 
+</select>
+<select id="getImg" parameterType="int" resultType="com.spring.dto.ImgDto">
+	select * from fimg where imgid = #{imgid}
+</select>
 <select id="checkReports" parameterType="com.spring.dto.ReportDto" resultType="int">
 	select count(*) from report where (postid = #{postid} and postid != 0) or (f_postno = #{f_postno} and f_postno != 0) or (pictureid = #{pictureid} and pictureid != 0) or (replyid = #{replyid} and replyid != 0) or (f_cno = #{f_cno} and f_cno != 0)
 </select>
@@ -95,5 +108,4 @@
 	</if>
 	where r &gt;= #{start} and r &lt;= #{end}
 </select>
-
 </mapper>

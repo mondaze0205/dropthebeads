@@ -1,5 +1,9 @@
 package com.spring.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,6 +24,37 @@ public class Admin {
 
 	@Autowired
 	AdminService service;
+	
+	@GetMapping(value = {"/main", "/"})
+	public String boardbest(Model m) {
+
+	    Date today = new Date();
+	    SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+	    String toDay = date.format(today);
+
+	    Calendar mon = Calendar.getInstance();
+	    mon.add(Calendar.MONTH , -1);
+	    String beforeMonth = new java.text.SimpleDateFormat("yyyy-MM-dd").format(mon.getTime());
+
+		List<BoardDto> bbdto = service.boardbest(toDay, beforeMonth);
+		List<FleaDto> ffdto = service.fleabest();
+		
+		if(bbdto.size() == 0) {
+			m.addAttribute("bbdto", "none");
+		} else {			
+			m.addAttribute("bbdto", bbdto);
+		}
+		
+		if(ffdto.size() == 0) {
+			System.out.println("null");
+			m.addAttribute("ffdto", "none");
+		} else {			
+			m.addAttribute("ffdto", ffdto);
+		}
+		
+		return "index";
+	}
+	
 	
 	@GetMapping("/admin/office")
 	public String admin(Model m) {
