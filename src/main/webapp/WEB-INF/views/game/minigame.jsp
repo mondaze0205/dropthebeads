@@ -7,12 +7,17 @@
 <title>MINI GAME :D</title>
 <link rel="stylesheet" type="text/css" href="/css/game/game.css">
 </head>
+<jsp:include page="../header.jsp"></jsp:include>
+<hr color="#00af79" size="2px">
 <body>
 	<div id="game">
-		<div id="character"></div>
-		<div id="block"></div>
+		<div id="rabbit"></div>
+		<div id="carrot"></div>
 	</div>
-	<p>SCORE : <span id="scoreSpan"></span></p>
-</body>
+	<h1 id="score">0</h1>
+	<button class="button">GAME START</button>
 <script src="/js/game/game.js"></script>
+<!-- footer -->
+<jsp:include page="../footer.jsp"></jsp:include>
+</body>
 </html>

@@ -13,6 +13,7 @@
   align-items: center;
   height: 80vh;
   background: linear-gradient(45deg, greenyellow, dodgerblue);
+  /* font-family: "Sansita Swashed", cursive; */
 }
 .center {
   position: relative;
@@ -20,13 +21,16 @@
   background: #fff;
   border-radius: 10px;
 }
+
 .center h1 {
   font-family: "DungGeunMo";	
   font-size: 30px;
   padding: 2px auto 1px;
   color: #00af79;
   font-weight: bold;
+  
 }
+
 .dots {
   margin: 1px 0;
   border: 0;
@@ -36,54 +40,73 @@
   font-size: 20px;
   color: #00af79;
 }
+
 .center p {
   font-family: 'Gothic A1', sans-serif;	
-  font-size: 13px;
+  font-size: 15px;
+/*   border-left: 5px solid #808080; */
   padding: 1px auto 2px;
-  color: #808080;
+  color: black;
+  font-weight: 400;
+  margin-bottom: 5px;
+/*   text-align: center;	  */ 
+}
+
+.center label {
+  font-family: 'Gothic A1', sans-serif;	
+  font-size: 20px;
+  padding: 1px auto 2px;
+  color: black;
   font-weight: 400;
   margin-bottom: 40px;
 }
+
 .center .inputbox {
   position: relative;
   width: 300px;
   height: 50px;
-  margin-bottom: 20px;
+  margin: 30px 0px 10px 0px;
 }
+
 .center .inputbox2 {
   position: relative;
   width: 300px;
   height: 50px;
-  margin-top: -25px;
+  margin: -10px 0px 10px 0px;
+}
+
+.center .inputbox:last-child {
+  margin-bottom: 0;
 }
 .center .inputbox input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  outline: none;
-  border-left-width: 0;
-  border-right-width: 0;
-  border-top-width: 0;
-  border-bottom: 2px solid #00af79;	   
-  background: none;
-  padding: 10px;
-  font-size: 1.2em;
+	font-family: 'Roboto', sans-serif;	
+	font-size:13px;
+	width: 50%;
+	height: 30px;
+	box-sizing: border-box;
+	background-color: #00af79;
+	border:0;
+	border-radius: 100px;
+	color: white;
+	cursor: pointer;
+	padding: 0px;
+	text-align:center;
 }
-.center .inputbox:last-child {
-  margin-bottom: 0;
+.center .inputbox2 input {
+	font-family: 'Roboto', sans-serif;	
+	font-size:13px;
+	width: 50%;
+	height: 30px;
+	box-sizing: border-box;
+	background-color: #00af79;
+	border:0;
+	border-radius: 100px;
+	color: white;
+	cursor: pointer;
+	padding: 0px;
+	text-align:center;
 }
-.center .inputbox span {
-  position: absolute;
-  top: 14px;
-  left: 20px;
-  font-size: 1em;
-  transition: 0.6s;
-  font-family: 'Gothic A1', sans-serif;
-}
-.center .inputbox:last-child {
-  margin-bottom: 0;
-}
+
 .center .inputbox span {
   position: absolute;
   top: 14px;
@@ -92,49 +115,34 @@
   transition: 0.6s;
   font-family: sans-serif;
 }
-.center .inputbox input:focus ~ span,
-.center .inputbox input:valid ~ span {
-  transform: translateX(-13px) translateY(-35px);
+
+.center .inputbox span {
+  position: absolute;
+  top: 14px;
+  left: 20px;
   font-size: 1em;
+  transition: 0.6s;
+  font-family: sans-serif;
 }
 
+
 .center .inputbox [type="button"] {
-	font-family: 'Roboto', sans-serif;	
-	font-size:13px;
-	width: 150px;
-	height: 30px;
-	box-sizing: border-box;
-	background-color: #00af79;
-	border:0;
-	border-radius: 100px;
-	color: white;
-	cursor: pointer;
-	padding: 0px;
-	text-align:center;
-}
-.center .inputbox:hover [type="button"] {
-/*   background: linear-gradient(45deg, greenyellow, dodgerblue); */
- 	background-color: #Fed354;
-	color: #00af79;	
+  background-color: #00af79;
+/*   color: #fff;
+  border: #fff; */
 }
 .center .inputbox2 [type="button"] {
-	font-family: 'Roboto', sans-serif;	
-	font-size:13px;
-	width: 150px;
-	height: 30px;
-	box-sizing: border-box;
-	background-color: #00af79;
-	border:0;
-	border-radius: 100px;
-	color: white;
-	cursor: pointer;
-	padding: 0px;
-	text-align:center;
+  background-color: #00af79;
+}
+.center .inputbox:hover [type="button"] {
+  /* background: linear-gradient(45deg, greenyellow, dodgerblue); */
+ 	background-color: #Fed354;
+	color: #00af79;	  
 }
 .center .inputbox2:hover [type="button"] {
-/*   background: linear-gradient(45deg, greenyellow, dodgerblue); */
  	background-color: #Fed354;
-	color: #00af79;	
+	color: #00af79;	  
 }
+
 
 

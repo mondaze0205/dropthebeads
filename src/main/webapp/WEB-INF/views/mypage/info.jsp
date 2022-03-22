@@ -6,11 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내 정보 수정하기</title>
 <link rel="stylesheet" type="text/css" href="/css/mypage/info.css">
 </head>
 <body>
 	<jsp:include page="../header.jsp"></jsp:include>
+	<hr color="#00af79" size="2px">
 
 	<div class="container">
 		<input type="hidden" id="master" value="${userid}">

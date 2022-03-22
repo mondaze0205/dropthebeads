@@ -8,7 +8,8 @@
 <link rel="stylesheet" type="text/css" href="/css/painter/painter.css">
 </head>
 <body>
-	<jsp:include page="../header.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
+<hr color="#00af79" size="2px">
 
 	<div class="container">
 		<div class="left"></div>

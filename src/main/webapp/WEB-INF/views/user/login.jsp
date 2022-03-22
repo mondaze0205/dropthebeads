@@ -7,12 +7,24 @@
 <meta charset="UTF-8">
 <title>login.jsp</title>
 <link rel="stylesheet" type="text/css" href="/css/user/login.css"> 
+
+<!-- 글꼴 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Press+Start+2P&family=Raleway:wght@300&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
+<hr color="#00af79" size="2px">
+
 <div class="container">
+<div class="smile">
+	<img src="/image/smile.png" alt="" class="sm-1" width="70px" height="auto">
+	<img src="/image/smile2.png" alt="" class="sm-2" width="70px" height="auto">
+</div>
 	<div class="login">
-	<h1>로그인</h1>
+	<h1 class="login_title">LOGIN</h1>
 		<form:form action="trylogin" method="post" modelAttribute="login" id="loginform" class="loginform">
 			<div class="id_pw">
 				<form:input type="text" path="userid" name="userid" id="userid" placeholder="아이디" />
@@ -22,7 +34,7 @@
 				<p id="msg">${e}</p>
 			</div>
 			<div class="buttons">
-				<button type="button" id="loginbtn">로그인</button>
+				<button type="button" id="loginbtn">로 그 인</button>
 			</div>
 		</form:form>
 		<div class="others">

@@ -19,7 +19,7 @@
 <footer class="footer-01">
 	<div class="footer-logo">
     	<a href="http://localhost:8087/"><img class="logo" src="/image/flogo.png" width="90px" height="auto"/></a>
-		<p class=“footer-text”><i class="fa-regular fa-copyright"></i> 2022 DROP THE BEADS. All rights reserved. | Project 503-1 <i class="fa-regular fa-face-smile-wink"></i></p>
+		<p class=“footer-text”><i class="fa-regular fa-copyright"></i> 2022 DROP THE BEADS. All rights reserved. | Project 고진감래조 <i class="fa-regular fa-face-smile-wink"></i></p>
 	</div>
 	
 	<div class="footer-img">
