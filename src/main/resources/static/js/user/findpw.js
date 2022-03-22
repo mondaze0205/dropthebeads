@@ -29,7 +29,7 @@ $("#pwBtn").click(function(){
 			}).done(function(data){
 				if(eval(data[1])){
 					num = data[0];
-					alert("임시비밀번호를 전송하였습니다. 이에밀을 확인하세요.")
+					alert("임시비밀번호를 전송하였습니다. 이메일을 확인하세요.")
 				}
 			}); 
 				}

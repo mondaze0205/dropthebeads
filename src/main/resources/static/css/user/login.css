@@ -3,17 +3,44 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin: 100px 10px 0px 10px;
+	margin: 100px 10px 80px 10px;
 }
 
 .login {
 	margin: auto;
 }
 
+.smile{
+	margin:0px auto;
+	margin-bottom:-40px;
+	position: relative;	
+}
+.sm-2{
+	position: absolute;
+	top : 0px;
+	left: 0px;
+	display: none;
+}
+.smile:hover .sm-2{
+	display:block;
+}
+
+
+h1.login_title{
+	font-family: 'Press Start 2P', cursive;
+	letter-spacing: 2px;
+	font-size: 20px;
+	color: #00af79;
+	font-weight: 400;
+	margin-bottom: 10px;
+	margin-top: 50px;
+	text-align: center;	
+}
+
 .loginform {
 	width: 330px;
 	padding: 10px;
-	border: 1px solid green;
+	border-top: 0;
 }
 
 .id_pw {
@@ -24,8 +51,16 @@
 .id_pw input[type="text"], .id_pw input[type="password"] {
 	width: 300px;
 	height: 30px;
-	box-sizing: border-box;
-	margin: 0px;
+	/*box-sizing: border-box;*/
+	border-left-width: 0;
+	border-right-width: 0;
+	border-top-width: 0;
+	border-bottom: 2px solid #00af79;	
+	margin: 5px;
+}
+
+.id_pw input[type="text"], .id_pw input[type="password"]:focus{
+	outline: none;
 }
 
 .msg {
@@ -45,18 +80,28 @@
 }
 
 .buttons button {
+	font-family: 'Roboto', sans-serif;	
 	width: 300px;
 	height: 30px;
 	box-sizing: border-box;
-	background-color: lightskyblue;
-	border-radius: 2px;
+	background-color: #00af79;
+/* 	border: 2px solid #00af79;	 */	
+	border:0;
+	border-radius: 100px;
+	color: white;
+	cursor: pointer;
 	margin: 0px;
 	padding: 0px;
+}
+.buttons button:hover{
+	background-color: #Fed354;
+	color: #00af79;	
 }
 
 .others {
 	display: flex;
 	justify-content: center;
+	cursor: pointer;	
 }
 
 .others p {
@@ -66,7 +111,9 @@
 	margin: 5px 0px;
 	text-align: center;
 }
-
+.others p:hover {
+	color:#00af79;
+}
 .others > p:first-child {
 	border-right: 1px solid dimgray;
 }
@@ -75,7 +122,7 @@
 	border-left: 1px solid dimgray;
 	
 }	
-.login	h1 {
+/* .login	h1 {
   font-size: 2em;
   border-left: 5px solid green;
   padding: 10px;
@@ -84,4 +131,4 @@
   margin-bottom: 30px;
   font-weight: bold;
   padding-left: 10px;
-}
+} */

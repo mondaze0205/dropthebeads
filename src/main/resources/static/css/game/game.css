@@ -3,39 +3,56 @@
 	padding:0;
 	margin:0;
 }
+
+#score{
+	text-align:center;
+}
+
+.button{
+	font-size:13px;
+}
 #game{
-	width:500px;
-	height:200px;
+	width:600px;
+	height:300px;
 	margin:auto;
-	border: 1px solid black;
+	margin-top: 30px;
+	border: 2px solid black;
+	background-image: url("https://i.pinimg.com/originals/01/15/b7/0115b7146c242599700d60b53a5b5ce5.jpg");
+	background-size: cover;
 }
-#character{
-	width:20px;
-	height:50px;
-	background-color: red;
+
+#rabbit{
+	width:75px;
+	height:75px;
+	background-image:url("https://stickershop.line-scdn.net/stickershop/v1/product/1217051/LINEStorePC/main.png;compress=true");
+	background-size:cover;
 	position :relative;
-	top : 150px;
+	top : 225px;
 }
-.animate{
-	animation: jump 500ms;
+.jump-animation{
+	animation: jump 0.5s;
 }
-@keyframes jump{
-	0%{top: 150px;}
-	30%{top: 100px;}
-	70%{top: 100px;}
-	100%{top: 150px;}
+@keyframes jump {
+	0%{top: 225px;}
+	50%{top: 75px;}
+	75%{top: 75px;}
+	100%{top: 225px;}
 		
 }
-#block{
-	width: 20px;
-	height: 20px;
-	background-color: blue;
+#carrot{
+	width: 50px;
+	height: 50px;
+	background-image:url('/image/carrot.png');
+	background-size:cover;
 	position: relative;
-	top: 130px;
-	left: 480px;
-	animation : block 2s infinite linear;
+	top: 175px;
+	left: 550px;
 }
-@keyframes block{
-	0%{left:480px;}
-	100%{left:-40px;}
+
+.move-animation{
+	animation : carrot 1.33s infinite;
+}
+@keyframes carrot{
+	0%{left:550px;}
+	100%{left:-50px;}
 }
