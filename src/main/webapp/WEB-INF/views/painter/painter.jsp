@@ -6,9 +6,23 @@
 <meta charset="utf-8">
 <title>Pixel Art Maker</title>
 <link rel="stylesheet" type="text/css" href="/css/painter/painter.css">
+<!-- 글꼴 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Press+Start+2P&family=Raleway:wght@300&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
+<hr color="#00af79" size="2px">
+
+<div class="title-p">
+	<h2 class="mb-2">PAINTER</h2>
+	<hr class="dots">
+	<span>여기 PAINTER에서는 도트 이미지를 만들 수 있어요.<br>
+    원하는 색상, 원하는 이미지로 직접 그려보세요!<br><br></span>
+</div> 
+
 <hr color="#00af79" size="2px">
 
 	<div class="container">
@@ -220,6 +234,9 @@
 				</tr>
 			</table>
 		</div>
+		
+
+		
 		<div class="pal_btn">
 			<button type="button" id="makegrid" class="btn0">만들기</button>
 			<button type="button" id="readme" class="btn0">참고사항</button>

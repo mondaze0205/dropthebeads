@@ -8,10 +8,28 @@
 <meta charset="UTF-8">
 <title>list.jsp</title>
 <link rel="stylesheet" type="text/css" href="/css/board/list.css">
+
+<!-- 글꼴 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Press+Start+2P&family=Raleway:wght@300&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- 아이콘  -->
+<script src="https://kit.fontawesome.com/2e7159d3c5.js" crossorigin="anonymous"></script>
+</head>
+
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 <hr color="#00af79" size="2px">
+
+<div class="title-board">
+	<h2 class="mb-2">COMMUNITY</h2>
+	<hr class="dots">
+	<span>여기 COMMUNITY 게시판에서는 자유롭게 대화할 수 있어요.<br>
+    공지는 꼭 확인해주시고! 멋지게 만든 공예품을 자랑하거나 궁금했던 부분을 질문해보세요.<br>
+    일생 생활 속의 소소한 이야기도 좋아요<i class="fa-regular fa-face-grin-wide"></i></span>
+</div> 
+
 <div class="container">
 <div class="side_top">
 	<button type="button" onclick="location.href='list?h=0'">새로고침</button>

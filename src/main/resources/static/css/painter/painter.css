@@ -1,3 +1,41 @@
+* {
+	font-family: 'Gothic A1', sans-serif;
+	font-family: 'Roboto', sans-serif;
+}
+
+@font-face {
+	font-family: 'DungGeunMo';
+	src: url("/font/DungGeunMo.ttf") format("truetype");
+}	
+.title-p{
+	text-align: center;
+	margin-bottom: 20px;
+}
+.dots {
+  margin: 12px 0;
+  border: 0;
+  text-align: center;
+}
+.dots:before {
+  content: "•••";
+  font-size: 30px;
+  color: #00af79;
+}
+
+.title-p span{
+	font-size: 13px;
+	color: #808080;	
+}
+h2.mb-2 {
+	font-family: 'Press Start 2P', cursive;
+	letter-spacing: 2px;
+	font-size: 20px;
+	color: #00af79;
+	font-weight: 400;
+	margin-bottom: 10px;
+	margin-top: 50px;
+}
+
 .container {
 	display: grid;
 	grid-template-areas:
@@ -167,21 +205,29 @@
   	font-size: 14px;
   	width: 90px;
 	height:	40px;
+	border: 2px solid #00af79;
+	border-radius: 100px;
+    box-sizing: border-box;
 }
 
 .pal_btn .btn0 {
 	background-color: lightblue;
 }
-
+.pal_btn .btn0:hover{
+	background-color: rgb(135, 206, 235);
+}
 .pal_btn .btn1 {
 	background-color: #ffdab9;
-
 }
-
+.pal_btn .btn1:hover{
+	background-color: rgb(238, 232, 170);
+}
 .pal_btn .btn2 {
 	background-color: mintcream;	
 }
-
+.pal_btn .btn2:hover{
+	background-color: rgb(255, 228, 225);
+}
 .pal_btn p {
   font-size: 15px;
   color: #696969;
