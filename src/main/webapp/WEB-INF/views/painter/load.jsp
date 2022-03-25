@@ -9,6 +9,7 @@
 </head>
 <body>
 <div class="container">
+
 	<div class="picpick">
 		<h4>내가 그린 그림</h4>
 		<select id="picselect" onchange="change()">

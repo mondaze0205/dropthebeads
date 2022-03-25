@@ -1,3 +1,40 @@
+* {
+	font-family: 'Gothic A1', sans-serif;
+	font-family: 'Roboto', sans-serif;
+}
+
+@font-face {
+	font-family: 'DungGeunMo';
+	src: url("/font/DungGeunMo.ttf") format("truetype");
+}	
+.title-board{
+	text-align: center;
+	margin-bottom: 20px;
+}
+.dots {
+  margin: 12px 0;
+  border: 0;
+  text-align: center;
+}
+.dots:before {
+  content: "•••";
+  font-size: 30px;
+  color: #00af79;
+}
+
+.title-board span{
+	font-size: 13px;
+	color: #808080;	
+}
+h2.mb-2 {
+	font-family: 'Press Start 2P', cursive;
+	letter-spacing: 2px;
+	font-size: 20px;
+	color: #00af79;
+	font-weight: 400;
+	margin-bottom: 10px;
+	margin-top: 50px;
+}
 .container {
 	display: grid;
 	grid-template-areas:
@@ -7,6 +44,7 @@
 }
 
 .side_top {
+	font-family: 'Roboto', sans-serif;
 	grid-area: t;
 	height: 50px;
 	flex-wrap: nowrap;
@@ -16,8 +54,10 @@
 }
 
 .side_top button {
-	background-color: aliceblue;
-	border-radius: 2px;
+	background-color: transparent;
+	border: 2px solid #00af79;
+	border-radius: 100px;
+    box-sizing: border-box;
 	width: 85px;
 	height: 40px;
 	padding: 0px;
@@ -25,20 +65,36 @@
 	margin-right: 5px;
 	margin-bottom: 0px;
   	font-size: 14px;
-  	box-shadow: 2px 2px gainsboro;
 }
-
+.side_top button:hover {
+	background-color: #Fed354;
+}
 .side_top p {
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 0px;
 	padding: 0px;
-	color: mediumblue;
+	position: relative;
+}
+.side_top p:hover{
+	cursor: pointer;
+}
+.side_top p::after{
+	content: '';
+	display: block;
+  	position: absolute;
+  	bottom: 0px;
+  	width: 0;
+  	height: 5px;
+  	left:50%;
+  	background: #00af79;
+}
+.side_top p:hover::after {
+	width: 100%;
+	left: 0;
+	transition: width .3s;
 }
 
-.side_top p:hover {
-	cursor: default;
-}
 
 .side_top .writebtn {
 	margin-left: auto;
@@ -62,18 +118,20 @@
 .center table {
 	width: 100%;
 	font-size: 12pt;
-	border-bottom: 2px solid aquamarine;
+	border-bottom: 2px solid #00af79;
 }
 
 .center td {
-	border-top: 1px dashed skyblue;
+	border-top: 1px dashed #00af79;
 }
 
 .center .tabletop {
+	font-family: 'DungGeunMo';
 	width: 100%;
 	font-size: 12pt;
-	border-top: 2px solid aquamarine;
-	border-bottom: 2px solid aquamarine;
+	font-weight: bold;
+	border-top: 2px solid #00af79;
+	border-bottom: 2px solid #00af79;
 	display: flex;
 }
 
@@ -112,10 +170,12 @@
 }
 
 .center .table {
+	font-family: 'Gothic A1', sans-serif;
 	width: 100%;
 	font-size: 12pt;
-	border-bottom: 1px solid skyblue;
+	border-bottom: 1px solid #00af79;
 	display: flex;
+	padding: 5px;
 }
 
 .center a {
