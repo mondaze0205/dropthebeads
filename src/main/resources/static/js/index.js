@@ -1,54 +1,33 @@
-$(function() {
-	for (let a = 1; a <= 3; a++) {
-		let pictureid = document.getElementById('pictureid' + a).value;
-		let pixelCanvas = document.getElementById('pixel-canvas' + a);
-		let flea = document.getElementById('boardf' + a).value;
-		let fpic = "/upload/" + document.getElementById('fpic' + a).value;
-		let fpicadd = document.getElementById('fpicadd' + a);
+let slideIndex = 1;
+showSlides(slideIndex);
 
-		if (flea != "") {
-			$(".boardf" + a).css("display", "block");
-			var img = document.createElement("img");
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
 
-			img.setAttribute("src", fpic);
-			img.setAttribute("onerror", "this.src='/image/noimage.png'");
-			img.setAttribute("width", "300px");
-			img.setAttribute("height", "auto");
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
 
-			fpicadd.appendChild(img);
-		}
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+/*  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}*/    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+/*  setTimeout(showSlides, 3000); // Change image every 2 seconds */
+}
 
-		if (pictureid != "") {
-			$(".boardc" + a).css("display", "block");
 
-			$.getJSON("/painter/paintLoad2", { "pictureid": pictureid }, function(data) {
-				var code = data.code;
-				var picname = data.picname;
-				document.getElementById("code" + a).value = code;
-
-				var codes = document.getElementById('code' + a).value;
-				var ss = codes.split("\n");
-
-				var newHeight = ss.length - 1;
-				var newWidth = ss[0].split(" ").length - 1;
-
-				for (let i = 1; i <= newHeight; i++) {
-					let newgridRow = document.createElement('tr');
-					var code_row = ss[i - 1].split(" ");
-					pixelCanvas.appendChild(newgridRow);
-					for (let j = 1; j <= newWidth; j++) {
-						var color = code_row[j - 1];
-						if (color == "#t") {
-							color = "transparent"
-						}
-						let newgridCell = document.createElement('td');
-						newgridRow.appendChild(newgridCell);
-						newgridCell.style.backgroundColor = color;
-					}
-				}
-
-			}); //getJSON
-		}//if
-	}//for
-
-});

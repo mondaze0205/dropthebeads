@@ -8,19 +8,36 @@
 <meta charset="UTF-8">
 <title>내 정보 수정하기</title>
 <link rel="stylesheet" type="text/css" href="/css/mypage/info.css">
+
+<!-- 글꼴 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Press+Start+2P&family=Raleway:wght@300&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
 </head>
 <body>
-	<jsp:include page="../header.jsp"></jsp:include>
-	<hr color="#00af79" size="2px">
 
-	<div class="container">
+<div class="container">
+<div class="left">
+	<div class="smile">
+		<a href="http://localhost:8087/"><img src="/image/smile.png" alt="" class="sm-1" width="70px" height="auto">
+		<img src="/image/smile2.png" alt="" class="sm-2" width="70px" height="auto"></a>
+	</div>	
+	<div class="logo">
+ 			<h1 class="edit_title2">${userid}<br>내 정보 수정하기</h1>
+	</div>
+</div>
+
+<div class="right">	
+	<h1 class="edit_title">EDIT PROFILE</h1>	
+
 		<input type="hidden" id="master" value="${userid}">
 		<form action="../../mypage2/update" method="post" class="update_form"
 			name="update_form">
 
 			<div class="update_text">아이디</div>
-			<div class="update_item">
-				${user.userid} <input type="hidden" value="${user.userid}"
+			<div class="update_item" >
+				<small style="color:#00af79;"> ${user.userid}</small> <input type="hidden" value="${user.userid}"
 					name="userid">
 			</div>
 
@@ -159,8 +176,7 @@
 		</form>
 
 	</div>
-
-	<jsp:include page="../footer.jsp"></jsp:include>
+</div>
 </body>
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="/js/mypage/info.js"></script>

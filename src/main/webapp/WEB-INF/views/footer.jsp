@@ -14,6 +14,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+
+</body>
 <!-- 푸터 1 -->
 
 <footer class="footer-01">
@@ -28,5 +30,4 @@
 	</div>
 	
 </footer>
-</body>
 </html>

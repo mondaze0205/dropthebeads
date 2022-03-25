@@ -73,7 +73,15 @@
 	</c:if>
 </div>
 <div class="noname">
-	<img src="/image/advertise.png" style="width:100%">
+	<img src="/image/ranking.jpg" style="width:100%">
+    <div class="ranktext"><p>현재 게임 랭킹☆<br>
+    <br>
+   	랭킹 리스트<br>
+   	들어갈 예정<br>
+   	<br>
+<!--민주꺼 합치면 랭킹 넣으려구요! -->
+    <a href="../game/minigame" class="gobtn">바로가기 <i class="fa-solid fa-arrow-right"></i></a></p>
+    </div>   
 </div>
 	<div class="side_right">
 	</div>

@@ -1,3 +1,8 @@
+@font-face {
+	font-family: 'DungGeunMo';
+	src: url("/font/DungGeunMo.ttf") format("truetype");
+}	
+
 .container {
 	display: grid;
 	grid-template-areas:
@@ -180,7 +185,27 @@
 }
 
 .noname {
-	grid-area: a;
-	margin: 15px;
-	padding: 15px;
+   position:relative;
+   grid-area: a;
+   margin: 15px;
+   padding: 15px;
+}
+
+.ranktext{
+	font-family: 'DungGeunMo';
+	text-align: center;		
+    position:absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate( -50%, -50% );	
+    color: white;
+}     
+.ranktext a:link {
+	text-decoration-line: none;
+}
+.ranktext a:hover {
+	font-weight:bold;
+}
+.ranktext a:visited {
+	color:white;
 }
