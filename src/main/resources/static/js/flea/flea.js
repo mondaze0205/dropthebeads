@@ -30,7 +30,6 @@ $(function() {
 			},	
 			method: "get"
 		}).done(function() {
-			alert(userid);
 			alert("댓글을 등록했습니다");
 			location.reload();
 		});

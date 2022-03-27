@@ -15,6 +15,7 @@ import com.spring.dto.UsersDto;
 @Component
 public class Admininterceptor implements HandlerInterceptor {
 	public List<String> adminEssential = Arrays.asList("/admin/**");
+	public List<String> adminInessentail = Arrays.asList("/admin/report");
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
