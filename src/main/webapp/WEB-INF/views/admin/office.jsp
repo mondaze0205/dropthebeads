@@ -17,11 +17,11 @@
 
 <div class="center">
 	<div class="users">
-		<h1 id="users">회원 목록 보기</h1>
+		<h1 id="users"><i class="fa-solid fa-address-book"></i> 회원목록 보기</h1>
 	</div>
 	<div class="report_items">
 		<div class="report_type">
-			<h1>신고 기록 - 커뮤니티</h1>
+			<h1>1. 신고 기록 - 커뮤니티</h1>
 		</div>
 		<c:choose>
 			<c:when test="${r_board == 'none'}">
@@ -60,7 +60,7 @@
 	
 	<div class="report_items">
 		<div class="report_type">
-			<h1>신고 기록 - 벼룩시장</h1>
+			<h1>2. 신고 기록 - 벼룩시장</h1>
 		</div>
 		<c:choose>
 			<c:when test="${r_fboard == 'none'}">
@@ -99,7 +99,7 @@
 	
 	<div class="report_items">
 		<div class="report_type">
-			<h1>신고 기록 - 그림판</h1>
+			<h1>3. 신고 기록 - 그림판</h1>
 		</div>
 		<c:choose>
 			<c:when test="${r_pic == 'none'}">
@@ -140,7 +140,7 @@
 	
 	<div class="report_items">
 		<div class="report_type">
-			<h1>신고 기록 - 댓글</h1>
+			<h1>4. 신고 기록 - 댓글</h1>
 		</div>
 		<c:choose>
 			<c:when test="${r_reply == 'none'}">

@@ -17,7 +17,7 @@
 <div class="center">
 <div class="top">
 	<div>
-	<p>${userid}님의 페이지입니다.</p>
+	<p><i class="fa-solid fa-user"></i> ${userid} <small style="color:black;">님의 페이지입니다.</small></p>
 	<input type="hidden" id="master" value="${userid}">
 	</div>
 </div>	

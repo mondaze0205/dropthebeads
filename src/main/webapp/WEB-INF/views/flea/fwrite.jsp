@@ -55,7 +55,7 @@
 		<tr>
 			<th class="row">거래 지역 설정</th>
 			<td><button type="button" class="addbtn" id="addbtn" onclick="addPost()">검색</button>
-				<input name="f_addr" id="address"></td>
+				<input name="f_addr" id="address" size=40></td>
 		</tr>
 		<tr>
 			<th class="row">내용</th>

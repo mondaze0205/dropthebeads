@@ -3,7 +3,7 @@ div:hover {
 }
 
 a, p {
-	color: #00af79;
+/* 	color: #00af79; */
 	text-decoration: none;
 	outline: none;
 	cursor: pointer;
@@ -14,7 +14,21 @@ a, p {
 
 a:visited {
 	color: black;
-	cursor: pointer;
+}
+
+.users h1{
+	font-size:20px;
+/*     color:#00af79;	 */
+    margin-bottom:35px;
+}
+
+.users h1:hover{
+	color: #Fed354;
+    cursor: pointer;		
+}
+
+.report_items h1{
+	font-size:25px;	
 }
 
 button {
@@ -26,6 +40,7 @@ button {
 	grid-template-areas:
 	"left center right";
 	grid-template-columns: auto 1280px auto;
+	margin-bottom:30px;
 }
 
 .size_left {
@@ -43,8 +58,8 @@ button {
 .report_top {
 	width: 100%;
 	font-size: 12pt;
-	border-top: 2px solid aquamarine;
-	border-bottom: 2px solid aquamarine;
+	border-top: 1px solid #00af79;
+	border-bottom: 1px solid #00af79;
 	display: flex;
 }
 
@@ -80,8 +95,11 @@ button {
 .report_con {
 	width: 100%;
 	font-size: 12pt;
-	border-bottom: 1px solid skyblue;
+	border-bottom: 1px solid #00af79;
 	display: flex;
+}
+.report_con:hover {
+	background-color: #Fed354;	
 }
 
 .report_con > *:not(.title) {

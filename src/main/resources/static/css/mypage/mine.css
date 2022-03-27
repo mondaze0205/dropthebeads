@@ -3,6 +3,7 @@
 	grid-template-areas:
 	"left center right";
 	grid-template-columns: auto 1280px auto;
+	margin-bottom:30px;
 }
 
 .size_left {
@@ -30,21 +31,31 @@
 
 .top p {
 	margin: 0px;
-	font-size: 33px;
+	font-size: 30px;
 	font-weight: bold;
+	color:#00af79;	
 }
 
 .menubar {
 	grid-area: menu;
 	display: flex;
 	flex-direction: column;
+	text-align: center;	 	
 }
 
 .menu {
-	border: 1px solid black;
-	margin: 5px 0px;
-	width: 215px;
-	padding: 8px 5px;
+	width: 215px;	
+	margin-bottom:5px;
+    border: 2px solid #00af79;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: rgb(40, 40, 40);
+    cursor: pointer;
+    flex: 0 0 auto;
+    padding: 10px 15px;
+}
+.menu:hover {
+	background-color: #Fed354;
 }
 
 .hr {
@@ -57,31 +68,47 @@
 
 .menu p {
 	margin: 0px;
-	cursor: default;
+	font-family: 'Gothic A1', sans-serif;	
+	font-weight: 500;
+	text-decoration: none;
+	font-size: 15px;		
 }
 
 .selected {
-	background-color: palegoldenrod;
+	background-color: #Fed354;
 }
 
-.myinfo {
+/* .myinfo {
 	background-color: lightcyan;
-}
+} */
 
 .withdraw {
-	background-color: red;
-	border: 1px solid black;
-	margin: 5px 0px;
-	width: 215px;
-	padding: 8px 5px;
+ 	background-color: rgb(240, 85, 66, 0.5);
+	width: 215px;	
+	margin-bottom:5px;
+    border: 2px solid #00af79;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: rgb(40, 40, 40);
+    cursor: pointer;
+    flex: 0 0 auto;
+    padding: 10px 15px;
 }
+.withdraw:hover {
+	background-color: #f05542;	
+	color:white;
+}
+	
 
 .withdraw p {
 	margin: 0px;
-	cursor: default;
-	color: white;
-}
-
+/* 	color: black; */
+	font-family: 'Gothic A1', sans-serif;	
+	font-weight: 500;
+	text-decoration: none;
+	font-size: 15px;		
+}	
+	
 .con {
 	grid-area: con;
 	padding-top: 5px;
@@ -89,12 +116,17 @@
 
 .trace {
 	display: flex;
-	border-top: 1px solid black;
+	border-top: 1px solid #00af79;
 	height: 75px;
+    cursor: pointer;	
+}
+
+.trace:hover{
+	background-color: #Fed354;
 }
 
 .trace:last-child {
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #00af79;
 }
 
 .trace h4 {
