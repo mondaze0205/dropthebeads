@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.dao.UsersDao">
 <insert id="insertUsers" parameterType="com.spring.dto.UsersDto">
-	insert into users values(#{userid},#{pw},#{nickname}, #{address},#{email},#{birth}) 
+	insert into users (userid, pw, nickname, address, email, birth, warning) values (#{userid},#{pw},#{nickname}, #{address},#{email},#{birth}, 0) 
 </insert>
 <select id="login" parameterType="com.spring.dto.UsersDto" resultType="com.spring.dto.UsersDto">
 	select * from users where userid=#{userid} and pw=#{pw}

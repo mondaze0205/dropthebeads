@@ -178,6 +178,47 @@
 		</c:choose>
 	</div>
 	
+	<div class="report_items">
+		<div class="report_type">
+			<h1>신고 기록 - 당근마켓 댓글</h1>
+		</div>
+		<c:choose>
+			<c:when test="${r_freply == 'none'}">
+				<div class="none">
+					<p>신고된 게시물이 없습니다.</p>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div class="report_top">
+					<div class="title">내용</div>
+					<div class="id">작성자</div>
+					<div class="stack">신고</div>
+					<div class="reporter">신고자</div>
+					<div class="makespace"></div>
+					<div class="judge">처리</div>
+				</div>
+				<c:forEach items="${r_freply}" var="fr" varStatus="frs">
+					<div class="report_con">
+						<div class="title"><p class="comment" id="comment_${fr.F_POSTNO}">${fr.F_COMMENT}</p></div>
+						<div class="id"><a id="${fr.REPORTID}_reported">${fr.USERID}</a></div>
+						<div class="stack"><p id="${fr.REPORTID}_stack">${fr.STACK}</p></div>
+						<div class="reporter"><p class="reporters">${fr.REPORTERS}</p></div>
+						<div class="judge">
+							<select class="j" id="j_${fr.REPORTID}">
+								<option value="j1">아무 조치 안함</option>
+								<option value="j2">글 삭제</option>
+								<option value="j3">글 삭제 + 경고</option>
+								<option value="j4">글 삭제 + 강퇴</option>
+							</select>
+							<button type="button" class="done" id="${fr.REPORTID}_reply_${fr.REPLYID}">처리</button>
+						</div>
+						<div>${frs.index}</div>
+					</div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+	</div>	
+	
 </div>
 	
 <div class="side_right"></div>

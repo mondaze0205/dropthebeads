@@ -10,6 +10,10 @@ import com.spring.dto.*;
 @Mapper
 public interface AdminDao {
 
+	List<BoardDto> boardbest(Map<String, Object> map);
+	List<FleaDto> fleabest();
+	ImgDto getImg(int imgid);
+	
 	int checkReports(ReportDto dto);
 	int checkReportid(ReportDto dto);
 	String checkReporters(int reportid);
@@ -24,6 +28,8 @@ public interface AdminDao {
 	List<Map<String, Object>> r_pic();
 	int c_reply();
 	List<Map<String, Object>> r_reply();
+	int c_freply();
+	List<Map<String, Object>> r_freply();
 	
 	int findCon(int replyid);
 	

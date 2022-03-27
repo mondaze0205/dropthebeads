@@ -41,12 +41,14 @@
 	<div class="join_text">비밀번호</div>
 	<div class="join_item">
 		<input type="text" id="pw" name="pw" oninput="this.value = this.value.replace(/[^0-9a-zA-Z!?@#$%^&*():;+-=~{}<>\_\[\]\|\\\,\.]/g, '');">
+		<p id="pw_msg">영문자와 숫자, 특수기호가 최소 한 글자씩 필요합니다.</p>
 	</div>
 	
 	<div class="join_text">비밀번호 재확인</div>
 	<div class="join_item">
 		<input type="text" id="pw1" name="pw1" oninput="this.value = this.value.replace(/[^0-9a-zA-Z!?@#$%^&*():;+-=~{}<>\_\[\]\|\\\,\.]/g, '');">
-		<p class="msg" id="pw_msg">영문자와 숫자, 특수기호가 최소 한 글자씩 필요합니다.</p>
+		<p class="msg" id="pw_msg2">비밀번호를 다시 입력해주세요.</p>
+
 	<form:errors path="pw" delimiter=" "></form:errors>
 	</div>
 	
@@ -164,6 +166,7 @@
 <div class="hidearea">
 	<input type="text" id="id_check" value="0" readonly>
 	<input type="text" id="pw_check" value="0" readonly>
+	<input type="text" id="pw_check2" value="0" readonly>
 	<input type="text" id="nick_check" value="0" readonly>
 	<input type="text" id="mail_check" value="0" readonly>
 </div>

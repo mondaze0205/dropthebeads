@@ -1,5 +1,9 @@
 package com.spring.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,6 +24,37 @@ public class Admin {
 
 	@Autowired
 	AdminService service;
+	
+	@GetMapping(value = {"/main", "/"})
+	public String boardbest(Model m) {
+
+	    Date today = new Date();
+	    SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+	    String toDay = date.format(today);
+
+	    Calendar mon = Calendar.getInstance();
+	    mon.add(Calendar.MONTH , -1);
+	    String beforeMonth = new java.text.SimpleDateFormat("yyyy-MM-dd").format(mon.getTime());
+
+		List<BoardDto> bbdto = service.boardbest(toDay, beforeMonth);
+		List<FleaDto> ffdto = service.fleabest();
+		System.out.println(bbdto);
+		if(bbdto.size() == 0) {
+			m.addAttribute("bbdto", "none");
+		} else {
+			m.addAttribute("bbdto", bbdto);
+		}
+		
+		if(ffdto.size() == 0) {
+			System.out.println("null");
+			m.addAttribute("ffdto", "none");
+		} else {			
+			m.addAttribute("ffdto", ffdto);
+		}
+		
+		return "index";
+	}
+	
 	
 	@GetMapping("/admin/office")
 	public String admin(Model m) {
@@ -54,6 +90,15 @@ public class Admin {
 			m.addAttribute("r_reply", "none");
 		}
 		
+		int fr = service.c_freply();
+		if(fr != 0) {
+			List<Map<String, Object>> r_freply = service.r_freply();			
+			m.addAttribute("r_freply", r_freply);
+		} else {
+			m.addAttribute("r_freply", "none");
+		}
+		
+		
 		return "admin/office";
 	}
 	
@@ -75,9 +120,12 @@ public class Admin {
 		} else if(dto.getPictureid() != 0) {
 			type = "Picture";
 			no = dto.getPictureid();
-		} else {
+		} else if(dto.getReplyid() != 0) {
 			type = "Reply";
 			no = dto.getReplyid();
+		} else if(dto.getF_cno() != 0) {
+			type = "FReply";
+			no = dto.getF_cno();
 		}
 		
 		return service.report(dto, type, no, userid, reportid);
