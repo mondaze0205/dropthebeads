@@ -8,7 +8,7 @@
 		(select postid, userid, nickname, title, postcon, pictureid, postdate, readcount, rec, head, rownum r from 
 			(select * from board where postdate between to_date (#{beforemonth}, 'YYYY-MM-DD') and to_date (#{today}, 'YYYY-MM-DD') order by rec desc) 
 		order by rec desc) 
-	where r &gt;= 1 and r &lt;= 3
+	where r &gt;= 1 and r &lt;= 5
 </select>
 <select id="fleabest" resultType="com.spring.dto.FleaDto">
 	select * from (select * from fleaboard order by f_postno desc) where rownum &gt;= 1 and rownum &lt;= 6 

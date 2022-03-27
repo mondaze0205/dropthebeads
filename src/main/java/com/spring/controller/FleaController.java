@@ -266,5 +266,11 @@ public class FleaController {
 
 		return s;
 	}
+	
+	@GetMapping("/flea/match2")
+	@ResponseBody
+	public String match2(String imgid) {
+		return service.match2(imgid);
+	}
 
 }

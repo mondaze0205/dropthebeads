@@ -36,13 +36,14 @@ public class Admin {
 
 		List<BoardDto> bbdto = service.boardbest(toDay, beforeMonth);
 		List<FleaDto> ffdto = service.fleabest();
-		System.out.println(bbdto);
+
 		if(bbdto.size() == 0) {
 			m.addAttribute("bbdto", "none");
 		} else {
 			m.addAttribute("bbdto", bbdto);
 		}
-		
+		System.out.println(ffdto.size());		
+		System.out.println(ffdto);
 		if(ffdto.size() == 0) {
 			System.out.println("null");
 			m.addAttribute("ffdto", "none");

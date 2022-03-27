@@ -158,7 +158,10 @@
 		select f_addr from fleaboard where f_postno = #{f_postno}
 	</select>
 	
-<select id ="selectMaps" resultType="com.spring.dto.FleaDto">
+<select id="selectMaps" resultType="com.spring.dto.FleaDto">
 	select * from fleaboard
+</select>
+<select id="match2" resultType="String" parameterType="String">
+	select imgpath from fimg where imgid = #{imgid}
 </select>
 </mapper>

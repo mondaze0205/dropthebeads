@@ -92,7 +92,6 @@ $(".numberOnly").on("keyup", function(event) {
     if (event.which && (event.which  > 47 && event.which  < 58 || event.which == 8)) {
         
     }else{
-        alert('숫자만 입력해주세요.');
         $(this).val($(this).val().replace(/[^0-9]/g,""));
     }
 });

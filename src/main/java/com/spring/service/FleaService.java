@@ -109,4 +109,9 @@ public class FleaService {
 	public List<FleaDto> selectMaps(){
 		return dao.selectMaps();
 	}
+	
+	public String match2(String imgid) {
+		return dao.match2(imgid);
+	}
+	
 }

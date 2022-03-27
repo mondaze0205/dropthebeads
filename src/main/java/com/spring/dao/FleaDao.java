@@ -34,6 +34,6 @@ public interface FleaDao {
 	int updateReplyCount(int f_postno);
 	String selectMap(int f_postno);
 	List<FleaDto> selectMaps();
-	
+	String match2(String imgid);
 }
 

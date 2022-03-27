@@ -80,11 +80,13 @@
 		<!-- Next and previous buttons -->
 		<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next"
 			onclick="plusSlides(1)">&#10095;</a>
-	</div>
-	<br>
-
-	<div style="visibility: hidden;">
-		<span class="dot"></span> <span class="dot"></span> <span class="dot"></span>
+		
+		<div class="white">
+		<div class="dots">
+			<span class="dot"></span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span>
+		</div>
+		</div>
+	
 	</div>
 
 	<div class="container">
@@ -93,7 +95,7 @@
 			<h1>직접 그려서 만들고 자랑해봐요!</h1>
 			<div class="bestbox">
 				<div class="mainimage">
-					<img class="mainimage" src="/image/apple.png">
+					<img class="mainimage" src="/image/dulgi.png">
 				</div>
 				<div class="mainimage">
 					<img class="mainimage" src="/image/apple.png">
@@ -104,9 +106,10 @@
 			</div>
 		</div>
 
-		<div class="item_top">
-			<h1>이번달 베스트</h1>
+		<div class="board_top">
+			<h1>커뮤니티 베스트</h1>
 		</div>
+		<div class="board_best">
 		<c:choose>
 			<c:when test="${bbdto == 'none'}">
 				<div class="none">
@@ -116,23 +119,19 @@
 			<c:otherwise>
 				<c:forEach items="${bbdto}" var="bb" varStatus="bbs">
 					<input type="hidden" id="bbsize" value="${fn:length(bbdto)}">
-					<div class="item_box" id="${bb.postid}">
+					<div class="board_box" id="board_${bb.postid}">
+						<div class="hidearea">
+							<input type="hidden" id="${bbs.index}_picid" value="${bb.pictureid}">
+							<textarea id="code_${bbs.index}" readonly></textarea>
+							<p>${bb.pictureid}</p>
+						</div>
 						<div class="picture">
-							<div class="hidearea">
-								<input type="hidden" id="${bbs.index}_picid"
-									value="${bb.pictureid}">
-								<textarea id="code_${bbs.index}" readonly></textarea>
-								<p>${bb.pictureid}</p>
-							</div>
 							<div class="canvas">
 								<table class="pixel-canvas" id="table_${bbs.index}"></table>
 							</div>
 						</div>
 						<div class="title">
 							<p>${bb.title}</p>
-						</div>
-						<div class="postcon">
-							<p>${bb.postcon}</p>
 						</div>
 						<div class="etc">
 							<p class="readcount">조회수 : ${bb.readcount}</p>
@@ -142,8 +141,41 @@
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
+		</div>
 
-		<div class=""></div>
+		<div class="fboard_top">
+			<h1>벼룩시장 최신 글</h1>
+		</div>
+		<div class="fboard_latest">
+		<c:choose>
+			<c:when test="${ffdto == 'none'}">
+				<div class="none">
+					<p>아직 최신 게시물이 없는 듯?</p>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${ffdto}" var="ff" varStatus="ffs">
+					<input type="hidden" id="ffsize" value="${fn:length(ffdto)}">
+					<div class="fboard_box" id="fno_${ff.f_postno}">
+						<div class="hidearea">
+							<input type="hidden" id="${ffs.index}_fimg" value="${ff.imgid}">
+						</div>
+						<div class="fpicture">
+							<img id="img_${ffs.index}">
+						</div>
+						<div class="fshow">
+							<div class="ftitle"><h4>${ff.f_title}</h4></div>
+							<div class="fcon"><p>${ff.f_content}</p></div>
+						</div>
+						<div class="makespace"></div>
+						<div class="fdate">
+							<p class="readcount">${ff.f_date}</p>
+						</div>
+					</div>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
+		</div>
 
 	</div>
 

@@ -5,54 +5,9 @@ p {
 	margin: 0px;
 }
 
-.marquee{
-  -webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-  position: relative;
-  overflow: hidden;
-  --offset: 20vw;
-  --item-font-size: 10vw;
-  --move-initial: calc(-25% + var(--offset));
-  --move-final: calc(-50% + var(--offset));
-    background-color: #CCFFCC;
-  
+h1 {
+	margin: 20px 0px;
 }
-
-.marquee__inner{
-  width: fit-content;
-  display: flex;
-  position: relative;
-  transform: translate3d(var(--move-initial),0,0);
-  animation: marquee 5s linear infinite;
-/*   animation-play-state: paused;
- */}
-
-.marquee span{
-  white-space: nowrap;
-  font-size: 60px;
-  color: #00af79;
-  padding: 0 5px;
-}
-
-/* .marquee:hover .marquee__inner{
-  // animation-play-state: running;
-	// opacity: 1;
-	// transition-duration: 0.4s;
-} */
-
-@keyframes marquee {
-  0% {
-  transform: translate3d(var(--move-initial), 0, 0);
-  }
-
-  100% {
-   transform: translate3d(var(--move-final), 0, 0);
-  }
-}
-
 
 * {box-sizing: border-box;}
 body {font-family: Verdana, sans-serif;}
@@ -61,10 +16,10 @@ img {vertical-align: middle;}
 
 /* Slideshow container */
 .slideshow-container {
-  max-width: 100%;
-  max-height:1200;
+  max-width: 1280px;
+  height: 500px;
   position: relative;
-  margin-bottom: 500px;
+  margin : 0px auto;
   overflow:hidden;
 }
 .mySlides img{
@@ -177,10 +132,21 @@ img {vertical-align: middle;}
 }
 
 /* The dots/bullets/indicators */
+
+.white {
+	position: relative;
+}
+
+.dots {
+	padding-top: 80px;
+	display: flex;
+	justify-content: center;
+}
+
 .dot {
   height: 15px;
   width: 15px;
-  margin: 0 2px;
+  margin: 0 4px;
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
@@ -222,6 +188,137 @@ img {vertical-align: middle;}
 
 .container > div {
 	width: 1280px;
+}
+
+.bestbox {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.mainimage {
+	margin: 0px 10px;
+}
+
+.board_best {
+	display: flex;
+	width: 1280px;
+	justify-content: space-between;
+}
+
+.board_box {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
+.picture {
+	height: 250px;
+	width: 250px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.canvas {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.canvas table, .canvas tr, .canvas td {
+  border: silver 1px dotted;
+}
+
+.canvas table {
+  border-collapse: collapse;
+}
+
+.canvas tr {
+  height: 5px;
+}
+
+.canvas td {
+  min-width: 5px;
+  box-sizing: border-box;
+}
+
+.title {
+	height: 50px;
+	width : 250px;
+	margin: 7px 0px;
+}
+
+.title p {
+	font-weight: bold;
+	font-size: 33px;
+}
+
+.etc {
+	height: 35px;
+	width: 250px;
+	display: flex;
+}
+
+.readcount {
+	color: dimgray;
+	margin-right: 10px;
+}
+
+.rec {
+	color: red;
+}
+
+.fboard_box {
+	display: flex;
+	border: 1px solid black;
+	margin-bottom: 10px;
+	cursor: pointer;
+	height: 200px;
+	align-items: center;
+}
+
+.fpicture {
+	width: 200px;
+	margin-right: 10px;
+}
+
+.fpicture img {
+	width: 200px;
+	height: 200px;
+	padding: 3px;
+	object-fit: contain;
+}
+
+.fshow {
+	display: flex;
+	flex-direction: column;
+	width: 700px;
+	height: 200px;
+}
+
+.ftitle {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.ftitle h4 {
+	font-size: 33px;
+	margin: 0px;
+}
+
+.fcon {
+	padding: 5px;
+}
+
+.fdate {
+	width: 150px;
+}
+
+.makespace {
+	margin: 0px auto;
 }
 
 .hidearea {
