@@ -76,3 +76,7 @@ $(function() {
 $(".item_box").click(function(){
 	location.href = "/board/content/" + this.id;
 })
+
+$(".bestbox").click(function(){
+	location.href = "/painter/painter";
+})

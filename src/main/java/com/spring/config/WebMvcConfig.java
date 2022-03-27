@@ -19,6 +19,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		Logininterceptor2 loginInterceptor2 = new Logininterceptor2();
 		registry.addInterceptor(loginInterceptor2).addPathPatterns(loginInterceptor2.loginEssential);
 		Admininterceptor admininterceptor = new Admininterceptor();
-		registry.addInterceptor(admininterceptor).addPathPatterns(admininterceptor.adminEssential);
+		registry.addInterceptor(admininterceptor).addPathPatterns(admininterceptor.adminEssential).excludePathPatterns(admininterceptor.adminInessentail);
 	}
 }

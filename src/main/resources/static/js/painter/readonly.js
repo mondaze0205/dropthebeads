@@ -52,9 +52,6 @@ $("#report").click(function(){
 	var pictureid = document.getElementById('pictureid').value;
 	var userid = document.getElementById("login_userid").value;
 	
-	alert(pictureid)
-	alert(userid)
-	
 	
 	$.ajax({
 		url:"/admin/report", 

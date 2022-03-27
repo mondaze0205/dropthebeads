@@ -73,12 +73,9 @@ public class Mypage2 {
 		if(service.beforecheck(userid) == 1) {
 			m.addAttribute("userid", userid);
 			if(service.count_fb(userid) != 0) {
-				System.out.println(service.count_fb(userid));
-				System.out.println("1");
 				List<FleaDto> fblist = service.mine_fb(userid);
 				m.addAttribute("fblist", fblist);
 			} else {
-				System.out.println("2");
 				m.addAttribute("fblist", "none");
 			}
 			return "mypage/fboard";
