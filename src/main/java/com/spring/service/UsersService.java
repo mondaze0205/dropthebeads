@@ -1,6 +1,8 @@
 package com.spring.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,5 +56,19 @@ public class UsersService {
 	}
 	public UsersDto userlist(UsersDto dto) {
 		return dao.userlist(dto);
+	}
+	
+
+	public UsersDto showscore(String dto) {
+		return dao.showscore(dto);
+	}
+	public List<UsersDto> descscore(){
+		return dao.descscore();
+	}
+	public int upscore(int gscore, String userid) {
+		Map<String, Object> mapm = new HashMap<>();
+		mapm.put("gscore", gscore);
+		mapm.put("userid", userid);
+		return dao.upscore(mapm);
 	}
 }

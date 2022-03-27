@@ -32,7 +32,7 @@ function showSlides(n) {
 }
 
 
-/*
+
 
 $(function() {
 
@@ -82,30 +82,6 @@ $(function() {
 		});
 
 	}
-
-	/*
-	for (let a = 1; a <= 3; a++) {
-		let pictureid = document.getElementById('pictureid' + a).value;
-		let pixelCanvas = document.getElementById('pixel-canvas' + a);
-		let flea = document.getElementById('boardf' + a).value;
-		let fpic = "/upload/" + document.getElementById('fpic' + a).value;
-		let fpicadd = document.getElementById('fpicadd' + a);
-
-		if (flea != "") {
-			$(".boardf" + a).css("display", "block");
-			var img = document.createElement("img");
-
-			img.setAttribute("src", fpic);
-			img.setAttribute("onerror", "this.src='/image/noimage.png'");
-			img.setAttribute("width", "300px");
-			img.setAttribute("height", "auto");
-
-			fpicadd.appendChild(img);
-		}
-
-		
-	}//for
-*/
 });
 
 
@@ -118,4 +94,4 @@ $(".bestbox").click(function(){
 })
 
 
-*/
+

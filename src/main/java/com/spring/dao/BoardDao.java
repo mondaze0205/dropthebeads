@@ -25,5 +25,5 @@ public interface BoardDao {
 	int countReply(int postid);
 	int insertReply(ReplyDto dto);
 	int deleteReply(int replyid);
-	
+	List<UsersDto> descscore();
 }

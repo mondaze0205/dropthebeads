@@ -36,4 +36,5 @@ public class UsersDto {
 	private Date birth;
 	
 	private int warning;
+	private int gscore;
 }

@@ -87,4 +87,8 @@ public class BoardService {
 	public int deleteReply(int replyid) {
 		return dao.deleteReply(replyid);
 	}
+	
+	public List<UsersDto> descscore(){
+		return dao.descscore();
+	}
 }

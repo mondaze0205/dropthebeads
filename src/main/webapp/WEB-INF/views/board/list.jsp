@@ -90,15 +90,18 @@
 		</div>
 	</c:if>
 </div>
-<div class="noname">
+<div class="side_rank">
 	<img src="/image/ranking.jpg" style="width:100%">
     <div class="ranktext"><p>현재 게임 랭킹☆<br>
-    <br>
-   	랭킹 리스트<br>
-   	들어갈 예정<br>
-   	<br>
-<!--민주꺼 합치면 랭킹 넣으려구요! -->
-    <a href="../game/minigame" class="gobtn">바로가기 <i class="fa-solid fa-arrow-right"></i></a></p>
+		<c:forEach items="${rank}" var="b" begin="0" end="2" step="1" varStatus="v">
+			<c:if test="${b.gscore != 0}">
+				<h2>${v.index+1}위. ${b.nickname}</h2>
+				<h2>${b.gscore}점</h2>
+			</c:if>
+		</c:forEach>
+	<div class="gogame">
+	    <a href="../game/carrotgame">바로가기 <i class="fa-solid fa-arrow-right"></i></a>
+	</div>
     </div>   
 </div>
 	<div class="side_right">

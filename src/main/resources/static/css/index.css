@@ -108,7 +108,6 @@ img {vertical-align: middle;}
   top: 0;
 }
 
-/* 바로가기 버튼 */
 .gobtn{
 	font-family: 'Roboto', sans-serif;	
 	font-size:17px;
@@ -130,7 +129,6 @@ img {vertical-align: middle;}
 	color: #00af79;		
 }
 
-/* 바로가기 버튼2 */
 .gobtn2{
 	font-family: 'Roboto', sans-serif;	
 	font-size:17px;
@@ -214,4 +212,18 @@ img {vertical-align: middle;}
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .text {font-size: 11px}
+}
+
+.container {
+	display: grid;
+	margin: 0px auto;
+	justify-items: center;
+}
+
+.container > div {
+	width: 1280px;
+}
+
+.hidearea {
+	display: none;
 }

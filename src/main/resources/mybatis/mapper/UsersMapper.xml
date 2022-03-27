@@ -31,4 +31,13 @@
 <select id ="userlist" parameterType="com.spring.dto.UsersDto" resultType = "com.spring.dto.UsersDto">
 	select * from users where userid=#{userid} and email=#{email}
 </select>
+<select id = "showscore" parameterType="String" resultType ="com.spring.dto.UsersDto" >
+	select * from users where userid=#{userid}
+</select>
+<select id = "descscore" resultType="com.spring.dto.UsersDto">
+	select nickname, gscore from users order by gscore desc
+</select>
+<update id="upscore" parameterType="Map">
+	update users set gscore = #{gscore} where userid=#{userid}
+</update>
 </mapper>

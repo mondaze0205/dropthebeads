@@ -47,7 +47,7 @@
 		<li><a href="/painter/painter">PAINTER</a></li>
 		<li><a href="/flea/flist">FLEA MARKET</a></li>
 		<li><a href="/board/list">COMMUNITY</a></li>
-		<li><a href="/game/minigame">GAMES</a></li>
+		<li><a href="/game/carrotgame">GAMES</a></li>
 	</ul>
 </nav>
 

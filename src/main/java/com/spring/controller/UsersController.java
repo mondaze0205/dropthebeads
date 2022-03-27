@@ -162,4 +162,26 @@ public class UsersController {
 		return service.match(userid);
 	}
 	
+	@GetMapping("game/carrotgame")
+	public String carrotgame2(@ModelAttribute("user")UsersDto dto, Model m) {
+		
+		UsersDto aaa = service.showscore(dto.getUserid());
+		m.addAttribute("aaa", aaa);
+
+		List<UsersDto> bbb = service.descscore();
+		m.addAttribute("bbb", bbb);
+		
+		return "game/carrotgame";
+	}
+	
+	@PostMapping("/game/upscore")
+	@ResponseBody
+	public String scoreupdate(int gscore, String userid, int oldscore) {
+		int i = 0;
+		if(gscore > oldscore) { //현재점수가 기존점수보다  
+			i = service.upscore(gscore, userid);
+		}
+		return i+"";
+	}
+	
 }

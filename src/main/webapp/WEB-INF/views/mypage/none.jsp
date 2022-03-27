@@ -13,7 +13,7 @@
 </style>
 </head>
 <body>
-<jsp:include page="../header2.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <hr color="#00af79" size="2px">
 <div class="container">
 <h1>존재하지 않는 id입니다.</h1>

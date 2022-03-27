@@ -59,6 +59,9 @@ public class BoardCtrl {
 			m.addAttribute("totalPages", totalPages);
 		}
 		
+		List<UsersDto> rank = service.descscore();
+		m.addAttribute("rank", rank);
+		
 		return "board/list";
 	}
 	

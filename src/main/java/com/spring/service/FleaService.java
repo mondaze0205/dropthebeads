@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.dao.FleaDao;
-import com.spring.dto.FleaCommDto;
-import com.spring.dto.FleaDto;
-import com.spring.dto.FleaLikeDto;
-import com.spring.dto.ImgDto;
+import com.spring.dto.*;
 
 @Service
 public class FleaService {

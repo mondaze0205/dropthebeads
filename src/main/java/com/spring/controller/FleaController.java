@@ -267,9 +267,4 @@ public class FleaController {
 		return s;
 	}
 
-	@GetMapping("game/minigame")
-	public String game() {
-		return "game/minigame";
-	}
-
 }
