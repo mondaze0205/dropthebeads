@@ -128,7 +128,7 @@ $("#loadbtn").click(function(){
 		window.opener.location.href = '/painter/readonly/' + pictureid 
 	} else {
 		opener.document.getElementById("code").value = code;
-		opener.document.getElementById("pic_id").value = picid;
+		opener.document.getElementById("pic_id").value = pictureid;
 		opener.document.getElementById("pic_name").value = picname;	
 		window.opener.$("#copypic").trigger('click');
 	}

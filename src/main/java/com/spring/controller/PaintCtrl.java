@@ -52,7 +52,7 @@ public class PaintCtrl {
 		return "redirect:/painter/picsaved";
 	}
 	
-	@RequestMapping("/painter/picsaved")
+	@GetMapping("/painter/picsaved")
 	public String paintSave2(HttpServletRequest request, Model m) {
 		String n = "";
 		Map<String, ?> map = RequestContextUtils.getInputFlashMap(request);
