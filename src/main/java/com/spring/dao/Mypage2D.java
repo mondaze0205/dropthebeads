@@ -26,5 +26,6 @@ public interface Mypage2D {
 	String nnCheck2(String userid);
 	String mailCheck(String userid);
 	int update(UsersDto dto);
+	int pwedit(UsersDto dto);
 	int withdraw(String userid);
 }

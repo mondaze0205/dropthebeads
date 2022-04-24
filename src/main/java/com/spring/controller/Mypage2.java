@@ -118,6 +118,12 @@ public class Mypage2 {
 		return "mypage/info";
 	}
 	
+	@GetMapping("/mypage/{userid}/pwedit")
+	public String pwedit(@PathVariable String userid, Model m) {
+		m.addAttribute("userid", userid);
+		return "mypage/pwedit";
+	}
+	
 	@PostMapping("/mypage2/pwCheck")
 	@ResponseBody
 	public String pwCheck(String pw, String userid) {
@@ -164,6 +170,11 @@ public class Mypage2 {
 		return "redirect:/logout";
 	}
 	
+	@PostMapping("/mypage2/pwedit")
+	public String pwedit(UsersDto dto) {
+		service.pwedit(dto);
+		return "redirect:/logout";
+	}
 	
 	@GetMapping("/bye")
 	public String exit() {

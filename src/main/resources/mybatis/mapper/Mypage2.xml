@@ -55,7 +55,10 @@
 	select email from users where userid=#{userid}
 </select>
 <update id="update" parameterType="com.spring.dto.UsersDto">
-	update users set pw=#{pw}, nickname=#{nickname}, address=#{address}, email=#{email}, birth=#{birth} where userid=#{userid}
+	update users set nickname=#{nickname}, address=#{address}, email=#{email}, birth=#{birth} where userid=#{userid}
+</update>
+<update id="pwedit" parameterType="com.spring.dto.UsersDto">
+	update users set pw=#{pw} where userid=#{userid}
 </update>
 <delete id="withdraw" parameterType="String">
 	delete from users where userid = #{userid}

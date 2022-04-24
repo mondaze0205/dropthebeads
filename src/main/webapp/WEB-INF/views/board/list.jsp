@@ -30,6 +30,7 @@
     일생 생활 속의 소소한 이야기도 좋아요<i class="fa-regular fa-face-grin-wide"></i></span>
 </div> 
 
+<div class="side_left"></div>
 <div class="container">
 <div class="side_top">
 	<button type="button" onclick="location.href='list?h=0'">새로고침</button>
@@ -42,8 +43,7 @@
 	<p id="p4">질문</p>
 	<button type="button" class="writebtn" id="writebtn">글쓰기</button>
 </div>
-	<div class="side_left">
-	</div>
+
 <div class="center">
 	<c:if test="${count != 0}">
 		<div class="tabletop">
@@ -91,12 +91,12 @@
 	</c:if>
 </div>
 <div class="side_rank">
-	<img src="/image/ranking.jpg" style="width:100%">
-    <div class="ranktext"><p>현재 게임 랭킹☆<br>
+	<!-- <img src="/image/ranking.jpg" id="rankbg"> -->
+    <div class="ranktext"><p>☆ 게임 랭킹 ☆</p>
 		<c:forEach items="${rank}" var="b" begin="0" end="2" step="1" varStatus="v">
 			<c:if test="${b.gscore != 0}">
 				<h2>${v.index+1}위. ${b.nickname}</h2>
-				<h2>${b.gscore}점</h2>
+				<h3>${b.gscore}점</h3>
 			</c:if>
 		</c:forEach>
 	<div class="gogame">

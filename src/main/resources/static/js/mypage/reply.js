@@ -1,8 +1,23 @@
-$(".menu").click(function(){
+$(function(){
 	var master = document.getElementById("master").value
-	
-	location.href = "/mypage/" + master + "/" + this.id
-	
+	var un = document.getElementById("login_userid").value
+
+	if(master != un) {
+		$(".hr").css('display', 'none');
+		$(".myinfo").css('display', 'none');
+		$("#pwedit").css('display', 'none');
+		$(".withdraw").css('display', 'none');
+	}
+})
+
+$(".menu").click(function(){
+	var master = document.getElementById("master").value;
+	location.href = "/mypage/" + master + "/" + this.id;
+})
+
+$("#pwedit").click(function(){
+	var master = document.getElementById("master").value;
+	location.href = "/mypage/" + master + "/" + this.id;
 })
 
 $(".t1").click(function(){

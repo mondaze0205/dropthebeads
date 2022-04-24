@@ -28,7 +28,7 @@
 		
 		<div class="div1">비밀번호를 입력해주세요</div>
 		<div class="div2">
-			<input type="text" id="pw" name="pw">
+			<input type="password" id="pw" name="pw">
 		</div>
 		
 		<div class="div1">'회원탈퇴'를 입력해주세요</div>

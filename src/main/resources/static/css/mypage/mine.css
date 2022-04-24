@@ -43,7 +43,7 @@
 	text-align: center;	 	
 }
 
-.menu {
+.menu, .pwedit {
 	width: 215px;	
 	margin-bottom:5px;
     border: 2px solid #00af79;
@@ -54,7 +54,7 @@
     flex: 0 0 auto;
     padding: 10px 15px;
 }
-.menu:hover {
+.menu:hover, .pwedit:hover {
 	background-color: #Fed354;
 }
 
@@ -66,7 +66,7 @@
 	width: 100%;
 }
 
-.menu p {
+.menu p, .pwedit p {
 	margin: 0px;
 	font-family: 'Gothic A1', sans-serif;	
 	font-weight: 500;

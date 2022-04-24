@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ë‹¹ê·¼! ë‹¹ê·¼!</title>
+<title>´ç±Ù! ´ç±Ù!</title>
 <jsp:include page="../header.jsp"></jsp:include>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +17,6 @@
   		width: 200px;
         margin: 0px auto;
         position: relative;
-        on
   }
   .startbtnon {
 		position: absolute;
@@ -36,7 +35,7 @@
   		background-size: 1100px 700px;
   		cursor:  url('/image/cursor.png') 40 40, auto;
   }
-  		/* ì»¤ì„œì´ë¯¸ì§€ ì‚¬ì´ì¦ˆ 80*80ì„ = ì¤‘ì•™ìœ„ì¹˜ì¸ 40*40 */
+  		/* Ä¿¼­ÀÌ¹ÌÁö »çÀÌÁî 80*80ÀÓ = Áß¾ÓÀ§Ä¡ÀÎ 40*40 */
   .gamehead{
     	width: 1100px; height: 200px;
   }
@@ -110,7 +109,7 @@
 	    pointer-events: none;
   }
   .goldpoint{
-	    background: url('/image/3.png') center center no-repeat;
+	    background: url('/image/5.png') center center no-repeat;
 	    background-size: 130px 130px;
 	    pointer-events: none;
   }
@@ -239,23 +238,23 @@
 		  	<div class="texta">				
 		  		<c:if test="${user.userid != null}">
 					<span style="font-size: 35px; font-weight: bold;">${aaa.nickname}</span>
-					<span style="font-size: 20px; font-weight: bold;">&nbsp; score: ${aaa.gscore}ì </span><br>
+					<span style="font-size: 20px; font-weight: bold;">&nbsp; score: ${aaa.gscore}Á¡</span><br>
 					<span style="font-size: 35px; font-weight: bold;">-----------------</span>
 				</c:if>
 				<c:if test="${user.userid == null}">
-					<span style="font-size: 35px; font-weight: bold;">ë¡œê·¸ì¸í•˜ì„¸ìš”!</span><br>
-					<h5>ê¸°ë¡ì„ ë‚¨ê¸°ë ¤ë©´ ë¡œê·¸ì¸ì„ í•´ì•¼í•©ë‹ˆë‹¤.</h5>
+					<span style="font-size: 35px; font-weight: bold;">·Î±×ÀÎÇÏ¼¼¿ä!</span><br>
+					<h5>±â·ÏÀ» ³²±â·Á¸é ·Î±×ÀÎÀ» ÇØ¾ßÇÕ´Ï´Ù.</h5>
 				</c:if>
 				<h1>
-					<span id="score">0</span>ì 
-					<span id="life" style="font-size: 30px;">3</span>ëª©ìˆ¨
-					<span id="timer" float="left" style="color: red">30</span>ì´ˆ&nbsp;<br>
+					<span id="score">0</span>Á¡
+					<span id="life" style="font-size: 30px;">3</span>¸ñ¼û
+					<span id="timer" float="left" style="color: red">30</span>ÃÊ&nbsp;<br>
 				</h1>
 				<div>
 					<h1>------RANK------</h1>
 					<c:forEach items="${bbb}" var="b" begin="0" end="2" step="1" varStatus="v">
 						<c:if test="${b.gscore != 0}">
-							<h2>${v.index+1}ìœ„ &nbsp; ${b.nickname} &nbsp; ${b.gscore}ì </h2>
+							<h2>${v.index+1}À§ &nbsp; ${b.nickname} &nbsp; ${b.gscore}Á¡</h2>
 						</c:if>
 					</c:forEach>
 				</div>
@@ -266,14 +265,19 @@
 	
 	
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<!-- $ is not definedëŠ” jqueryë¬¸ë²•ì´ë¼ì„œ ì¶”ê°€í•´ì¤˜ì•¼í•¨ -->
+<!-- $ is not defined´Â jquery¹®¹ıÀÌ¶ó¼­ Ãß°¡ÇØÁà¾ßÇÔ -->
 <script>
 	const $timer = document.querySelector('#timer');
 	const $score = document.querySelector('#score');
 	const $game = document.querySelector('#game');
 	const $life = document.querySelector('#life');
 	const $start = document.querySelector('#start');
-	const $$cells = document.querySelectorAll('.cell'); // 9ì¹¸ì„ ì „ë¶€ ì„ íƒí•œ ê²ƒ
+	const $$cells = document.querySelectorAll('.cell'); // 9Ä­À» ÀüºÎ ¼±ÅÃÇÑ °Í
+	var startS = new Audio('/sound/ss.m4a');
+	var boomS = new Audio('/sound/boom.m4a');
+	var eatS = new Audio('/sound/eat.m4a');
+	var goldS = new Audio('/sound/goldS.m4a');
+	var endS = new Audio('/sound/endS.m4a');
 	
 	const holes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 	let started = false;
@@ -283,23 +287,25 @@
 	let timerId;
 	let tickId;
 	let count = 0;
-	  
+	
 	$start.addEventListener('click', () => {
-		if (started) return; // ì´ë¯¸ ì‹œì‘í–ˆìœ¼ë©´ ë¬´ì‹œ
+		startS.play();
+		if (started) return; // ÀÌ¹Ì ½ÃÀÛÇßÀ¸¸é ¹«½Ã
 	    started = true;
-	    console.log('ì‹œì‘');
+	    console.log('½ÃÀÛ');
 	    timerId = setInterval(() => {
-	    	time = (time * 10 - 1) / 10; // ì†Œìˆ˜ì  ê³„ì‚° ì‹œ ë¬¸ì œìˆì–´ì„œ ì •ìˆ˜ë¡œ ë°”ê¾¼ ë’¤ 10ì„ ë‚˜ëˆ  ì†Œìˆ˜ì ìœ¼ë¡œ ë°”ê¿”ì¤Œ
+	    	time = (time * 10 - 1) / 10; // ¼Ò¼öÁ¡ °è»ê ½Ã ¹®Á¦ÀÖ¾î¼­ Á¤¼ö·Î ¹Ù²Û µÚ 10À» ³ª´² ¼Ò¼öÁ¡À¸·Î ¹Ù²ãÁÜ
 	      	$timer.textContent = time;
-	      	if (time === 0) { // ì‹œê°„ì´ 0ì´ ë˜ë©´ ê²Œì„ì˜¤ë²„. í™”ë©´ ê·¸ë¦¬ëŠ” ê²ƒì„ ë§‰ê¸°ë•Œë¬¸ì— setTimeoutìœ¼ë¡œ ì‹œê°„ì„ ì¤˜ì•¼í•œë‹¤. 
+	      	if (time === 0) { // ½Ã°£ÀÌ 0ÀÌ µÇ¸é °ÔÀÓ¿À¹ö. È­¸é ±×¸®´Â °ÍÀ» ¸·±â¶§¹®¿¡ setTimeoutÀ¸·Î ½Ã°£À» Áà¾ßÇÑ´Ù. 
 	        	clearInterval(timerId);
 	        	clearInterval(tickId);
 	        	setTimeout(() => {
-		            alert('ê²Œì„ ì˜¤ë²„! ì ìˆ˜ëŠ”'+ score +'ì ');
+	        		endS.play();
+		            alert('°ÔÀÓ ¿À¹ö! Á¡¼ö´Â'+ score +'Á¡');
 		            var userid = document.getElementById("useridid").value
 		            var oldscore = document.getElementById("oldscore").value
 		            $.ajax({url: "/game/upscore", 
-			            //dataë¥¼ ë”°ë¡œ ë³´ë‚´ì§€ ì•Šì•„ë„ ëœë‹¤ê³  ìŒ¤ì´ ë§í–ˆëŠ”ë° dataë¶™ì—¬ì•¼ ì‚­ì œë¨.. ì°¸ê³ ..
+			            //data¸¦ µû·Î º¸³»Áö ¾Ê¾Æµµ µÈ´Ù°í ½ÜÀÌ ¸»Çß´Âµ¥ dataºÙ¿©¾ß »èÁ¦µÊ.. Âü°í..
 			            data:"gscore="+score+"&userid="+userid+"&oldscore="+oldscore,
 			            method:"post"
 			            }).done(function(){
@@ -310,41 +316,41 @@
         		//alert(score);
 	      	}
 	    }, 100);
-	    tickId = setInterval(tick, 1000); // 1ì´ˆë§ˆë‹¤
+	    tickId = setInterval(tick, 1000); // 1ÃÊ¸¶´Ù
 	    tick();
 	});
 	
-	// í™”ë©´: hidden
-	// í˜¸ì¶œìŠ¤íƒ:
-	// ë°±ê·¸ë¼ìš´ë“œ : interval(tick, 1000), setTimeout(add, 1000)
-	// íƒœìŠ¤í¬í: tick, add //ì´ˆê°€ ê°™ìœ¼ë©´ ë¨¼ì € í˜¸ì¶œëœê²ƒì´ íƒœìŠ¤í¬íì— ë¨¼ì € ë“¤ì–´ê°„ë‹¤.
-	let carrotPercent = 0.3; // ë‘ë”ì§€ ë¹„ìœ¨ 30%
-	let bombPercent = 0.5; // í­íƒ„ ë¹„ìœ¨ 20% // ëˆ„ì í™•ë¥  - if, else ifì™€ í•¨ê»˜ ì‚¬ìš©
-					// 0.2ë¡œ í•˜ì§€ ì•ŠëŠ” ì´ìœ  = 0.3ë³´ë‹¤ ì‘ìœ¼ë©´ ë‘ë”ì§€. 0.3~0.5ë³´ë‹¤ ì‘ìœ¼ë©´ í­íƒ„ í•´ë‹¹ë˜ì§€ ì•Šìœ¼ë©´ ì•„ë¬´ê²ƒë„ ëœ¨ì§€ ì•Šê²Œ
-	let goldcarrotPercent = 0.6; // í™©ê¸ˆë‘ë”ì§€ ë¹„ìœ¨ 10%
+	// È­¸é: hidden
+	// È£Ãâ½ºÅÃ:
+	// ¹é±×¶ó¿îµå : interval(tick, 1000), setTimeout(add, 1000)
+	// ÅÂ½ºÅ©Å¥: tick, add //ÃÊ°¡ °°À¸¸é ¸ÕÀú È£ÃâµÈ°ÍÀÌ ÅÂ½ºÅ©Å¥¿¡ ¸ÕÀú µé¾î°£´Ù.
+	let carrotPercent = 0.3; // µÎ´õÁö ºñÀ² 30%
+	let bombPercent = 0.5; // ÆøÅº ºñÀ² 20% // ´©ÀûÈ®·ü - if, else if¿Í ÇÔ²² »ç¿ë
+					// 0.2·Î ÇÏÁö ¾Ê´Â ÀÌÀ¯ = 0.3º¸´Ù ÀÛÀ¸¸é µÎ´õÁö. 0.3~0.5º¸´Ù ÀÛÀ¸¸é ÆøÅº ÇØ´çµÇÁö ¾ÊÀ¸¸é ¾Æ¹«°Íµµ ¶ßÁö ¾Ê°Ô
+	let goldcarrotPercent = 0.6; // È²±İµÎ´õÁö ºñÀ² 10%
 	
 	function tick() {
 		holes.forEach((hole, index) => {
-			if (hole) return; // holeì— ê°’ì´ ìˆìœ¼ë©´(ì˜¬ë¼ì™€ìˆìœ¼ë©´) return
-	      	const randomValue = Math.random(); // ëœë¤í•œ ìˆ«ìë¥¼ ë½‘ì•„ì˜¨ë‹¤.
+			if (hole) return; // hole¿¡ °ªÀÌ ÀÖÀ¸¸é(¿Ã¶ó¿ÍÀÖÀ¸¸é) return
+	      	const randomValue = Math.random(); // ·£´ıÇÑ ¼ıÀÚ¸¦ »Ì¾Æ¿Â´Ù.
 	      	if (randomValue < carrotPercent) {
 	        	const $carrot = $$cells[index].querySelector('.carrot');
-	        	holes[index] = setTimeout(() => { // 1ì´ˆ ë’¤ì— ì‚¬ë¼ì§ // ë¹„ë™ê¸° //íƒ€ì´ë¨¸ ì·¨ì†Œë¥¼ ìœ„í•´ íƒ€ì´ë¨¸ ì•„ì´ë””ë¥¼ holesì— ì €ì¥í•´ì¤€ë‹¤.
-	        		// setTimeoutì˜ idëŠ” ìˆ«ì(ì›ì‹œê°’). ì°¸ì¡°ê´€ê³„ë¥¼ ìœ ì§€í•˜ê¸°ìœ„í•´ holes[index] ì‚¬ìš©
+	        	holes[index] = setTimeout(() => { // 1ÃÊ µÚ¿¡ »ç¶óÁü // ºñµ¿±â //Å¸ÀÌ¸Ó Ãë¼Ò¸¦ À§ÇØ Å¸ÀÌ¸Ó ¾ÆÀÌµğ¸¦ holes¿¡ ÀúÀåÇØÁØ´Ù.
+	        		// setTimeoutÀÇ id´Â ¼ıÀÚ(¿ø½Ã°ª). ÂüÁ¶°ü°è¸¦ À¯ÁöÇÏ±âÀ§ÇØ holes[index] »ç¿ë
 	          		$carrot.classList.add('hidden');
 	          		holes[index] = 0;
 	        	}, 1000); 
 	        	$carrot.classList.remove('hidden');
 	      	} else if (randomValue < bombPercent) {
 	        	const $bomb = $$cells[index].querySelector('.bomb');
-	        	holes[index] = setTimeout(() => { // 1ì´ˆ ë’¤ì— ì‚¬ë¼ì§
+	        	holes[index] = setTimeout(() => { // 1ÃÊ µÚ¿¡ »ç¶óÁü
 	          		$bomb.classList.add('hidden');
 	          		holes[index] = 0;
 	        	}, 1000); 
 	        	$bomb.classList.remove('hidden');
 	      	} else if (randomValue < goldcarrotPercent){
 	    	  	const $carrot = $$cells[index].querySelector('.goldcarrot');
-	          	holes[index] = setTimeout(() => { // 1ì´ˆ ë’¤ì— ì‚¬ë¼ì§
+	          	holes[index] = setTimeout(() => { // 1ÃÊ µÚ¿¡ »ç¶óÁü
 		            $carrot.classList.add('hidden');
 		            holes[index] = 0;
 	          	}, 1000); 
@@ -353,30 +359,32 @@
 	    });
 	}
 	
-	$$cells.forEach(($cell, index) => { // 9ì¹¸ì„ ë°˜ë³µë¬¸ ëŒë©´ì„œ 
-		$cell.querySelector('.carrot').addEventListener('click', (event) => {// ê° ì…€ì—ì„œ ë‘ë”ì§€ë¥¼ ì°¾ì•„ì„œ click
-	    	if (!event.target.classList.contains('point')) { // ìš¸ì§€ì•Šê³ ìˆìœ¼ë©´ 
+	$$cells.forEach(($cell, index) => { // 9Ä­À» ¹İº¹¹® µ¹¸é¼­ 
+		$cell.querySelector('.carrot').addEventListener('click', (event) => {// °¢ ¼¿¿¡¼­ µÎ´õÁö¸¦ Ã£¾Æ¼­ click
+	    	if (!event.target.classList.contains('point')) { // ¿ïÁö¾Ê°íÀÖÀ¸¸é 
+	    		eatS.play();
 	        	score += 1;
 	        	$score.textContent = score;
 	      	}
-	      	event.target.classList.add('point'); // ìš°ëŠ” í‘œì •ìœ¼ë¡œ ë°”ë€Œê³ 
-	      	event.target.classList.add('hidden'); // ë‚´ë ¤ê°„ë‹¤
-	      	clearTimeout(holes[index]); // ê¸°ì¡´ì˜ ë‚´ë ¤ê°€ëŠ” íƒ€ì´ë¨¸(1ì´ˆë’¤) ì œê±°í•˜ê³  click ì¦‰ì‹œ ë‚´ë ¤ê°€ë„ë¡ í•¨
+	      	event.target.classList.add('point'); // ¿ì´Â Ç¥Á¤À¸·Î ¹Ù²î°í
+	      	event.target.classList.add('hidden'); // ³»·Á°£´Ù
+	      	clearTimeout(holes[index]); // ±âÁ¸ÀÇ ³»·Á°¡´Â Å¸ÀÌ¸Ó(1ÃÊµÚ) Á¦°ÅÇÏ°í click Áï½Ã ³»·Á°¡µµ·Ï ÇÔ
 	      	setTimeout(() => {
 		        holes[index] = 0;
-	        	event.target.classList.remove('point'); // ìš°ëŠ” ë‘ë”ì§€ë¥¼ ì§€ì›Œì¤˜ì•¼ ë‹¤ìŒ ì˜¬ë¼ê°€ëŠ” ë‘ë”ì§€ê°€ ìš¸ì§€ì•Šê³ ìˆìŒã…‹ã…‹ã…‹ã…‹
+	        	event.target.classList.remove('point'); // ¿ì´Â µÎ´õÁö¸¦ Áö¿öÁà¾ß ´ÙÀ½ ¿Ã¶ó°¡´Â µÎ´õÁö°¡ ¿ïÁö¾Ê°íÀÖÀ½¤»¤»¤»¤»
 	      	}, 1000);
 	    });
 	    
 	    
 	    $cell.querySelector('.bomb').addEventListener('click', (event) => {
 	    	if (!event.target.classList.contains('boom')) {
+				  boomS.play();
 	    	      life--;
 	    	      $life.textContent = life;
 	          }
 	      	event.target.classList.add('boom');
 	      	event.target.classList.add('hidden');
-	      	clearTimeout(holes[index]); // ê¸°ì¡´ ë‚´ë ¤ê°€ëŠ” íƒ€ì´ë¨¸ ì œê±°
+	      	clearTimeout(holes[index]); // ±âÁ¸ ³»·Á°¡´Â Å¸ÀÌ¸Ó Á¦°Å
 	      	setTimeout(() => {
 		        holes[index] = 0;
 		        event.target.classList.remove('boom');
@@ -385,35 +393,36 @@
 		        clearInterval(timerId);
 		        clearInterval(tickId);
 	        	setTimeout(() => {
-		            alert('ê²Œì„ ì˜¤ë²„! ì ìˆ˜ëŠ”'+ score +'ì ');
+	        		endS.play();
+		            alert('°ÔÀÓ ¿À¹ö! Á¡¼ö´Â'+ score +'Á¡');
 		            var userid = document.getElementById("useridid").value
 		            var oldscore = document.getElementById("oldscore").value
 		            $.ajax({url: "/game/upscore", 
-			            //dataë¥¼ ë”°ë¡œ ë³´ë‚´ì§€ ì•Šì•„ë„ ëœë‹¤ê³  ìŒ¤ì´ ë§í–ˆëŠ”ë° dataë¶™ì—¬ì•¼ ì‚­ì œë¨.. ì°¸ê³ ..
+			            //data¸¦ µû·Î º¸³»Áö ¾Ê¾Æµµ µÈ´Ù°í ½ÜÀÌ ¸»Çß´Âµ¥ dataºÙ¿©¾ß »èÁ¦µÊ.. Âü°í..
 			            data:"gscore="+score+"&userid="+userid+"&oldscore="+oldscore,
 			            method:"post"
 			            }).done(function(){
 			               location.reload();
 			            });
 		               location.reload();
-	        	}, 50);
+	        	}, 200);
 	      	}
 	    });
 	    
 	
 	    $cell.querySelector('.goldcarrot').addEventListener('click', (event) => {
-	
 	    	count += 1;
 	    	console.log(count);
 	    	if (count == 3){
 	    		if (!event.target.classList.contains('goldpoint')) {
+	    			  goldS.play();
 	    	          score += 5;
 	    	          $score.textContent = score;
 	    	          count = 0;
 	            }
 	   	        event.target.classList.add('goldpoint');
 	   	        event.target.classList.add('hidden');
-	   	        clearTimeout(holes[index]); // ê¸°ì¡´ ë‚´ë ¤ê°€ëŠ” íƒ€ì´ë¨¸ ì œê±°
+	   	        clearTimeout(holes[index]); // ±âÁ¸ ³»·Á°¡´Â Å¸ÀÌ¸Ó Á¦°Å
 	   	        setTimeout(() => {
 	   	          holes[index] = 0;
 	   	          event.target.classList.remove('goldpoint');

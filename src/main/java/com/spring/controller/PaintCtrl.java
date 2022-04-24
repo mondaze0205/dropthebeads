@@ -90,4 +90,8 @@ public class PaintCtrl {
 		return "painter/readonly";
 	}
 	
+	@GetMapping("/painter/each")
+	public String painteach() {
+		return "painter/each";
+	}
 }

@@ -16,7 +16,7 @@
 <jsp:include page="../header.jsp"></jsp:include>
 <div class="container">
 	<c:choose>
-	<c:when test="{$n != ''}">
+	<c:when test="${n != ''}">
 		<h1>저장이 완료되었습니다. - ${n}</h1>
 		<input type="hidden" id="hidden" value="0">
 	</c:when>

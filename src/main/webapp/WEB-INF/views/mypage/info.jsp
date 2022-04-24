@@ -32,6 +32,7 @@
 	<h1 class="edit_title">EDIT PROFILE</h1>	
 
 		<input type="hidden" id="master" value="${userid}">
+		<input type="hidden" id="login_userid" value="${user.userid}">
 		<form action="../../mypage2/update" method="post" class="update_form"
 			name="update_form">
 
@@ -39,20 +40,6 @@
 			<div class="update_item" >
 				<small style="color:#00af79;"> ${user.userid}</small> <input type="hidden" value="${user.userid}"
 					name="userid">
-			</div>
-
-			<div class="update_text">비밀번호</div>
-			<div class="update_item">
-				<input type="text" id="pw1"
-					oninput="this.value = this.value.replace(/[^0-9a-zA-Z!?@#$%^&*():;+-=~{}<>\_\[\]\|\\\,\.]/g, '');">
-				<p id="pw_msg1">8~16자리의 영문,숫자,특수문자를 조합하여 설정하시오.</p>
-			</div>
-
-			<div class="update_text">비밀번호 재확인</div>
-			<div class="update_item">
-				<input type="text" id="pw2"	oninput="this.value = this.value.replace(/[^0-9a-zA-Z!?@#$%^&*():;+-=~{}<>\_\[\]\|\\\,\.]/g, '');">
-				<p id="pw_msg2">위 비밀번호와 일치하게 설정하시오</p>
-				<input type="hidden" id="pw3" name="pw" value="${user.pw}">
 			</div>
 
 			<div class="update_text">닉네임</div>
@@ -165,9 +152,6 @@
 			</div>
 
 			<div class="hidearea">
-				<input type="hidden" name="warning" value="${user.warning}">
-				<input type="text" id="pw1_check" value="1" readonly> 
-				<input type="text" id="pw2_check" value="1" readonly> 
 				<input type="text" id="nn2_check" value="1" readonly>
 				<input type="text" id="bir_check" value="1" readonly>
 				<input type="text" id="mail_check" value="1" readonly>

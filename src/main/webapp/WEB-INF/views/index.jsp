@@ -80,12 +80,6 @@
 		<!-- Next and previous buttons -->
 		<a class="prev" onclick="plusSlides(-1)">&#10094;</a> <a class="next"
 			onclick="plusSlides(1)">&#10095;</a>
-		
-		<div class="white">
-		<div class="dots">
-			<span class="dot"></span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span>
-		</div>
-		</div>
 	
 	</div>
 
@@ -98,10 +92,13 @@
 					<img class="mainimage" src="/image/dulgi.png">
 				</div>
 				<div class="mainimage">
-					<img class="mainimage" src="/image/apple.png">
+					<img class="mainimage" src="/image/among.gif">
 				</div>
 				<div class="mainimage">
-					<img class="mainimage" src="/image/rabbit.png">
+					<img class="mainimage" src="/image/rabbit2.png">
+				</div>
+				<div class="mainimage">
+					<img class="mainimage" src="/image/carrot2.png">
 				</div>
 			</div>
 		</div>
@@ -131,7 +128,7 @@
 							</div>
 						</div>
 						<div class="title">
-							<p>${bb.title}</p>
+							<p class="best_p">${bb.title}</p>
 						</div>
 						<div class="etc">
 							<p class="readcount">조회수 : ${bb.readcount}</p>
@@ -161,7 +158,7 @@
 							<input type="hidden" id="${ffs.index}_fimg" value="${ff.imgid}">
 						</div>
 						<div class="fpicture">
-							<img id="img_${ffs.index}">
+							<img id="img_${ffs.index}" onerror="this.src='/image/noimage.png'">
 						</div>
 						<div class="fshow">
 							<div class="ftitle"><h4>${ff.f_title}</h4></div>

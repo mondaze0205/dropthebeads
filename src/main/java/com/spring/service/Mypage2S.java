@@ -91,6 +91,10 @@ public class Mypage2S {
 		return dao.update(dto);
 	}
 	
+	public int pwedit(UsersDto dto) {
+		return dao.pwedit(dto);
+	}
+	
 	public int withdraw(String userid) {
 		return dao.withdraw(userid);
 	}

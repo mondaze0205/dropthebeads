@@ -29,13 +29,14 @@
 	<div class="menu" id="freply"><p>벼룩시장 - 댓글</p></div>
 	<div class="hr"><hr></div>
 	<div class="menu myinfo" id="myinfo"><p>내 정보</p></div>
+	<div class="pwedit" id="pwedit"><p>비밀번호 수정</p></div>
 	<div class="withdraw" id="withdraw" onclick="location.href='/bye';"><p>회원 탈퇴</p></div>
 </div>
 <div class="con">
 	<c:choose>
-		<c:when test="${blist == 'none'}">
+		<c:when test="${plist == 'none'}">
 			<div class="none">
-				<p>글이 없대.</p>
+				<p>작성한 게시물이 없습니다.</p>
 			</div>
 		</c:when>
 		<c:otherwise>

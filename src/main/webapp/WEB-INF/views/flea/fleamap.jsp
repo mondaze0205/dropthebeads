@@ -29,7 +29,7 @@
 </div>  
 
 	<div align="center">
-		<div id="map" style="width:1300px;height:400px; margin-bottom: 30px;"></div>
+		<div id="map" style="width:1300px;height:600px; margin-bottom: 30px;"></div>
 	</div>
 
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=75a521ee3f22167093ecd39350fa50b1&libraries=services"></script>

@@ -46,7 +46,7 @@
 
 	<update id="updateFboard" parameterType="com.spring.dto.FleaDto">
 		update fleaboard set
-		f_title=#{f_title} , f_content=#{f_content} where f_postno=#{f_postno}
+		f_title=#{f_title} , f_content=#{f_content},f_category=#{f_category}, f_price=#{f_price}, f_addr=#{f_addr} where f_postno=#{f_postno}
 	</update>
 
 	<update id="updateImg" parameterType="com.spring.dto.ImgDto">
@@ -164,4 +164,7 @@
 <select id="match2" resultType="String" parameterType="String">
 	select imgpath from fimg where imgid = #{imgid}
 </select>
+
+
+	
 </mapper>

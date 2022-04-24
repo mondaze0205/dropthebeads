@@ -283,6 +283,28 @@ $("#copypic").click(function(){
 	
 });
 
+$("#each").click(function(){
+	
+	var rows = $(".pixel-canvas tr");
+	var code = "";
+	
+	for(var i = 0; i < rows.length; i++) {
+		var cells = rows[i].getElementsByTagName("td")
+		
+		for(var j = 0; j < cells.length; j++) {
+			code = code + rgbTohex($(cells[j]).css("background-color"));
+			//$(cells[j]).css("background-color");
+			code = code + " ";
+		}
+		code = code + "\n"
+	}
+	
+	document.getElementById("code").value = code;
+	
+	window.open("each", "도면 정보", "width=400, height=300, directories=no, fullscreen=no, status=no, menubar=no, resizable=no, scrollorbars=no, toolbar=no, location=no");
+
+});
+
 $(function(){
 	
 	makeGrid();

@@ -238,30 +238,35 @@ h2.mb-2 {
 }
 
 .side_rank {
-   position:relative;
    grid-area: a;
-   margin: 15px;
-   padding: 15px;
+   margin: 30px 15px 15px 15px;
+   padding: 25px 15px 15px 15px;
+   background-image: url('/image/ranking.jpg');
+   background-size: 250px 300px;
+   background-repeat: no-repeat;
+   min-height: 300px;
 }
 
 .ranktext{
 	font-family: 'DungGeunMo';
-	text-align: center;		
-    position:absolute;
-    width: 80%;
-	top: 23%;
-	left: 50%;
-	transform: translate( -50%, -50% );	
+	text-align: center;	
     color: white;
-}     
-
-.ranktext h2 {
-	margin: 0px 0px 5px 0px;
+}
+     
+.ranktext p {
+	margin: 0px 0px 20px 0px;
 	font-size: 20px;
 }
 
-.ranktext a {
+.ranktext h2 {
+	margin: 0px 0px 5px 0px;
+	font-size: 22px;
+}
 
+.ranktext h3 {
+	margin: 0px 0px 10px 0px;
+	font-weight: normal;
+	font-size: 20px;
 }
 
 .ranktext a:link {
@@ -274,6 +279,3 @@ h2.mb-2 {
 	color:white;
 }
 
-.ranktext p {
-	margin: 0px 0px 10px 0px;
-}

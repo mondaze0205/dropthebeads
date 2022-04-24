@@ -245,6 +245,7 @@
 			<button type="button" id="erase" class="btn1">지우기</button>
 			<button type="button" id="dummy2" class="btn2">저장</button>
 			<button type="button" id="load" class="btn2">불러오기</button>
+			<button type="button" id="each" class="btn2">필요한 색상</button>
 			<p>더블클릭하셔도 지워집니다.</p>
 		</div>
 		<div class="canvas">
